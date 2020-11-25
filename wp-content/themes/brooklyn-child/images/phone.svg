@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="17px" height="17px" viewBox="0 0 17 17" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 48.1 (47250) - http://www.bohemiancoding.com/sketch -->
+    <title>phone</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Pricing-Flow---Step-1:-Writer-Selection" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(-49.000000, -829.000000)" stroke-linecap="round" stroke-linejoin="round">
+        <g id="total-price-fixed-footer" transform="translate(0.000000, 795.000000)" stroke="#9B9B9B">
+            <g id="Group-4">
+                <g id="Group-5" transform="translate(50.000000, 30.000000)">
+                    <g id="get-help">
+                        <g id="phone" transform="translate(0.000000, 5.000000)">
+                            <g id="call-phone-telephone-3">
+                                <path d="M3.26470588,6.65680473 C4.32352941,8.87573964 6.08823529,10.6508876 8.29411765,11.7159763 L10.3235294,10.2071006 C10.5882353,9.9408284 10.9411765,9.85207101 11.2058824,10.0295858 C12.1764706,10.3846154 13.1470588,10.4733728 14.2058824,10.4733728 C14.6470588,10.4733728 15,10.8284024 15,11.2721893 L15,14.2011834 C15,14.6449704 14.6470588,15 14.2058824,15 C6.35294118,15 0,8.69822485 0,0.798816568 C0,0.798816568 0,0.798816568 0,0.798816568 C0,0.355029586 0.352941176,0 0.794117647,0 L3.70588235,0 C4.14705882,0 4.5,0.355029586 4.5,0.798816568 C4.5,1.77514793 4.67647059,2.84023669 4.94117647,3.81656805 C5.02941176,4.17159763 4.94117647,4.43786982 4.76470588,4.70414201 L3.26470588,6.65680473 Z" id="_Path_" stroke-width="0.8"></path>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
