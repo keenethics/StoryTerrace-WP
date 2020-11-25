@@ -6,6 +6,7 @@
 # "mu-plugins", "plugins", "themes" directory
 wp-content/*
 !wp-content/mu-plugins/
+wp-content/mu-plugins/wp-migrate-db-pro-compatibility.php
 #!wp-content/plugins/
 !wp-content/themes/
 
