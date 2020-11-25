@@ -5,7 +5,7 @@ on:
       - develop
 
 env:
-  TARGET_DIR: /opt/bitnami/apps/wordpress/htdocs/23/
+  TARGET_DIR: /opt/bitnami/apps/wordpress/htdocs/wp-content/themes/
 
 jobs:
   build:
@@ -36,7 +36,7 @@ jobs:
           #  mkdir -p /home/github/test/test2 &&
           scp: |-
             #'./test/*' => /home/github/test/
-            ./* => $TARGET_DIR/
+            ./wp-content/themes/* => $TARGET_DIR/
             #./test/test*.csv => "/home/github/test/test2/"
           #last_ssh: |-
           # echo $LASTSSH &&
