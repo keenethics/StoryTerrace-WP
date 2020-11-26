@@ -3276,9 +3276,10 @@ p#account_password_field{
     width: 100% !important;
     margin: 0 auto !important;
 }
-/*.product-footer{
-  position:relative;
-}*/
+html:lang(nl-NL) .woocommerce-checkout-payment .payment_methods .payment_method_affirm,
+html:lang(en-GB) .woocommerce-checkout-payment .payment_methods .payment_method_affirm {
+  display: none !important;
+}
 
 .woocommerce-checkout #payment .payment_methods .wc_payment_method:first-child .tab-wrap{
   background-image:url('images/ic-payment.svg');

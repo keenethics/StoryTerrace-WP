@@ -159,11 +159,6 @@ if($lang == 'en-US'){ ?>
       }
   });
 </script>
-<style type="text/css">
-  .payment_method_affirm{
-    display: none !important;
-  }
-</style>
 <?php } 
 
 if($lang == 'nl'){ ?>
@@ -184,9 +179,4 @@ if($lang == 'nl'){ ?>
       }
   });
 </script>
-<style type="text/css">
-  .payment_method_affirm{
-    display: none !important;
-  }
-</style>
 <?php } ?>

@@ -1,9 +1,5 @@
-jQuery(document).ready(function() {
-	
+jQuery(document).ready(function() {	
 	"use strict";
-
-	
-
 
 	jQuery(".pricingfaq__title").click(function() {
 		var thisParents = jQuery(this).parents(".pricingfaq__row");
@@ -71,12 +67,6 @@ jQuery(document).ready(function() {
 		});
 	}
 
-
-
-
-
-
-
 	if( window.innerWidth < 768 ) {
 
 		if( jQuery(".customer-sliders").length > 0 ) {
@@ -90,7 +80,7 @@ jQuery(document).ready(function() {
 		// }
 	}
 
-jQuery(".testimonials__slider").slick({
+	jQuery(".testimonials__slider").slick({
 		arrows: false,
 		dots: false,
 		slidesToShow: 1,
@@ -109,14 +99,7 @@ jQuery(".testimonials__slider").slick({
 			  ]
 	});
 
-
-
 });
-
-
-
-
-
 
 jQuery(window).resize(function() {
 
@@ -148,17 +131,7 @@ jQuery(window).resize(function() {
 			}
         }
     }
-
-
-
-    
-
-
 });
-
-
-
-
 
 jQuery(window).scroll(function() {
 	var sTop = jQuery(window).scrollTop();
@@ -171,8 +144,6 @@ jQuery(window).scroll(function() {
 	
 });
 
-
-
 function mobiletestimonialsSlider() {	
 	jQuery(".testimonials__slider").slick({
 		arrows: false,
@@ -183,7 +154,6 @@ function mobiletestimonialsSlider() {
 		autoplaySpeed: 5000,
 	});
 }
-
 
 function mobileCustomerSlider() {	
 	jQuery(".customer-sliders").slick({
