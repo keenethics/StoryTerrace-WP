@@ -2,7 +2,7 @@ name: scp files
 on:
   push:
     branches:
-      - develop
+      - master
 
 env:
   TARGET_DIR: /opt/bitnami/apps/wordpress/htdocs/wp-content/themes/
