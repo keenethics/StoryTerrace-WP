@@ -1,10 +1,12 @@
 <?php
 /* Template Name: homepage */
 get_header(); 
+
 // Banner Section 
 $top_left_image = get_field('top_left_image');
 $top_main_title = get_field('top_main_title');
 $top_big_title = get_field('top_big_title');
+
 //Buttons Settings
 $show_primary_cta = get_field('show_primary_cta');
 $top_button_text = get_field('top_button_text');
@@ -25,8 +27,10 @@ $show_search = get_field('show_search');
 $search_button_text = get_field('search_button_text');
 $search_placeholder = get_field('search_placeholder');
 $search_result_link = get_field('search_result_link');
+
 // Brand Section
 $brands_title = get_field('brands_title');
+
 // How it Works Section
 $how_left_title = get_field('how_left_title');
 $how_big_title = get_field('how_big_title');
@@ -42,21 +46,22 @@ $ourwriters_description = get_field('ourwriters_description');
 $ourwriters_button_text = get_field('ourwriters_button_text');
 $ourwriters_button_link = get_field('ourwriters_button_link');
 $ourwriters_writer_image = get_field('ourwriters_writer_image');
+
 // Testimonials Section
 $testimonials_main_title = get_field('testimonials_main_title');
 $testimonials_big_title = get_field('testimonials_big_title');
 $testimonials_description = get_field('testimonials_description');
+
 //Books Sample
 $bookssample_main_title = get_field('bookssample_main_title');
 $bookssample_big_title = get_field('bookssample_big_title');
 $bookssample_btntitle = get_field('bookssample_btntitle');
 $bookssample_btn_link = get_field('bookssample_btn_link');
 $bookssample_description = get_field('bookssample_description');
-$book_sample_hubspot_form = get_field('book_sample_hubspot_form');
-$book_sample_hubspot_form_title = get_field('book_sample_hubspot_form_title');
-$book_sample_hubspot_form_description = get_field('book_sample_hubspot_form_description');
 $show_sub_heading = get_field('show_sub_heading');
 $sub_heading = get_field('sub_heading_top_title');
+$book_art_content = get_field('book_art_content',get_the_ID());
+
 ?>   
     <div class="banner">
         <div class="banner__row banner__row1">
@@ -479,109 +484,88 @@ $sub_heading = get_field('sub_heading_top_title');
     $do_you_want_to_show_book_section = get_field('do_you_want_to_show_book_section');
     ?>
 
-    <?php 
-    if( get_field('do_you_want_to_show_book_section') == 'show' ) { ?>
-    <div class="download-book">
-        <div class="container">
-            <div class="center-title">
-                <?php if(!empty($bookssample_main_title)){ ?>
-                      <h5><?php echo $bookssample_main_title; ?></h5>
-                <?php } ?>
-                <?php if(!empty($bookssample_big_title)){ ?>
-                      <h2><?php echo $bookssample_big_title; ?></h2>
-                <?php } ?>
-                <?php if(!empty($bookssample_description)){ ?>
-                      <p><?php echo $bookssample_description; ?></p>
-                <?php } ?>
-                <p>&nbsp;</p>
-                <?php if($bookssample_btntitle){ ?>
-               <p><a class="link-underline" href="<?php echo $bookssample_btn_link; ?>"><?php echo $bookssample_btntitle; ?></a></p>
-                <?php } ?>
-            </div>
-            <div class="download-book__inner">
-                <?php $book_art_content = get_field('book_art_content',get_the_ID())?>
-                <?php if($book_art_content) {  
-                          $b=1;
-                    ?>
-                    <?php foreach($book_art_content as $book_art){?>
-                        <div class="download-book__col">
-                            <div class="download-book__cell">
-                                <?php if($book_art['art_image']){?>
-                                    <div class="download-book__art">
-                                        <?php if($book_art['book_popup_option'] == 'yes'){?>
-                                            <?php if($book_art['book_text']){?>
-                                                  <a href="#" databook="<?php echo 'clickbook'.$b; ?>" class="bookopen">
-                                                <?php }?>      
-                                       <?php } ?>
-                                       <?php if($book_art['book_link_option'] == 'yes'){?>
-                                                <?php if($book_art['book_text_for_link_button']){?>
-                                                      <a href="<?php echo $book_art['book_link'];?>">
-                                                <?php }?>      
-                                       <?php } ?>
-                                            <img src="<?php echo $book_art['art_image'];?>" alt=".">
-                                        </a>
-                                    </div>
-                                <?php }?>
-                                <div class="download-book__content">
-                                    <?php if($book_art['art_title']){?>
-                                        <h4><?php echo $book_art['art_title'];?></h4>
-                                    <?php }?>
-                                    <?php if($book_art['art_description']){?>
-                                        <p><?php echo $book_art['art_description'];?></p>
-                                    <?php }?>
-                                    <?php if($book_art['art_author']){?>
-                                        <div class="download-book__author">
-                                            <?php echo $book_art['art_author'];?>
+    <?php if( get_field('do_you_want_to_show_book_section') == 'show' ) { ?>
+        <div class="download-book">
+            <div class="container">
+
+                <div class="center-title">
+                    <?php if(!empty($bookssample_main_title)){ ?>
+                        <h5><?php echo $bookssample_main_title; ?></h5>
+                    <?php } ?>
+                    <?php if(!empty($bookssample_big_title)){ ?>
+                        <h2><?php echo $bookssample_big_title; ?></h2>
+                    <?php } ?>
+                    <?php if(!empty($bookssample_description)){ ?>
+                        <p><?php echo $bookssample_description; ?></p>
+                    <?php } ?>
+                    <p>&nbsp;</p>
+                    <?php if($bookssample_btntitle){ ?>
+                        <p>
+                            <a class="link-underline" href="<?php echo $bookssample_btn_link; ?>"><?php echo $bookssample_btntitle; ?></a>
+                        </p>
+                    <?php } ?>
+                </div>
+
+                <div class="download-book__inner">
+                    <?php if ($book_art_content) {  
+                        $b = 1;
+
+                        foreach ($book_art_content as $book_art) {?>
+                            <div class="download-book__col">
+                                <div class="download-book__cell">
+                                    <?php if($book_art['art_image']){?>
+                                        <div class="download-book__art">
+                                            <?php if($book_art['book_popup_option'] == 'yes'){?>
+                                                <?php if ($book_art['book_text']) {?>
+                                                    <a href="#" databook="<?php echo 'clickbook'.$b; ?>" class="bookopen">
+                                                    <?php }?>      
+                                        <?php } ?>
+                                        <?php if ($book_art['book_link_option'] == 'yes') {?>
+                                                    <?php if ($book_art['book_text_for_link_button']) {?>
+                                                        <a href="<?php echo $book_art['book_link'];?>">
+                                                    <?php }?>      
+                                        <?php } ?>
+                                                <img src="<?php echo $book_art['art_image'];?>" alt=".">
+                                            </a>
                                         </div>
                                     <?php }?>
-                                    <?php if($book_art['book_popup_option'] == 'yes'){?>
-                                            <?php if($book_art['book_text']){?>
-                                                  <a href="#" databook="<?php echo 'clickbook'.$b; ?>" class="link-underline bookopen"><?php echo $book_art['book_text'];?></a>
-                                            <?php }?>      
-                                   <?php } ?>
-                                   <?php if($book_art['book_link_option'] == 'yes'){?>
-                                            <?php if($book_art['book_text_for_link_button']){?>
-                                                  <a href="<?php echo $book_art['book_link'];?>" class="link-underline"><?php echo $book_art['book_text_for_link_button'];?></a>
-                                            <?php }?>      
-                                   <?php } ?>
+                                    <div class="download-book__content">
+                                        <?php if ($book_art['art_title']) {?>
+                                            <h4><?php echo $book_art['art_title'];?></h4>
+                                        <?php }?>
+                                        <?php if ($book_art['art_description']) {?>
+                                            <p><?php echo $book_art['art_description'];?></p>
+                                        <?php }?>
+                                        <?php if ($book_art['art_author']) {?>
+                                            <div class="download-book__author">
+                                                <?php echo $book_art['art_author'];?>
+                                            </div>
+                                        <?php }?>
+                                        <?php if ($book_art['book_popup_option'] == 'yes') {?>
+                                                <?php if($book_art['book_text']){?>
+                                                    <a href="#" databook="<?php echo 'clickbook'.$b; ?>" class="link-underline bookopen"><?php echo $book_art['book_text'];?></a>
+                                                <?php }?>      
+                                    <?php } ?>
+                                    <?php if ($book_art['book_link_option'] == 'yes') {?>
+                                                <?php if ($book_art['book_text_for_link_button']) {?>
+                                                    <a href="<?php echo $book_art['book_link'];?>" class="link-underline"><?php echo $book_art['book_text_for_link_button'];?></a>
+                                                <?php }?>      
+                                    <?php } ?>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    <?php 
-                    $b++;
-                } } ?>
-                        
-            </div>
-        </div>
-    </div>
-<?php } ?>
-    
-<?php //( 'bottom-banner-section.php' ); ?>   
-<?php get_footer(); ?>
-<!-- Books Popup -->
-<?php if(!empty($book_sample_hubspot_form)){ ?>
-<!-- <div class="globalpopup bookspoopup">
-        <div class="globalpopup__outer">
-            <div class="globalpopup__inner">
-                <i class="fa fa-times globalpopup__close book__close" aria-hidden="true"></i>
-                <div class="globalpopup__wrap">
-                    <div class="globalpopup__top">
-                        <?php //if(!empty($book_sample_hubspot_form_title)){ ?>
-                        <h3><?php //echo $book_sample_hubspot_form_title; ?></h3>
-                       <?php //} ?>
-                        <?php //if(!empty($book_sample_hubspot_form_description)){ ?>
-                             <p><?php //echo $book_sample_hubspot_form_description; ?></p>
-                        <?php //} ?>
-                    </div>
-                    <div class="globalpopup__bottom">
-                         <?php //echo $book_sample_hubspot_form; ?>
-                    </div>
+                        <?php $b++; 
+                        } 
+                    } ?>
+                            
                 </div>
+
             </div>
         </div>
-    </div> -->
+    <?php } ?> <!-- End show_book_section -->
+    
+<?php get_footer(); ?>
 
-<?php } ?>
 <!-- Homepage Banner Popup -->
 <?php if(!empty($popup_hub_code)){ ?>
     <div class="globalpopup bannerpop">
