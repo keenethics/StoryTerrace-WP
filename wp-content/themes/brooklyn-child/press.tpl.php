@@ -347,7 +347,7 @@ body.oh {
     left: 0;
     width: 50px;
     height: 66px;
-    background-image: url(https://woocommerce-380490-1201116.cloudwaysapps.com/wp-content/themes/brooklyn-child/images/quote.svg);
+    background-image: url(/wp-content/themes/brooklyn-child/images/quote.svg);
     background-position: top left;
     background-size: contain;
     background-repeat: no-repeat;
@@ -559,7 +559,7 @@ body.oh {
     position: absolute;
     top: 2px;
     right: 0;
-    background-image: url(https://woocommerce-380490-1201116.cloudwaysapps.com/wp-content/themes/brooklyn-child/images/search.svg);
+    background-image: url(/wp-content/themes/brooklyn-child/images/search.svg);
     background-position: right center;
     background-repeat: no-repeat;
     background-color: transparent;
@@ -1287,7 +1287,7 @@ $banner_time = get_field('banner_time');
         </div>
         <div class="presspopup__topright">
           <p>Check it at</p>
-          <a class="customlinks" href="https://woocommerce-380490-1201116.cloudwaysapps.com/press/"><h6>New york times</h6></a>
+          <a class="customlinks" href="/press/"><h6>New york times</h6></a>
         </div>
       </div>
       <div class="presspopup__video">
