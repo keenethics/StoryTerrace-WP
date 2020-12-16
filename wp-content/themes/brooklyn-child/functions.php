@@ -47,7 +47,7 @@ wp_enqueue_style( 'slick-css', get_stylesheet_directory_uri().'/assets/css/slick
         wp_enqueue_script( 'checkoutpage-js', get_stylesheet_directory_uri().'/js/checkoutpage.js', array( 'jquery' ), '1.0.0', true );
     }
     if (is_page(39350)) {
-        wp_dequeue_style('contact-form-7');
+        wp_dequeue_style('contact-form-7'); //ToDo: remove
     }
 }
 add_action( 'wp_enqueue_scripts', 'my_theme_scripts' );
@@ -386,7 +386,7 @@ function crunchify_disable_woocommerce_loading_css_js() {
     }   
 }
 
-function link_words( $text ) {
+function link_words( $text ) { //ToDo: remove
 $replace = array(
 'Critically Acclaimed' => 'Premium',
 );
@@ -396,7 +396,7 @@ return $text;
 add_filter( 'the_content', 'link_words' );
 add_filter( 'the_excerpt', 'link_words' );
 
-add_action( 'wp_enqueue_scripts', 'load_old_jquery_fix', 100 );
+add_action( 'wp_enqueue_scripts', 'load_old_jquery_fix', 100 ); //ToDo: remove
 
 function load_old_jquery_fix() {
     if ( ! is_admin() ) {
