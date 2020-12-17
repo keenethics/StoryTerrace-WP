@@ -25,10 +25,6 @@ jQuery(document).ready(function() {
 		jQuery(".videopopup").fadeIn();
 	});
 
-	// jQuery(".pop-getstart .link-filled").click(function() {
-	// 	jQuery("html").addClass("html--oh");
-	// 	jQuery(".getstartpop").fadeIn();
-	// });
 	jQuery(".getbtnopen").click(function(event) {
 		event.preventDefault();
 		jQuery("html").addClass("html--oh");
@@ -74,10 +70,6 @@ jQuery(document).ready(function() {
 		}
 
 	} else {
-
-		// if( jQuery(".testimonials__slider").length > 0 ) {
-		// 	mobiletestimonialsSlider();
-		// }
 	}
 
 	jQuery(".testimonials__slider").slick({
@@ -110,11 +102,6 @@ jQuery(window).resize(function() {
 
 
 	if( window.innerWidth >= 768 ) {
-   //      if(!jQuery(".testimonials__slider").hasClass("slick-initialized")){
-   //          if( jQuery(".testimonials__slider").length > 0 ) {
-			// 	mobiletestimonialsSlider();
-			// }
-   //      }
         if(jQuery(".customer-sliders").hasClass("slick-initialized")){
             jQuery(".customer-sliders").slick("unslick");
         }
@@ -122,9 +109,6 @@ jQuery(window).resize(function() {
             jQuery(".download-book__inner").slick("unslick");
         }
     }else{
-        // if(jQuery(".testimonials__slider").hasClass("slick-initialized")){
-        //     jQuery(".testimonials__slider").slick("unslick");
-        // }
         if(!jQuery(".customer-sliders").hasClass("slick-initialized")){
             if( jQuery(".customer-sliders").length > 0 ) {
 				mobileCustomerSlider();
@@ -175,10 +159,8 @@ function mobileCustomerSlider() {
 	});
 
 }
-
-$(document).ready(function(){
+jQuery(document).ready(function($) {	
 	$('.videoicon').click(function(){
-		//$('.videopopup__wrap iframe').attr('src','');
         vidlink = $(this).attr('vidurl');
         if(vidlink){
         	$('.videopopup__wrap iframe').attr('src',vidlink);
@@ -192,7 +174,7 @@ $(document).ready(function(){
     }, 500);
 });
 
-$(document).ready(function(){
+jQuery(document).ready(function() {	
     jQuery(".topheaderbtn").click(function(event) {
 		event.preventDefault();
 		jQuery("html").addClass("html--oh");
