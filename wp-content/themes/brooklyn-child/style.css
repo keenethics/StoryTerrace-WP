@@ -17,7 +17,7 @@ Text Domain: unitedthemes
 
 /* Font Awesome Costom Icons */
 /* ToDo: enable after removing font-awesome from plugins */
-/* @font-face {
+@font-face {
 	font-family: 'font-awesome';
 	src: url('fonts/font-awesome.eot?ia1d1c');
 	src: url('fonts/font-awesome.eot?ia1d1c#iefix') format('embedded-opentype'),
@@ -27,7 +27,7 @@ Text Domain: unitedthemes
 	font-weight: normal;
 	font-style: normal;
 	font-display: block;
-} */
+}
 
 [class^="fa-"],
 [class*=" fa-"] {
