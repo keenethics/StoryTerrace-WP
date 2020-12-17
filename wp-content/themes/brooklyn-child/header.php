@@ -60,11 +60,6 @@ COPYRIGHT 2011 - 2015 ALL RIGHTS RESERVED BY UNITED THEMES
     <link rel="dns-prefetch" href="//connect.facebook.net">
     <link rel="preconnect" href="//connect.facebook.net">
 
-
-
-
-	<!-- <script src="/wp-content/_countryfinder.js"></script> -->
-
     <!-- Google Tag Manager -->
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
     new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
