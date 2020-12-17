@@ -62,8 +62,8 @@ COPYRIGHT 2011 - 2015 ALL RIGHTS RESERVED BY UNITED THEMES
 
 
 
-	<!-- GeoIP redirect added by Paul Willis 06/2017 -->
-	<script src="/wp-content/_countryfinder.js"></script>
+
+	<!-- <script src="/wp-content/_countryfinder.js"></script> -->
 
     <!-- Google Tag Manager -->
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -101,9 +101,10 @@ COPYRIGHT 2011 - 2015 ALL RIGHTS RESERVED BY UNITED THEMES
     <link rel="profile" href="http://gmpg.org/xfn/11">
 
     <!-- Preload Fonts -->
-    <link rel="preload" as="font" href="<?php echo get_stylesheet_directory_uri(); ?>/assets/webfonts/KaufmannScript.woff">
-    <link rel="preload" as="font" href="<?php echo get_stylesheet_directory_uri(); ?>/assets/webfonts/Gotham-Book.otf">
-    <link rel="preload" as="font" href="<?php echo get_stylesheet_directory_uri(); ?>/assets/webfonts/Gotham-Medium.otf">
+    <link rel="preload" as="font" type="font/woff2" href="<?php echo get_stylesheet_directory_uri(); ?>/assets/webfonts/KaufmannScript.woff" crossorigin="anonymous">
+    <link rel="preload" as="font" type="font/woff2" href="<?php echo get_stylesheet_directory_uri(); ?>/assets/webfonts/Gotham-Book.woff" crossorigin="anonymous">
+    <link rel="preload" as="font" type="font/woff2" href="<?php echo get_stylesheet_directory_uri(); ?>/assets/webfonts/Gotham-Medium.woff" crossorigin="anonymous">
+    <link rel="preload" as="font" type="font/woff2" href="<?php echo get_stylesheet_directory_uri(); ?>/fonts/font-awesome.woff" crossorigin="anonymous">
     
     <!-- Favicon -->
 	<?php if( ot_get_option( 'ut_favicon' ) ) : ?>

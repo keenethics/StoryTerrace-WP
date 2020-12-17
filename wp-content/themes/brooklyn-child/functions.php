@@ -35,6 +35,10 @@ function my_theme_scripts() {
 
     }
 
+
+    // GeoIP redirect
+    wp_enqueue_script( 'countryfinder-js', get_stylesheet_directory_uri().'/js/countryfinder.js', array( 'jquery' ), '1.0.1', false );
+
     wp_enqueue_script( 'slick-js', get_stylesheet_directory_uri().'/assets/js/slick.min.js', array( 'jquery' ), '1.0.1', true );
     wp_enqueue_script( 'main-js', get_stylesheet_directory_uri().'/assets/js/main.js', array( 'jquery' ), '1.0.1', true );
 
