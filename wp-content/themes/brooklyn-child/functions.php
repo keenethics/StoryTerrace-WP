@@ -19,13 +19,12 @@ add_action('woocommerce_before_checkout_form','show_cart_summary',9);
 function show_cart_summary( ) {
   wc_get_template_part( 'cart/cart' );
 }
-function my_theme_scripts() {
-    
-wp_enqueue_style( 'awesome-css', 'https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css' );
-wp_enqueue_style( 'webfonts-css', get_stylesheet_directory_uri().'/assets/webfonts/webfonts.css' );
-wp_enqueue_style( 'slick-theme-css', get_stylesheet_directory_uri().'/assets/css/slick-theme.css' );
-wp_enqueue_style( 'slick-css', get_stylesheet_directory_uri().'/assets/css/slick.css' );
-//if(is_page( 36682 ) || is_page( 46986 ) || is_page( 46985 ) || is_page( 46984 ) || is_page( 37644 ) || is_page( 36707 ) || is_page( 47480 ) || is_page( 47576 ) || is_page( 47573 ) || is_page( 47479 ) || is_page( 47572 ) || is_page( 47575 ) || is_page( 39350 )){
+
+function my_theme_scripts() {    
+    wp_enqueue_style( 'webfonts-css', get_stylesheet_directory_uri().'/assets/webfonts/webfonts.css' );
+    wp_enqueue_style( 'slick-theme-css', get_stylesheet_directory_uri().'/assets/css/slick-theme.css' );
+    wp_enqueue_style( 'slick-css', get_stylesheet_directory_uri().'/assets/css/slick.css' );
+
     if(is_page( 36682 ) || is_page(37644) || is_page(32679) || is_page(39350) || is_page(36707) || is_page(39348) || is_page(39695) || is_page(32678) || is_page(37383) || is_page(39349) || is_page(37621) ||is_page(37559) ){
         wp_enqueue_style( 'bootstrap-css', get_stylesheet_directory_uri().'/assets/css/bootstrap.min.css' );
         wp_enqueue_style( 'main-css', get_stylesheet_directory_uri().'/assets/css/main.css', array(), '0.1.0', 'all' );
@@ -35,21 +34,22 @@ wp_enqueue_style( 'slick-css', get_stylesheet_directory_uri().'/assets/css/slick
         wp_enqueue_style( 'oldstyle-css', get_stylesheet_directory_uri().'/oldstyle.css' );
 
     }
-    //wp_enqueue_style( 'plyr-css', 'https://cdn.plyr.io/2.0.18/plyr.css' );
-    // wp_enqueue_script( 'jquery-js', get_stylesheet_directory_uri().'/assets/js/jquery.min.js', array( 'jquery' ), '1.0.1', true );
+
     wp_enqueue_script( 'slick-js', get_stylesheet_directory_uri().'/assets/js/slick.min.js', array( 'jquery' ), '1.0.1', true );
     wp_enqueue_script( 'main-js', get_stylesheet_directory_uri().'/assets/js/main.js', array( 'jquery' ), '1.0.1', true );
-    //wp_enqueue_script( 'plyr-js', 'https://cdn.plyr.io/2.0.18/plyr.js', array( 'jquery' ), '1.0.0', true );
-    if(is_product()){
+
+    /**
+     * Check if WooCommerce is activated
+     */
+    if ( function_exists( 'is_woocommerce_activated' ) && is_product() ){
         wp_enqueue_script( 'singleproductpage-js', get_stylesheet_directory_uri().'/js/singleproductpage.js', array( 'jquery' ), '1.0.1', true );
     }
-    if(is_checkout()){
+
+    if ( function_exists( 'is_woocommerce_activated' ) && is_checkout() ){
         wp_enqueue_script( 'checkoutpage-js', get_stylesheet_directory_uri().'/js/checkoutpage.js', array( 'jquery' ), '1.0.0', true );
     }
-    if (is_page(39350)) {
-        wp_dequeue_style('contact-form-7'); //ToDo: remove
-    }
 }
+
 add_action( 'wp_enqueue_scripts', 'my_theme_scripts' );
 
 
@@ -361,7 +361,6 @@ if($actual_link == 'https://storyterrace.com/'){
 add_action( 'wp_enqueue_scripts', 'crunchify_disable_woocommerce_loading_css_js' );
  
 function crunchify_disable_woocommerce_loading_css_js() {
-  // die();    
     // Check if WooCommerce plugin is active
     if( function_exists( 'is_woocommerce' ) ){
  
@@ -386,22 +385,12 @@ function crunchify_disable_woocommerce_loading_css_js() {
     }   
 }
 
-function link_words( $text ) { //ToDo: remove
-$replace = array(
-'Critically Acclaimed' => 'Premium',
-);
-$text = str_replace( array_keys($replace), $replace, $text );
-return $text;
+function link_words( $text ) { //ToDo: use Search Regexp
+    $replace = array(
+        'Critically Acclaimed' => 'Premium',
+    );
+    $text = str_replace( array_keys($replace), $replace, $text );
+    return $text;
 }
 add_filter( 'the_content', 'link_words' );
 add_filter( 'the_excerpt', 'link_words' );
-
-add_action( 'wp_enqueue_scripts', 'load_old_jquery_fix', 100 ); //ToDo: remove
-
-function load_old_jquery_fix() {
-    if ( ! is_admin() ) {
-        wp_deregister_script( 'jquery' );
-        wp_register_script( 'jquery', ( "http://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js" ), false, '1.11.3' );
-        wp_enqueue_script( 'jquery' );
-    }
-}
