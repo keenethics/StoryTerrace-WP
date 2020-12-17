@@ -44,7 +44,7 @@ if(!empty($bbs_background_image)){
                                 </form>
                             </div>
                             <script>
-                              $(document).ready(function(){
+                              jQuery(document).ready(function($){
                                 $( "#zipcodebot" ).submit(function( event ) {
                                   event.preventDefault();
                                   var zipf = $('.zipf').val();
@@ -84,7 +84,7 @@ if(!empty($bbs_background_image)){
         </div>
     <?php } ?>  
     <script type="text/javascript">
-        $(document).ready(function(){
+        jQuery(document).ready(function($){
             jQuery(".bottombtn").click(function(event) {
                 event.preventDefault();
                 jQuery("html").addClass("html--oh");

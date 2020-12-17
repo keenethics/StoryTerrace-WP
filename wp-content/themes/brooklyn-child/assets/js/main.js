@@ -117,12 +117,12 @@ jQuery(window).resize(function() {
     }
 });
 
-jQuery(window).scroll(function() {
+jQuery(window).scroll(function($) {
 	var sTop = jQuery(window).scrollTop();
 	if( jQuery(".banner").length > 0 ) {
 		var sTopNegative = -sTop;
 		if( sTop > 0 ) {
-			$(".banner__art").css({"top" : sTopNegative * 0.20});
+			jQuery(".banner__art").css({"top" : sTopNegative * 0.20});
 		}
 	}
 	

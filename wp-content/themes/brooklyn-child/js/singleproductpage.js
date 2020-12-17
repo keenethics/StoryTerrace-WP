@@ -1,5 +1,5 @@
 	var allPrices = [];
-	$(document).ready(function() {
+	jQuery(document).ready(function($) {
 		var result = [];
 		$(".woocommerce-Price-amount").each(function(){
 			var priceVal = $(this).html();
@@ -196,7 +196,7 @@
 		var pay2 = $('.alldatav .pay-2').html();
 		$('.skl .pay-2').html(pay2);
 	});
-	$(document).ready(function(){
+	jQuery(document).ready(function($){
 		  jQuery('.wccpf-field').change(function() {
 		        if ($(this).prop('checked')) {
 		        	var curen = $('.woocommerce-Price-currencySymbol').html();

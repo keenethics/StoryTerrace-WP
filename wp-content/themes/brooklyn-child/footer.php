@@ -260,6 +260,7 @@
     </script>
     </body>
 </html>
+
 <?php 
 $hubspot_form_for_button = get_field('hubspot_form_for_button','options');
 $form_title = get_field('form_title','options');
@@ -339,7 +340,7 @@ a.romw-link {
             //echo $selectedlangs;
         ?>
         <script type="text/javascript">
-            $(document).ready(function(){
+            jQuery(document).ready(function($){
                 setTimeout(function(){
                    homedata = $('.icl-en-US a').attr('href');
                    newurlshome = homedata+'/?home=us';
