@@ -1,28 +1,6 @@
-<?php
-
-/*
- * The header for our theme
- * by www.unitedthemes.com
- */
-
-?>
 <!DOCTYPE html>
 <html <?php language_attributes(); ?>>
-<!--
-##########################################################################################
 
-BROOKLYN THEME BY UNITED THEMES 
-WWW.UNITEDTHEMES.COM
-
-BROOKLYN THEME DESIGNED BY MARCEL MOERKENS
-BROOKLYN THEME DEVELOPED BY MARCEL MOERKENS & MATTHIAS NETTEKOVEN 
-
-POWERED BY UNITED THEMES - WEB DEVELOPMENT FORGE EST.2011
-
-COPYRIGHT 2011 - 2015 ALL RIGHTS RESERVED BY UNITED THEMES
-
-##########################################################################################
--->
 <head>
     <link rel="dns-prefetch" href="//js.hsforms.net/">   
     <link rel="preconnect" href="//js.hsforms.net/">        
@@ -204,7 +182,6 @@ height: 200px;
 position: absolute;
 left: 50%;
 top: 50%;
-/*background-image: url(https://raw.githubusercontent.com/niklausgerber/PreLoadMe/master/img/status.gif);*/
 background-repeat: no-repeat;
 background-position: center;
 margin: -100px 0 0 -100px;
