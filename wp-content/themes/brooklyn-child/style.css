@@ -19,11 +19,7 @@ Text Domain: unitedthemes
 /* ToDo: enable after removing font-awesome from plugins */
 @font-face {
 	font-family: 'font-awesome';
-	src: url('fonts/font-awesome.eot?ia1d1c');
-	src: url('fonts/font-awesome.eot?ia1d1c#iefix') format('embedded-opentype'),
-		url('fonts/font-awesome.ttf?ia1d1c') format('truetype'),
-		url('fonts/font-awesome.woff?ia1d1c') format('woff'),
-		url('fonts/font-awesome.svg?ia1d1c#font-awesome') format('svg');
+	src: url('fonts/font-awesome.woff') format('woff');
 	font-weight: normal;
 	font-style: normal;
 	font-display: block;
