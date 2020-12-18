@@ -45,11 +45,12 @@ function my_theme_scripts() {
     /**
      * Check if WooCommerce is activated
      */
-    if ( function_exists( 'is_woocommerce_activated' ) && is_product() ){
+
+    if ( class_exists( 'woocommerce' ) && is_product() ){
         wp_enqueue_script( 'singleproductpage-js', get_stylesheet_directory_uri().'/js/singleproductpage.js', array( 'jquery' ), '1.0.1', true );
     }
 
-    if ( function_exists( 'is_woocommerce_activated' ) && is_checkout() ){
+    if ( class_exists( 'woocommerce' ) && is_checkout() ){
         wp_enqueue_script( 'checkoutpage-js', get_stylesheet_directory_uri().'/js/checkoutpage.js', array( 'jquery' ), '1.0.0', true );
     }
 }
