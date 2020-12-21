@@ -114,7 +114,7 @@ get_header(); ?>
         <div class="ut-scroll-up-waypoint" data-section="section-<?php echo ut_clean_section_id($post->post_name); ?>"></div>
 <?php get_footer(); ?>
 <script type="text/javascript">
-  $(window).load(function() {
+  jQuery(document).ready(function($) {	
       $(".btn-gotocart").click(function(){
         $("#place_order").click(); 
         return false;
@@ -127,7 +127,7 @@ get_header(); ?>
 <?php $lang =  ICL_LANGUAGE_CODE; 
 if($lang == 'en-US'){ ?>
 <script type="text/javascript">
-  $(window).load(function() {
+  jQuery(document).ready(function($) {	
     var error_affirm = $('.woocommerce-notices-wrapper .woocommerce-error').text().includes("Your order can no longer be cancelled. Please contact us if you need assistance");
     if( error_affirm == true ){
         $('.woocommerce-notices-wrapper .woocommerce-error').remove();
@@ -137,7 +137,6 @@ if($lang == 'en-US'){ ?>
           $('.prie').html(tnewprice.replace('.00',""));
       }, 100);
     if ($('.variation-PaymentPlan p').is(':contains("Instal")')) {
-      // if($(".variation-PaymentPlan p:contains('Instal')") == 1){
          $('.psub').text('First Payment');
          $('.instt').text('First Payment');
       }
@@ -146,7 +145,7 @@ if($lang == 'en-US'){ ?>
 <?php } ?>
 <?php if($lang == 'en-GB'){ ?>
 <script type="text/javascript">
-  $(window).load(function() {
+  jQuery(document).ready(function($) {	
     setInterval(function(){ 
         var tnewprice = $('.order-total .woocommerce-Price-amount').html();
           $('.prie').html(tnewprice);
@@ -163,7 +162,7 @@ if($lang == 'en-US'){ ?>
 
 if($lang == 'nl'){ ?>
 <script type="text/javascript">
-  $(window).load(function() {
+  jQuery(document).ready(function($) {	
     setInterval(function(){ 
         var tnewprice = $('.order-total .woocommerce-Price-amount').html();
           $('.prie').html(tnewprice);
