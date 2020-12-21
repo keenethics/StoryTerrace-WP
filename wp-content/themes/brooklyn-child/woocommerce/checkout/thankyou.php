@@ -101,7 +101,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 </div>
 
 <script type="text/javascript">
-	$(document).ready(function() {
+	jQuery(document).ready(function($) {
 	  $('.step3').addClass('active');
 	  $('.step2').addClass('success');
 	  $('.product-footer').hide();

@@ -1,44 +1,53 @@
-<?php
-
-/*
- * The header for our theme
- * by www.unitedthemes.com
- */
-
-?>
 <!DOCTYPE html>
 <html <?php language_attributes(); ?>>
-<!--
-##########################################################################################
 
-BROOKLYN THEME BY UNITED THEMES 
-WWW.UNITEDTHEMES.COM
-
-BROOKLYN THEME DESIGNED BY MARCEL MOERKENS
-BROOKLYN THEME DEVELOPED BY MARCEL MOERKENS & MATTHIAS NETTEKOVEN 
-
-POWERED BY UNITED THEMES - WEB DEVELOPMENT FORGE EST.2011
-
-COPYRIGHT 2011 - 2015 ALL RIGHTS RESERVED BY UNITED THEMES
-
-##########################################################################################
--->
 <head>
-	<!-- GeoIP redirect added by Paul Willis 06/2017 -->
-	<script src="/wp-content/_countryfinder.js"></script>
+    <link rel="dns-prefetch" href="//js.hsforms.net/">   
+    <link rel="preconnect" href="//js.hsforms.net/">        
+    
+    <link rel="dns-prefetch" href="//www.google.com">
+    <link rel="preconnect" href="//www.google.com">
 
-	<script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
-	    <!-- Google Tag Manager -->
-  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-  })(window,document,'script','dataLayer','GTM-PJMTMX');</script>
-  <!-- End Google Tag Manager -->
+    <link rel="dns-prefetch" href="//googleads.g.doubleclick.net">
+    <link rel="preconnect" href="//googleads.g.doubleclick.net">
+
+    <link rel="dns-prefetch" href="//stats.g.doubleclick.net">
+    <link rel="preconnect" href="//stats.g.doubleclick.net">
+
+    <link rel="dns-prefetch" href="//p.adsymptotic.com">
+    <link rel="preconnect" href="//p.adsymptotic.com">
+
+    <link rel="dns-prefetch" href="//sjs.bizographics.com">
+    <link rel="preconnect" href="//sjs.bizographics.com">
+
+    <link rel="dns-prefetch" href="//www.googleadservices.com">
+    <link rel="preconnect" href="//www.googleadservices.com">
+
+    <link rel="dns-prefetch" href="//www.googletagmanager.com">
+    <link rel="preconnect" href="//www.googletagmanager.com">
+
+    <link rel="dns-prefetch" href="//www.google-analytics.com">
+    <link rel="preconnect" href="//www.google-analytics.com">
+
+    <link rel="dns-prefetch" href="//www.facebook.com">
+    <link rel="preconnect" href="//www.facebook.com">
+
+    <link rel="dns-prefetch" href="//cm.everesttech.net">
+    <link rel="preconnect" href="//cm.everesttech.net">
+
+    <link rel="dns-prefetch" href="//connect.facebook.net">
+    <link rel="preconnect" href="//connect.facebook.net">
+
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-PJMTMX');</script>
+    <!-- End Google Tag Manager -->
+
     <meta charset="<?php bloginfo( 'charset' ); ?>">
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
-        <!-- <link href='https://fonts.googleapis.com/css?family=Raleway:400,100,200,300,500,600,700,800,900' rel='stylesheet' type='text/css'> -->
-
     <?php ut_meta_hook(); //action hook, see inc/ut-theme-hooks.php ?>
     
         
@@ -63,6 +72,12 @@ COPYRIGHT 2011 - 2015 ALL RIGHTS RESERVED BY UNITED THEMES
     <!-- RSS & Pingbacks -->
 	<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
     <link rel="profile" href="http://gmpg.org/xfn/11">
+
+    <!-- Preload Fonts -->
+    <link rel="preload" as="font" type="font/woff2" href="<?php echo get_stylesheet_directory_uri(); ?>/assets/webfonts/KaufmannScript.woff" crossorigin="anonymous">
+    <link rel="preload" as="font" type="font/woff2" href="<?php echo get_stylesheet_directory_uri(); ?>/assets/webfonts/Gotham-Book.woff" crossorigin="anonymous">
+    <link rel="preload" as="font" type="font/woff2" href="<?php echo get_stylesheet_directory_uri(); ?>/assets/webfonts/Gotham-Medium.woff" crossorigin="anonymous">
+    <link rel="preload" as="font" type="font/woff2" href="<?php echo get_stylesheet_directory_uri(); ?>/fonts/font-awesome.woff" crossorigin="anonymous">
     
     <!-- Favicon -->
 	<?php if( ot_get_option( 'ut_favicon' ) ) : ?>
@@ -167,7 +182,6 @@ height: 200px;
 position: absolute;
 left: 50%;
 top: 50%;
-/*background-image: url(https://raw.githubusercontent.com/niklausgerber/PreLoadMe/master/img/status.gif);*/
 background-repeat: no-repeat;
 background-position: center;
 margin: -100px 0 0 -100px;

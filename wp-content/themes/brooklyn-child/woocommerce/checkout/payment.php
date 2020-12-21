@@ -70,7 +70,7 @@ if ( ! is_ajax() ) {
 }
 ?>
 <script>
-	$(document).ready(function(){
+	jQuery(document).ready(function($){
 		$('.tabs-label li label').click( function(){
 		    if ( $(this).hasClass('active') ) {
 		        $(this).removeClass('active');

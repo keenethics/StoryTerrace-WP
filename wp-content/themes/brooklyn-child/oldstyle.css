@@ -5520,7 +5520,7 @@ td.wccpf_label {
 .header {
     padding: 24px 0;
     position: relative;
-    z-index: 99999999999999;
+    z-index: 9999;
 }
 
 .header__inner {

@@ -109,7 +109,7 @@ $book_art_content = get_field('book_art_content',get_the_ID());
                             </div>
                         <?php } ?>
                         <script>
-                          $(document).ready(function(){
+                          jQuery(document).ready(function($){
                             $( "#zipcode" ).submit(function( event ) {
                               event.preventDefault();
                               var zipval = $('.zipc').val();
@@ -219,7 +219,7 @@ $book_art_content = get_field('book_art_content',get_the_ID());
                           </div>
                         <?php } ?>
                         <script>
-                          $(document).ready(function(){
+                          jQuery(document).ready(function($){
                             $( ".mobsearch #zipcode" ).submit(function( event ) {
                               event.preventDefault();
                               var zipval = $('.mobsearch .zipc').val();
@@ -563,90 +563,90 @@ $book_art_content = get_field('book_art_content',get_the_ID());
             </div>
         </div>
     <?php } ?> <!-- End show_book_section -->
-    
-<?php get_footer(); ?>
 
-<!-- Homepage Banner Popup -->
-<?php if(!empty($popup_hub_code)){ ?>
-    <div class="globalpopup bannerpop">
-        <div class="globalpopup__outer">
-            <div class="globalpopup__inner">
-                <i class="fa fa-times globalpopup__close bannerpop__close" aria-hidden="true"></i>
-                <div class="globalpopup__wrap">
-                    <div class="globalpopup__bottom">
-                         <?php echo $popup_hub_code; ?>
+    <!-- Homepage Banner Popup -->
+    <?php if(!empty($popup_hub_code)){ ?>
+        <div class="globalpopup bannerpop">
+            <div class="globalpopup__outer">
+                <div class="globalpopup__inner">
+                    <i class="fa fa-times globalpopup__close bannerpop__close" aria-hidden="true"></i>
+                    <div class="globalpopup__wrap">
+                        <div class="globalpopup__bottom">
+                            <?php echo $popup_hub_code; ?>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-<?php } ?>
-<?php if(!empty($secondary_cta_popup)){ ?>
-    <div class="globalpopup underclick_pop">
-        <div class="globalpopup__outer">
-            <div class="globalpopup__inner">
-                <i class="fa fa-times globalpopup__close underclick__close" aria-hidden="true"></i>
-                <div class="globalpopup__wrap">
-                    <div class="globalpopup__bottom">
-                         <?php echo $secondary_cta_popup; ?>
+    <?php } ?>
+    <?php if(!empty($secondary_cta_popup)){ ?>
+        <div class="globalpopup underclick_pop">
+            <div class="globalpopup__outer">
+                <div class="globalpopup__inner">
+                    <i class="fa fa-times globalpopup__close underclick__close" aria-hidden="true"></i>
+                    <div class="globalpopup__wrap">
+                        <div class="globalpopup__bottom">
+                            <?php echo $secondary_cta_popup; ?>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-<?php } ?>
-<!-- Books Form -->
-<?php if($book_art_content) {?>
-    <div class="globalpopup bookspoopup">
-        <div class="globalpopup__outer">
-            <div class="globalpopup__inner">
-                <i class="fa fa-times globalpopup__close book__close" aria-hidden="true"></i>
-                <div class="globalpopup__wrap">
-                    <div class="globalpopup__bottom">
-                        <?php  $f=1; 
-                        foreach($book_art_content as $book_art){?>
-                            <div style="display: none;" class="<?php echo 'clickbook'.$f; ?>">
-                                 <?php echo $book_art['book_hubspot_form'];?>
-                            </div>
-                        <?php $f++;
-                         } ?>
+    <?php } ?>
+    <!-- Books Form -->
+    <?php if($book_art_content) {?>
+        <div class="globalpopup bookspoopup">
+            <div class="globalpopup__outer">
+                <div class="globalpopup__inner">
+                    <i class="fa fa-times globalpopup__close book__close" aria-hidden="true"></i>
+                    <div class="globalpopup__wrap">
+                        <div class="globalpopup__bottom">
+                            <?php  $f=1; 
+                            foreach($book_art_content as $book_art){?>
+                                <div style="display: none;" class="<?php echo 'clickbook'.$f; ?>">
+                                    <?php echo $book_art['book_hubspot_form'];?>
+                                </div>
+                            <?php $f++;
+                            } ?>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-<?php } ?>  
-<script type="text/javascript">
-    $(document).ready(function(){
-        jQuery(".banneropen").click(function(event) {
-            event.preventDefault();
-            jQuery("html").addClass("html--oh");
-            jQuery(".bannerpop").fadeIn();
-        });
-        jQuery(".bannerpop__close").click(function() {
-            jQuery("html").removeClass("html--oh");
-            jQuery(".bannerpop").fadeOut();
-        });
-        jQuery(".underclick").click(function(event) {
-            event.preventDefault();
-            jQuery("html").addClass("html--oh");
-            jQuery(".underclick_pop").fadeIn();
-        });
-        jQuery(".underclick__close").click(function() {
-            jQuery("html").removeClass("html--oh");
-            jQuery(".underclick_pop").fadeOut();
-        });
-        jQuery(".bookopen").click(function(event) {
-            event.preventDefault();
-            jQuery("html").addClass("html--oh");
-            jQuery(".bookspoopup").fadeIn();
-            var databook = $(this).attr('databook');
-            $('.globalpopup__bottom .clickbook1, .globalpopup__bottom .clickbook2, .globalpopup__bottom .clickbook3').hide();
-            $('.globalpopup__bottom .'+databook).show();
-        });
-        jQuery(".book__close").click(function() {
-            jQuery("html").removeClass("html--oh");
-            jQuery(".bookspoopup").fadeOut();
-        });
-    })
-</script>
+    <?php } ?>  
+    <script type="text/javascript">
+        jQuery(document).ready(function(){
+            jQuery(".banneropen").click(function(event) {
+                event.preventDefault();
+                jQuery("html").addClass("html--oh");
+                jQuery(".bannerpop").fadeIn();
+            });
+            jQuery(".bannerpop__close").click(function() {
+                jQuery("html").removeClass("html--oh");
+                jQuery(".bannerpop").fadeOut();
+            });
+            jQuery(".underclick").click(function(event) {
+                event.preventDefault();
+                jQuery("html").addClass("html--oh");
+                jQuery(".underclick_pop").fadeIn();
+            });
+            jQuery(".underclick__close").click(function() {
+                jQuery("html").removeClass("html--oh");
+                jQuery(".underclick_pop").fadeOut();
+            });
+            jQuery(".bookopen").click(function(event) {
+                event.preventDefault();
+                jQuery("html").addClass("html--oh");
+                jQuery(".bookspoopup").fadeIn();
+                var databook = $(this).attr('databook');
+                $('.globalpopup__bottom .clickbook1, .globalpopup__bottom .clickbook2, .globalpopup__bottom .clickbook3').hide();
+                $('.globalpopup__bottom .'+databook).show();
+            });
+            jQuery(".book__close").click(function() {
+                jQuery("html").removeClass("html--oh");
+                jQuery(".bookspoopup").fadeOut();
+            });
+        })
+    </script>
+
+<?php get_footer(); ?>

@@ -301,17 +301,7 @@ $curlangss =  ICL_LANGUAGE_CODE;
          if($curlangs == 'en-US') {
         ?> 
         <script type="text/javascript">
-          // $(window).load(function(){
-          //   setTimeout(function(){ 
-          //     var firstprice_compact = $('.pricing__price .this-price.compact #learn-more .affirm-ala-price').text();
-          //     var firstprice_complete = $('.pricing__price .this-price.complete #learn-more .affirm-ala-price').text();
-          //     var firstprice_novella = $('.pricing__price .this-price.novella #learn-more .affirm-ala-price').text();
-          //     $('.pricing__price .discpunt-price.compact-price').text(firstprice_compact+'/mo');
-          //     $('.pricing__price .discpunt-price.complete-price').text(firstprice_complete+'/mo');
-          //     $('.pricing__price .discpunt-price.novella-price').text(firstprice_novella+'/mo');
-          //   }, 500);
-          // })
-          $(document).ready(function(){
+          jQuery(document).ready(function($){
               $(".pricing__select select").change(function (event) {
                   var newval = $(this).parents('.pricing__middle');
                   var current_price = $(this).children("option:selected").val(); 
@@ -343,7 +333,7 @@ $curlangss =  ICL_LANGUAGE_CODE;
       <?php }
       if( $curlangs == 'en-GB'){ ?>
         <script type="text/javascript">
-           $(document).ready(function(){
+           jQuery(document).ready(function($){
              $(".pricing__select select").change(function (event) {
                   var newval = $(this).parents('.pricing__middle');
                   newval.find('.pricing__price').html($(this).val());
@@ -363,7 +353,7 @@ $curlangss =  ICL_LANGUAGE_CODE;
         </script>
           <?php } elseif($curlangs == 'nl') { ?>
         <script type="text/javascript">
-          $(document).ready(function(){
+          jQuery(document).ready(function($){
              $(".pricing__select select").change(function (event) {
                  var newval = $(this).parents('.pricing__middle');
                  newval.find('.pricing__price').html($(this).val());
@@ -407,7 +397,7 @@ $curlangss =  ICL_LANGUAGE_CODE;
     </div>
 <?php } ?>
   <script type="text/javascript">
-      $(document).ready(function(){
+      jQuery(document).ready(function($){
         $('body').removeClass('pricing');
       jQuery(".getaquotebtn").click(function(event) {
         event.preventDefault();
@@ -470,7 +460,7 @@ jQuery(".footer").css({"margin-bottom" : pb+'px' });
                 </div>
                 </div>
                 <script>
-              $(document).ready(function(){
+              jQuery(document).ready(function($){
                 $( "#zipcode" ).submit(function( event ) {
                   event.preventDefault();
                   var zipval = $('.zipc').val();

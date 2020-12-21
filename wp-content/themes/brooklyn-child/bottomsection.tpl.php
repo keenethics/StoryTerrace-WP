@@ -34,7 +34,7 @@ get_header(); ?>
 <?php include_once( 'bottom-banner-section.php' ); ?>   
         <div class="ut-scroll-up-waypoint" data-section="section-<?php echo ut_clean_section_id($post->post_name); ?>"></div>
   <script type="text/javascript">
-	 $(document).ready(function() {
+	 jQuery(document).ready(function($) {
 		$("#t1Tab .col-md-4").slice(0, 9).show().css("display", "inline-block").last().addClass("last4");
 		$("#t2Tab .col-md-4").slice(0, 9).show().css("display", "inline-block").last().addClass("last4");
 		$("#t3Tab .col-md-4").slice(0, 9).show().css("display", "inline-block").last().addClass("last4");

@@ -22,10 +22,21 @@ defined( 'ABSPATH' ) || exit;
  */
 do_action( 'woocommerce_cart_is_empty' );
 
+// Redirect to Pricing page
+$wpml_permalink = apply_filters( 'wpml_permalink', '/pricing', ICL_LANGUAGE_CODE, true);
+
 if ( wc_get_page_id( 'shop' ) > 0 ) : ?>
 	<p class="return-to-shop">
-		<a class="button wc-backward" href="<?php echo get_page_link(39349); ?>">
-			<?php _e( 'Return to Pricing', 'woocommerce' ) ?>
+		<a class="button wc-backward" href="<?php echo esc_url( apply_filters( 'woocommerce_return_to_shop_redirect', $wpml_permalink ) ); ?>">
+			<?php
+				/**
+				 * Filter "Return To Shop" text.
+				 *
+				 * @since 4.6.0
+				 * @param string $default_text Default text.
+				 */
+				echo esc_html( apply_filters( 'woocommerce_return_to_shop_text', __( 'Return to Pricing', 'woocommerce' ) ) );
+			?>
 		</a>
 	</p>
 <?php endif; ?>
