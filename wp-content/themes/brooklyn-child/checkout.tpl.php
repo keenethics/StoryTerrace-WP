@@ -114,7 +114,7 @@ get_header(); ?>
         <div class="ut-scroll-up-waypoint" data-section="section-<?php echo ut_clean_section_id($post->post_name); ?>"></div>
 <?php get_footer(); ?>
 <script type="text/javascript">
-  $(window).load(function() {
+  jQuery(document).ready(function($) {	
       $(".btn-gotocart").click(function(){
         $("#place_order").click(); 
         return false;

@@ -49,30 +49,12 @@
 			}
 		});
 		$(".btn-gotocart").click(function(){
-			//$(".cartload").hide();
-			//$( ".cartload" ).hide();
 			$( ".cartload" ).addClass('addgry');
-			//$(".done").addClass("finish");
-			//$(".newcon").show();
-			//$(".newloader").show();
-			
-			//$(".newloader").removeClass("hide-loading");
-			//$(".newloader").addClass("loading");
-			//$(".addshowgr").show();
+
 			setTimeout(function() {
-				//$(".newloader").addClass("hide-loading");
-		      // For failed icon just replace ".done" with ".failed"
-		      //$(".done").addClass("finish");
-		  }, 4000);
-			setTimeout(function() {
-				// $(".newloader").removeClass("loading");
-				// $(".newloader").removeClass("hide-loading");
-				// $(".done").removeClass("finish");
-				//$(".failed").removeClass("finish");
-			}, 5000);
-			setTimeout(function() {
-			$(".single_add_to_cart_button").click(); 
-		   }, 500);
+				$(".single_add_to_cart_button").click(); 
+			}, 500);
+			   
 			return false;
 		});
 		if($(window).width() <= 767) {
