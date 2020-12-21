@@ -257,7 +257,7 @@ if($lang == 'nl'){ ?>
 <script type="text/javascript">
 var $jq = jQuery.noConflict();
   $jq(document).ready(function() {
-    $('div.learn-more-affirm').remove();
+    $jq('div.learn-more-affirm').remove();
     $jq('.tps').html('Totale prijs:');  
     $jq(".variation_price").click(function(){
       var tps = $(this).val();
