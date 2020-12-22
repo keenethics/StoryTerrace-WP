@@ -57,10 +57,33 @@ function my_theme_scripts() {
 
 add_action( 'wp_enqueue_scripts', 'my_theme_scripts' );
 
+/**
+ * Unload WooCommerce assets on non WooCommerce pages.
+ * @link https://sridharkatakam.com/how-to-load-woocommerce-css-and-js-only-on-shop-specific-pages-in-wordpress/
+ */
+function sk_conditionally_remove_wc_assets() {
 
+    // if WooCommerce is not active, abort.
+    if ( ! class_exists( 'WooCommerce' ) ) {
+        return;
+    }
 
-add_filter( 'woocommerce_variation_option_name', 'display_price_in_variation_option_name' );
+    // if this is a WooCommerce related page, abort.
+    if ( is_woocommerce() || is_cart() || is_checkout() || is_page( array( 'my-account' ) ) ) {
+        return;
+    }
 
+    remove_action( 'wp_enqueue_scripts', [ WC_Frontend_Scripts::class, 'load_scripts' ] );
+    remove_action( 'wp_print_scripts', [ WC_Frontend_Scripts::class, 'localize_printed_scripts' ], 5 );
+    remove_action( 'wp_print_footer_scripts', [ WC_Frontend_Scripts::class, 'localize_printed_scripts' ], 5 );
+
+}
+
+add_action( 'get_header', 'sk_conditionally_remove_wc_assets' );
+
+/**
+ * Display price in variation option name
+ */
 function display_price_in_variation_option_name( $term ) {
     global $wpdb, $product;
 
@@ -87,6 +110,9 @@ function display_price_in_variation_option_name( $term ) {
     return $term;
 
 }
+
+add_filter( 'woocommerce_variation_option_name', 'display_price_in_variation_option_name' );
+
 //custom post type for in the media section
 function my_custom_post_types() {
     $labels = array(
