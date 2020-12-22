@@ -25,16 +25,33 @@ function my_theme_scripts() {
     wp_enqueue_style( 'slick-theme-css', get_stylesheet_directory_uri().'/assets/css/slick-theme.css' );
     wp_enqueue_style( 'slick-css', get_stylesheet_directory_uri().'/assets/css/slick.css' );
 
-    if(is_page( 36682 ) || is_page(37644) || is_page(32679) || is_page(39350) || is_page(36707) || is_page(39348) || is_page(39695) || is_page(32678) || is_page(37383) || is_page(39349) || is_page(37621) ||is_page(37559) ){
+    if (is_home() || is_front_page()) {
+        wp_enqueue_style( 'bootstrap-custom-css', get_stylesheet_directory_uri().'/assets/css/bootstrap-custom.css' );
+        wp_enqueue_style( 'main-css', get_stylesheet_directory_uri().'/assets/css/main.css', array(), '0.1.0', 'all' );
+
+        // dequeue parent theme styles
+        wp_dequeue_style( 'main-font-face' );
+        wp_dequeue_style( 'ut-fontawesome' );        
+        wp_dequeue_style( 'ut-flexslider' );
+        wp_dequeue_style( 'ut-prettyphoto' );
+        wp_dequeue_style( 'ut-superfish' );
+        wp_dequeue_style( 'ut-animate' );
+
+        wp_dequeue_script( 'unitedthemes-init' );
+        wp_dequeue_script( 'ut-prettyphoto');
+        wp_dequeue_script( 'ut-flexslider-js');
+        wp_dequeue_script( 'ut-superfish');
+        wp_dequeue_script( 'ut-lazyload-js');
+        wp_dequeue_script( 'ut-easing');
+
+    } else if (is_page(37644) || is_page(32679) || is_page(39348) || is_page(39695) || is_page(32678) || is_page(37383) || is_page(39349) || is_page(37621) ||is_page(37559) ){
         wp_enqueue_style( 'bootstrap-css', get_stylesheet_directory_uri().'/assets/css/bootstrap.min.css' );
         wp_enqueue_style( 'main-css', get_stylesheet_directory_uri().'/assets/css/main.css', array(), '0.1.0', 'all' );
 
     } else {
         wp_enqueue_style( 'bootstrapold-css', 'https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css' );
         wp_enqueue_style( 'oldstyle-css', get_stylesheet_directory_uri().'/oldstyle.css' );
-
     }
-
 
     // GeoIP redirect
     wp_enqueue_script( 'countryfinder-js', get_stylesheet_directory_uri().'/js/countryfinder.js', array( 'jquery' ), '1.0.1', false );
@@ -45,7 +62,6 @@ function my_theme_scripts() {
     /**
      * Check if WooCommerce is activated
      */
-
     if ( class_exists( 'woocommerce' ) && is_product() ){
         wp_enqueue_script( 'singleproductpage-js', get_stylesheet_directory_uri().'/js/singleproductpage.js', array( 'jquery' ), '1.0.1', true );
     }
@@ -55,7 +71,7 @@ function my_theme_scripts() {
     }
 }
 
-add_action( 'wp_enqueue_scripts', 'my_theme_scripts' );
+add_action( 'wp_enqueue_scripts', 'my_theme_scripts', 100 );
 
 /**
  * Unload WooCommerce assets on non WooCommerce pages.
@@ -77,10 +93,32 @@ function sk_conditionally_remove_wc_assets() {
     remove_action( 'wp_print_scripts', [ WC_Frontend_Scripts::class, 'localize_printed_scripts' ], 5 );
     remove_action( 'wp_print_footer_scripts', [ WC_Frontend_Scripts::class, 'localize_printed_scripts' ], 5 );
 
+    // disable all WooCommerce stylesheets
+    add_filter( 'woocommerce_enqueue_styles', '__return_empty_array' );
+
 }
 
 add_action( 'get_header', 'sk_conditionally_remove_wc_assets' );
 
+/**
+ * Disable WooCommerce block styles (front-end).
+ */
+function disable_woocommerce_block_styles() {
+    wp_dequeue_style( 'wc-block-style' );
+  }
+
+add_action( 'wp_enqueue_scripts', 'disable_woocommerce_block_styles' );
+
+/**
+ * Remove Gutenberg Block Library CSS from loading on the frontend
+ */
+function remove_wp_block_library_css(){
+    wp_dequeue_style( 'wp-block-library' );
+    wp_dequeue_style( 'wp-block-library-theme' );
+} 
+
+add_action( 'wp_enqueue_scripts', 'remove_wp_block_library_css', 100 );
+  
 /**
  * Display price in variation option name
  */
