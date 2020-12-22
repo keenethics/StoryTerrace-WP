@@ -304,14 +304,8 @@ if( function_exists('acf_add_options_page') ) {
         'menu_title'    => 'Reviews',
         'parent_slug'   => 'theme-general-settings',
     ));
-    
-    // acf_add_options_sub_page(array(
-    //     'page_title'    => 'Checkout Settings',
-    //     'menu_title'    => 'Checkout Settings',
-    //     'parent_slug'   => 'theme-general-settings',
-    // ));
-    
 }
+
 // code for site redirect based on condition
 $actual_link = "https://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
 if($actual_link == 'https://storyterrace.com/'){
@@ -324,96 +318,7 @@ if($actual_link == 'https://storyterrace.com/'){
             header('Location: https://storyterrace.com/nl/');
             exit();
          } 
-        //whether ip is from share internet
-        // if (!empty($_SERVER['HTTP_CLIENT_IP']))   
-        //   {
-        //     $ip_address = $_SERVER['HTTP_CLIENT_IP'];
-        //   }
-        // //whether ip is from proxy
-        // elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR']))  
-        //   {
-        //     $ip_address = $_SERVER['HTTP_X_FORWARDED_FOR'];
-        //   }
-        // //whether ip is from remote address
-        // else
-        //   {
-        //     $ip_address = $_SERVER['REMOTE_ADDR'];
-        //   }
-        //   $res = file_get_contents('https://www.iplocate.io/api/lookup/'.$ip_address);
-        //   $res = json_decode($res);
-        //   echo $res->country;
-        //     if($res->country == 'Netherlands' && $res->continent == 'Europe'){
-        //          header('Location: https://storyterrace.com/nl/');
-        //          exit();
-              
-        //     }
         }
-}
-// $actual_link = "https://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
-
-// if($actual_link == 'https://storyterrace.com/'){
-//         $dlang =  ICL_LANGUAGE_CODE;
-//         if($dlang == 'nl' || $dlang == 'en-GB'){
-
-//          } else {   
-//         //whether ip is from share internet
-//         if (!empty($_SERVER['HTTP_CLIENT_IP']))   
-//           {
-//             $ip_address = $_SERVER['HTTP_CLIENT_IP'];
-//           }
-//         //whether ip is from proxy
-//         elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR']))  
-//           {
-//             $ip_address = $_SERVER['HTTP_X_FORWARDED_FOR'];
-//           }
-//         //whether ip is from remote address
-//         else
-//           {
-//             $ip_address = $_SERVER['REMOTE_ADDR'];
-//           }
-//           $res = file_get_contents('https://www.iplocate.io/api/lookup/'.$ip_address);
-//           $res = json_decode($res);
-//             if($res->country == 'Netherlands' && $res->continent == 'Europe'){
-//                  header('Location: https://storyterrace.com/nl/');
-//                  exit();
-              
-//             }elseif($res->country != 'Netherlands' && $res->continent == 'Europe'){
-//                  header('Location: https://storyterrace.com/en-GB/');
-//                  exit();
-//             } else {
-                
-//             }
-//         }
-// } else {
-//     //echo 'nothing';
-// }
-
-
-add_action( 'wp_enqueue_scripts', 'crunchify_disable_woocommerce_loading_css_js' );
- 
-function crunchify_disable_woocommerce_loading_css_js() {
-    // Check if WooCommerce plugin is active
-    if( function_exists( 'is_woocommerce' ) ){
- 
-        // Check if it's any of WooCommerce page
-        if(is_home() || is_front_page()) {         
-          
-            ## Dequeue WooCommerce styles
-            wp_dequeue_style('woocommerce-layout'); 
-            wp_dequeue_style('woocommerce-general'); 
-            wp_dequeue_style('woocommerce-smallscreen');    
-            wp_dequeue_style('woocommerce-inline-inline');    
- 
-            ## Dequeue WooCommerce scripts
-            wp_dequeue_script('wc-cart-fragments');
-            wp_dequeue_script('woocommerce'); 
-            wp_dequeue_script('wc-add-to-cart'); 
-        
-            wp_deregister_script( 'js-cookie' );
-            wp_dequeue_script( 'js-cookie' );
- 
-        }
-    }   
 }
 
 function link_words( $text ) { //ToDo: use Search Regexp
