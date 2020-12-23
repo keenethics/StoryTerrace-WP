@@ -3410,7 +3410,7 @@ h6 {
         flex-wrap: wrap
     }
 
-    .footer__col--menu,
+    .footer__col--menu:not(.mbl__menu),
     .footer__social {
         display: none !important
     }
