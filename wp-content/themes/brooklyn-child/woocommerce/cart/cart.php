@@ -27,12 +27,7 @@ do_action( 'woocommerce_before_cart' ); ?>
 	<table class="shop_table shop_table_responsive cart woocommerce-cart-form__contents" cellspacing="0">
 		<thead>
 			<tr>
-				<!-- <th class="product-remove">&nbsp;</th> -->
-				<!-- <th class="product-thumbnail">&nbsp;</th> -->
 				<th class="product-name"><?php _e( 'Item Name', 'woocommerce' ); ?></th>
-				<!-- <th class="product-price"><?php _e( 'Price', 'woocommerce' ); ?></th> -->
-				<!-- <th class="product-quantity"><?php _e( 'Quantity', 'woocommerce' ); ?></th> -->
-				<!-- <th class="product-thumbnail">&nbsp;</th> -->
 				<th class="product-subtotal psub"><?php _e( 'Total', 'woocommerce' ); ?></th>
 				<th class="product-thumbnail">&nbsp;</th>
 			</tr>
@@ -64,9 +59,6 @@ do_action( 'woocommerce_before_cart' ); ?>
 									}
 								?>
 						    </div>
-						<!-- </td>
-
-						<td class="product-name" data-title="<?php esc_attr_e( 'Product', 'woocommerce' ); ?>"> -->
 							<div class="deskcart">
 									<?php
 										if ( ! $product_permalink ) {
@@ -85,29 +77,6 @@ do_action( 'woocommerce_before_cart' ); ?>
 									?>
 						    </div>
 						</td>
-
-						<!-- <td class="product-price" data-title="<?php //esc_attr_e( 'Price', 'woocommerce' ); ?>"> -->
-							<?php
-								// echo apply_filters( 'woocommerce_cart_item_price', WC()->cart->get_product_price( $_product ), $cart_item, $cart_item_key );
-							?>
-						<!-- </td> -->
-
-						<!-- <td class="product-quantity" data-title="<?php //esc_attr_e( 'Quantity', 'woocommerce' ); ?>"> -->
-							<?php
-								// if ( $_product->is_sold_individually() ) {
-								// 	$product_quantity = sprintf( '1 <input type="hidden" name="cart[%s][qty]" value="1" />', $cart_item_key );
-								// } else {
-								// 	$product_quantity = woocommerce_quantity_input( array(
-								// 		'input_name'  => "cart[{$cart_item_key}][qty]",
-								// 		'input_value' => $cart_item['quantity'],
-								// 		'max_value'   => $_product->get_max_purchase_quantity(),
-								// 		'min_value'   => '0',
-								// 	), $_product, false );
-								// }
-
-								// echo apply_filters( 'woocommerce_cart_item_quantity', $product_quantity, $cart_item_key, $cart_item );
-							?>
-						<!-- </td> -->
 
 						<td class="product-subtotal" data-title="<?php esc_attr_e( 'Total', 'woocommerce' ); ?>">
 							<?php
@@ -133,23 +102,9 @@ do_action( 'woocommerce_before_cart' ); ?>
 
 			<?php do_action( 'woocommerce_cart_contents' ); ?>
 
-			<!-- <tr>
-				<td colspan="6" class="actions"> -->
-
-					<?php //if ( wc_coupons_enabled() ) { ?>
-						<!-- <div class="coupon">
-							<label for="coupon_code"><?php// _e( 'Coupon:', 'woocommerce' ); ?></label> <input type="text" name="coupon_code" class="input-text" id="coupon_code" value="" placeholder="<?php //esc_attr_e( 'Coupon code', 'woocommerce' ); ?>" /> <input type="submit" class="button" name="apply_coupon" value="<?php //esc_attr_e( 'Apply coupon', 'woocommerce' ); ?>" />
-							<?php //do_action( 'woocommerce_cart_coupon' ); ?>
-						</div> -->
-					<?php //} ?>
-
-					<!-- <input type="submit" class="button" name="update_cart" value="<?php //esc_attr_e( 'Update cart', 'woocommerce' ); ?>" /> -->
-
 					<?php do_action( 'woocommerce_cart_actions' ); ?>
 
 					<?php wp_nonce_field( 'woocommerce-cart', 'woocommerce-cart-nonce' ); ?>
-				<!-- </td>
-			</tr> -->
 
 			<?php do_action( 'woocommerce_after_cart_contents' ); ?>
 		</tbody>

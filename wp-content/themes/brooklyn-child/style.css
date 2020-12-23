@@ -1350,14 +1350,17 @@ body.oh {
 	.pressquotes__col p {
 	    font-size: 17px;
 	}
-	.mbl__menu {
+}
+
+@media only screen and (max-width: 767px) {
+	.footer .mbl__menu {
 	    display: block !important;
 	    width: 100%;
 	    text-align: center;
 	    margin-top: 35px;
 	    margin-bottom: 10px;
 	}
-	.mbl__menu h6 {
+	.footer .mbl__menu h6 {
 	    display: none;
 	}
 }
