@@ -81,13 +81,14 @@ $book_art_content = get_field('book_art_content',get_the_ID());
                         <?php if(!empty($top_big_title)){ ?>  
                             <h2 class="large"><?php echo $top_big_title; ?></h2>
                         <?php } ?>
-                        <?php //echo $sub_heading; ?>
+
                         <?php //echo $show_sub_heading; 
                         if($show_sub_heading == 'yes'){ 
                             if(!empty($sub_heading)){ ?>  
                             <p class="subhead-top subhead-top--desktop desksearch"><?php echo $sub_heading; ?></p>
                         <?php } 
-                         }?>
+                        }?>
+
                         <?php if($show_search == 'yes'){ ?>
                         <div class="writer-search desksearch">
                             <form id="zipcode" class="writer-search-form">
@@ -97,6 +98,7 @@ $book_art_content = get_field('book_art_content',get_the_ID());
                               </div>
                             </form>
                         </div>
+
                         <?php
                         $extra_content = get_field('extra_content');
                         $text_below_search_bar = get_field('text_below_search_bar');
@@ -565,7 +567,7 @@ $book_art_content = get_field('book_art_content',get_the_ID());
     <?php } ?> <!-- End show_book_section -->
 
     <!-- Homepage Banner Popup -->
-    <?php if(!empty($popup_hub_code)){ ?>
+    <?php if ( !empty($popup_hub_code) && $show_primary_cta == 'yes' ){ ?>
         <div class="globalpopup bannerpop">
             <div class="globalpopup__outer">
                 <div class="globalpopup__inner">
@@ -579,7 +581,9 @@ $book_art_content = get_field('book_art_content',get_the_ID());
             </div>
         </div>
     <?php } ?>
-    <?php if(!empty($secondary_cta_popup)){ ?>
+
+    <!-- Homepage Secondary Banner Popup -->
+    <?php if ( !empty($secondary_cta_popup) && $show_secondary_cta == 'yes' ){ ?>
         <div class="globalpopup underclick_pop">
             <div class="globalpopup__outer">
                 <div class="globalpopup__inner">
@@ -593,8 +597,9 @@ $book_art_content = get_field('book_art_content',get_the_ID());
             </div>
         </div>
     <?php } ?>
+
     <!-- Books Form -->
-    <?php if($book_art_content) {?>
+    <?php if ( $book_art_content && $book_art['book_popup_option'] == 'yes' ) {?>
         <div class="globalpopup bookspoopup">
             <div class="globalpopup__outer">
                 <div class="globalpopup__inner">
@@ -625,6 +630,7 @@ $book_art_content = get_field('book_art_content',get_the_ID());
                 jQuery("html").removeClass("html--oh");
                 jQuery(".bannerpop").fadeOut();
             });
+
             jQuery(".underclick").click(function(event) {
                 event.preventDefault();
                 jQuery("html").addClass("html--oh");

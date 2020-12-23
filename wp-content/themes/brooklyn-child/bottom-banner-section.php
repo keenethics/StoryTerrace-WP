@@ -68,8 +68,9 @@ if(!empty($bbs_background_image)){
             </div>
     </div>  
     <?php } ?>
+
     <!-- Homepage Banner Popup -->
-    <?php if(!empty($bbs_popup_code)){ ?>
+    <?php if ( !empty($bbs_popup_code) && $show_search_banner == 'no' ){ ?>
         <div class="globalpopup bottombanner">
             <div class="globalpopup__outer">
                 <div class="globalpopup__inner">
@@ -82,18 +83,19 @@ if(!empty($bbs_background_image)){
                 </div>
             </div>
         </div>
+
+        <script type="text/javascript">
+            jQuery(document).ready(function($){
+                jQuery(".bottombtn").click(function(event) {
+                    event.preventDefault();
+                    jQuery("html").addClass("html--oh");
+                    jQuery(".bottombanner").fadeIn();
+                });
+                jQuery(".bottombanner__close").click(function() {
+                    jQuery("html").removeClass("html--oh");
+                    jQuery(".bottombanner").fadeOut();
+                });
+            })
+        </script>
     <?php } ?>  
-    <script type="text/javascript">
-        jQuery(document).ready(function($){
-            jQuery(".bottombtn").click(function(event) {
-                event.preventDefault();
-                jQuery("html").addClass("html--oh");
-                jQuery(".bottombanner").fadeIn();
-            });
-            jQuery(".bottombanner__close").click(function() {
-                jQuery("html").removeClass("html--oh");
-                jQuery(".bottombanner").fadeOut();
-            });
-        })
-    </script>
 <?php } ?>

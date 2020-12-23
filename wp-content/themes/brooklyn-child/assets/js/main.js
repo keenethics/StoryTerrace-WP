@@ -173,15 +173,3 @@ jQuery(document).ready(function($) {
 	    });
     }, 500);
 });
-
-jQuery(document).ready(function() {	
-    jQuery(".topheaderbtn").click(function(event) {
-		event.preventDefault();
-		jQuery("html").addClass("html--oh");
-		jQuery(".topheader").fadeIn();
-	});
-	jQuery(".topheader__close").click(function() {
-		jQuery("html").removeClass("html--oh");
-		jQuery(".topheader").fadeOut();
-	});
-});

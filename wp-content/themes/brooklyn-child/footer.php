@@ -261,31 +261,6 @@
     </body>
 </html>
 
-<?php 
-$hubspot_form_for_button = get_field('hubspot_form_for_button','options');
-$form_title = get_field('form_title','options');
-$form_description = get_field('form_description','options');
- ?>
- <div class="globalpopup topheader">
-        <div class="globalpopup__outer">
-            <div class="globalpopup__inner">
-                <i class="fa fa-times globalpopup__close topheader__close" aria-hidden="true"></i>
-                <div class="globalpopup__wrap">
-                    <div class="globalpopup__top">
-                      <?php if(!empty($form_title)){ ?>
-                        <h3><?php echo $form_title; ?></h3>
-                       <?php } ?>
-                         <?php if(!empty($form_description)){ ?>
-                    <p><?php echo $form_description; ?></p>
-                    <?php } ?>
-                    </div>
-                    <div class="globalpopup__bottom">
-                         <?php echo $hubspot_form_for_button; ?>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
 <style type="text/css">
 a.romw-link {
     display: none !important;
