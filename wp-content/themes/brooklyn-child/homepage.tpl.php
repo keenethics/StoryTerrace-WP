@@ -1,74 +1,74 @@
 <?php
-/* Template Name: homepage */
-get_header(); 
+    /* Template Name: homepage */
+    get_header(); 
 
-// Banner Section 
-$top_left_image = get_field('top_left_image');
-$top_main_title = get_field('top_main_title');
-$top_big_title = get_field('top_big_title');
+    // Banner Section 
+    $top_left_image = get_field('top_left_image');
+    $top_main_title = get_field('top_main_title');
+    $top_big_title = get_field('top_big_title');
 
-//Buttons Settings
-$show_primary_cta = get_field('show_primary_cta');
-$top_button_text = get_field('top_button_text');
-$top_button_link = get_field('top_button_link');
-$show_secondary_cta = get_field('show_secondary_cta');
-$secondary_cta_text = get_field('secondary_cta_text');
-$secondary_cta_link = get_field('secondary_cta_link');
-$secondary_cta_popup = get_field('secondary_cta_popup_code');
-$top_last_image = get_field('top_last_image');
-$center_left_image = get_field('center_left_image');
-$center_image = get_field('center_image');
-$center_right_image = get_field('center_right_image');
-$bottom_text = get_field('bottom_text');
-$bottom_large_text = get_field('bottom_large_text');
-$bottom_right_image = get_field('bottom_right_image');
-$popup_hub_code = get_field('popup_hub_code');
-$show_search = get_field('show_search');
-$search_button_text = get_field('search_button_text');
-$search_placeholder = get_field('search_placeholder');
-$search_result_link = get_field('search_result_link');
+    //Buttons Settings
+    $show_primary_cta = get_field('show_primary_cta');
+    $top_button_text = get_field('top_button_text');
+    $top_button_link = get_field('top_button_link');
+    $show_secondary_cta = get_field('show_secondary_cta');
+    $secondary_cta_text = get_field('secondary_cta_text');
+    $secondary_cta_link = get_field('secondary_cta_link');
+    $secondary_cta_popup = get_field('secondary_cta_popup_code');
+    $top_last_image = get_field('top_last_image');
+    $center_left_image = get_field('center_left_image');
+    $center_image = get_field('center_image');
+    $center_right_image = get_field('center_right_image');
+    $bottom_text = get_field('bottom_text');
+    $bottom_large_text = get_field('bottom_large_text');
+    $bottom_right_image = get_field('bottom_right_image');
+    $popup_hub_code = get_field('popup_hub_code');
+    $show_search = get_field('show_search');
+    $search_button_text = get_field('search_button_text');
+    $search_placeholder = get_field('search_placeholder');
+    $search_result_link = get_field('search_result_link');
 
-// Brand Section
-$brands_title = get_field('brands_title');
+    // Brand Section
+    $brands_title = get_field('brands_title');
 
-// How it Works Section
-$how_left_title = get_field('how_left_title');
-$how_big_title = get_field('how_big_title');
-$how_left_video_title = get_field('how_left_video_title');
-$how_left_video_description = get_field('how_left_video_description');
-$how_left_video_image = get_field('how_left_video_image');
-$how_left_video_link = get_field('how_left_video_link');
-$how_right_description = get_field('how_right_description');
-// Our Writer Section
-$ourwriters_main_title = get_field('ourwriters_main_title');
-$ourwriters_big_title = get_field('ourwriters_big_title');
-$ourwriters_description = get_field('ourwriters_description');
-$ourwriters_button_text = get_field('ourwriters_button_text');
-$ourwriters_button_link = get_field('ourwriters_button_link');
-$ourwriters_writer_image = get_field('ourwriters_writer_image');
+    // How it Works Section
+    $how_left_title = get_field('how_left_title');
+    $how_big_title = get_field('how_big_title');
+    $how_left_video_title = get_field('how_left_video_title');
+    $how_left_video_description = get_field('how_left_video_description');
+    $how_left_video_image = get_field('how_left_video_image');
+    $how_left_video_link = get_field('how_left_video_link');
+    $how_right_description = get_field('how_right_description');
+    // Our Writer Section
+    $ourwriters_main_title = get_field('ourwriters_main_title');
+    $ourwriters_big_title = get_field('ourwriters_big_title');
+    $ourwriters_description = get_field('ourwriters_description');
+    $ourwriters_button_text = get_field('ourwriters_button_text');
+    $ourwriters_button_link = get_field('ourwriters_button_link');
+    $ourwriters_writer_image = get_field('ourwriters_writer_image');
 
-// Testimonials Section
-$testimonials_main_title = get_field('testimonials_main_title');
-$testimonials_big_title = get_field('testimonials_big_title');
-$testimonials_description = get_field('testimonials_description');
+    // Testimonials Section
+    $testimonials_main_title = get_field('testimonials_main_title');
+    $testimonials_big_title = get_field('testimonials_big_title');
+    $testimonials_description = get_field('testimonials_description');
 
-//Books Sample
-$bookssample_main_title = get_field('bookssample_main_title');
-$bookssample_big_title = get_field('bookssample_big_title');
-$bookssample_btntitle = get_field('bookssample_btntitle');
-$bookssample_btn_link = get_field('bookssample_btn_link');
-$bookssample_description = get_field('bookssample_description');
-$show_sub_heading = get_field('show_sub_heading');
-$sub_heading = get_field('sub_heading_top_title');
-$book_art_content = get_field('book_art_content',get_the_ID());
-
+    //Books Sample
+    $bookssample_main_title = get_field('bookssample_main_title');
+    $bookssample_big_title = get_field('bookssample_big_title');
+    $bookssample_btntitle = get_field('bookssample_btntitle');
+    $bookssample_btn_link = get_field('bookssample_btn_link');
+    $bookssample_description = get_field('bookssample_description');
+    $show_sub_heading = get_field('show_sub_heading');
+    $sub_heading = get_field('sub_heading_top_title');
+    $book_art_content = get_field('book_art_content',get_the_ID());
 ?>   
+
     <div class="banner">
         <div class="banner__row banner__row1">
             <div class="banner__col">
                 <div class="banner__cell">
                     <?php if(!empty($top_left_image)){ ?>
-                        <img class="banner__art banner__art1" src="<?php echo $top_left_image['url']; ?>" alt="<?php echo $top_left_image['alt']; ?>">
+                        <?php echo wp_get_attachment_image( $top_left_image['id'], "large", "", array( "class" => "banner__art banner__art1" ) );  ?>
                     <?php } ?>
                 </div>
             </div>
@@ -82,20 +82,20 @@ $book_art_content = get_field('book_art_content',get_the_ID());
                             <h2 class="large"><?php echo $top_big_title; ?></h2>
                         <?php } ?>
 
-                        <?php //echo $show_sub_heading; 
-                        if($show_sub_heading == 'yes'){ 
-                            if(!empty($sub_heading)){ ?>  
-                            <p class="subhead-top subhead-top--desktop desksearch"><?php echo $sub_heading; ?></p>
-                        <?php } 
+                        <?php 
+                            if($show_sub_heading == 'yes'){ 
+                                if(!empty($sub_heading)){ ?>  
+                                <p class="subhead-top subhead-top--desktop desksearch"><?php echo $sub_heading; ?></p>
+                            <?php } 
                         }?>
 
                         <?php if($show_search == 'yes'){ ?>
                         <div class="writer-search desksearch">
                             <form id="zipcode" class="writer-search-form">
-                              <div class="input-group">
+                            <div class="input-group">
                                 <input class="zipc" type="text" placeholder="<?php if(!empty($search_placeholder)){ echo $search_placeholder; } else { ?>Enter Postal Code<?php } ?>">
                                 <input type="submit" value="<?php if(!empty($search_button_text)){ echo $search_button_text; } else { ?>Search Writers<?php } ?>">
-                              </div>
+                            </div>
                             </form>
                         </div>
 
@@ -111,14 +111,14 @@ $book_art_content = get_field('book_art_content',get_the_ID());
                             </div>
                         <?php } ?>
                         <script>
-                          jQuery(document).ready(function($){
+                        jQuery(document).ready(function($){
                             $( "#zipcode" ).submit(function( event ) {
-                              event.preventDefault();
-                              var zipval = $('.zipc').val();
-                              urlred = '<?php echo $search_result_link; ?>';
-                              window.location = urlred+'/?zip='+zipval;
+                            event.preventDefault();
+                            var zipval = $('.zipc').val();
+                            urlred = '<?php echo $search_result_link; ?>';
+                            window.location = urlred+'/?zip='+zipval;
                             });
-                          });
+                        });
 
                         </script> 
                         <?php } else { ?>
@@ -126,7 +126,7 @@ $book_art_content = get_field('book_art_content',get_the_ID());
                                 <div class="center-title__link pop-getstart">
                                     <?php if(!empty($top_button_text)){ ?>
                                         <?php if(!empty($top_button_link)){ ?>
-                                           <a href="<?php echo $top_button_link; ?>" class="link-filled">
+                                        <a href="<?php echo $top_button_link; ?>" class="link-filled">
                                         <?php } else { ?>
                                             <a href="JavaScript:Void(0);" class="link-filled banneropen"> 
                                         <?php } ?> 
@@ -134,20 +134,20 @@ $book_art_content = get_field('book_art_content',get_the_ID());
                                         </a>
                                     <?php } ?>                  
                                 </div>
-                         <?php } ?>
+                        <?php } ?>
                         <?php if($show_secondary_cta == 'yes'){ ?>
                             <div class="center-title__linkunderline">
                                 <?php if(!empty($secondary_cta_text)){ ?>
-                                  <?php if(!empty($secondary_cta_link)){ ?>
-                                       <a href="<?php  echo $secondary_cta_link; ?>" class="link-underline">
-                                  <?php } else { ?>
-                                       <a href="JavaScript:Void(0);" class="link-underline underclick">
-                                  <?php } ?>
-                                       <?php  echo $secondary_cta_text; ?>
-                                  </a>
-                              <?php } ?>
+                                <?php if(!empty($secondary_cta_link)){ ?>
+                                    <a href="<?php  echo $secondary_cta_link; ?>" class="link-underline">
+                                <?php } else { ?>
+                                    <a href="JavaScript:Void(0);" class="link-underline underclick">
+                                <?php } ?>
+                                    <?php  echo $secondary_cta_text; ?>
+                                </a>
+                            <?php } ?>
                             </div>
-                       <?php }
+                    <?php }
                             }
                         ?>
                     </div>
@@ -156,119 +156,125 @@ $book_art_content = get_field('book_art_content',get_the_ID());
             <div class="banner__col">
                 <div class="banner__cell">
                     <?php if(!empty($top_last_image)){ ?>
-                         <img class="banner__art banner__art2" src="<?php echo $top_last_image['url']; ?>" alt="<?php echo $top_last_image['alt']; ?>">
+                        <?php echo wp_get_attachment_image( $top_last_image['id'], "large", "", array( "class" => "banner__art banner__art2" ) );  ?>
                     <?php } ?>
                 </div>
             </div>
         </div>
+        
         <div class="banner__row banner__row2">
             <div class="banner__col">
                 <div class="banner__cell">
                     <?php if(!empty($center_left_image)){ ?>
-                         <img class="banner__art banner__art3" src="<?php echo $center_left_image['url']; ?>" alt="<?php echo $center_left_image['alt']; ?>">
+                        <?php echo wp_get_attachment_image( $center_left_image['id'], get_image_size(), "", array( "class" => "banner__art banner__art3" ) );  ?>
                     <?php } ?>
                 </div>
             </div>
             <div class="banner__col">
                 <div class="banner__cell">
                     <?php if(!empty($center_image)){ ?>
-                    <img class="banner__art banner__art4" src="<?php echo $center_image['url']; ?>" alt="<?php echo $center_image['alt']; ?>">
+                        <?php echo wp_get_attachment_image( $center_image['id'], get_image_size(), "", array( "class" => "banner__art banner__art4" ) );  ?>
                     <?php } ?>
                 </div>
             </div>
             <div class="banner__col">
                 <div class="banner__cell">
                     <?php if(!empty($center_right_image)){ ?>
-                        <img class="banner__art banner__art5 banner__art--hidemobile" src="<?php echo $center_right_image['url']; ?>" alt="<?php echo $center_right_image['alt']; ?>">
+                        <?php echo wp_get_attachment_image( $center_right_image['id'], "medium", "", array( "class" => "banner__art banner__art5 banner__art--hidemobile" ) );  ?>
                     <?php } ?>
+
                     <?php if(!empty($top_last_image)){ ?>
-                         <img class="banner__art banner__art2 banner__art--hidedesktop" src="<?php echo $top_last_image['url']; ?>" alt="<?php echo $top_last_image['alt']; ?>">
+                        <?php echo wp_get_attachment_image( $top_last_image['id'], get_image_size(), "", array( "class" => "banner__art banner__art2 banner__art--hidedesktop" ) );  ?>
                     <?php } ?>
                 </div>
             </div>
         </div>
+
         <div class="banner__row banner__row4">
-      <div class="banner__col">
+            <div class="banner__col">
                 <div class="banner__cell">
                 </div>
             </div>
-      <div class="banner__col">
+            <div class="banner__col">
                 <div class="banner__cell">
-          <div class="center-title">
-            <?php if($show_sub_heading == 'yes'){ 
-                            if(!empty($sub_heading)){ ?>  
-                            <p class="subhead-top"><?php echo $sub_heading; ?></p>
+                    <div class="center-title">
+                        <?php if($show_sub_heading == 'yes'){ 
+                                    if(!empty($sub_heading)){ ?>
+                        <p class="subhead-top"><?php echo $sub_heading; ?></p>
                         <?php } 
-                         }?>
-            <?php if($show_search == 'yes'){ ?>
+                                }?>
+                        <?php if($show_search == 'yes'){ ?>
                         <div class="writer-search mobsearch">
                             <form id="zipcode" class="writer-search-form">
-                              <div class="input-group">
-                                <input class="zipc" type="text" placeholder="<?php if(!empty($search_placeholder)){ echo $search_placeholder; } else { ?>Enter Postal Code<?php } ?>">
-                                <input type="submit" value="<?php if(!empty($search_button_text)){ echo $search_button_text; } else { ?>Search Writers<?php } ?>">
-                              </div>
+                                <div class="input-group">
+                                    <input class="zipc" type="text"
+                                        placeholder="<?php if(!empty($search_placeholder)){ echo $search_placeholder; } else { ?>Enter Postal Code<?php } ?>">
+                                    <input type="submit"
+                                        value="<?php if(!empty($search_button_text)){ echo $search_button_text; } else { ?>Search Writers<?php } ?>">
+                                </div>
                             </form>
-                        </div> 
+                        </div>
                         <?php
-                        $extra_content = get_field('extra_content');
-                        $text_below_search_bar = get_field('text_below_search_bar');
-                        $sign_up_text = get_field('sign_up_text');
-                        $sign_up_link = get_field('sign_up_link');
-                        ?>
+                                $extra_content = get_field('extra_content');
+                                $text_below_search_bar = get_field('text_below_search_bar');
+                                $sign_up_text = get_field('sign_up_text');
+                                $sign_up_link = get_field('sign_up_link');
+                                ?>
                         <?php if($extra_content){ ?>
-                          <div class="search-extra-content mobile-search-extra-content">
-                              <p><?php echo $text_below_search_bar; ?> <a href="<?php echo $sign_up_link; ?>" target="_blank"><?php echo $sign_up_text; ?></a></p>
-                          </div>
+                        <div class="search-extra-content mobile-search-extra-content">
+                            <p><?php echo $text_below_search_bar; ?> <a href="<?php echo $sign_up_link; ?>"
+                                    target="_blank"><?php echo $sign_up_text; ?></a></p>
+                        </div>
                         <?php } ?>
                         <script>
-                          jQuery(document).ready(function($){
-                            $( ".mobsearch #zipcode" ).submit(function( event ) {
-                              event.preventDefault();
-                              var zipval = $('.mobsearch .zipc').val();
-                              urlred = '<?php echo $search_result_link; ?>';
-                              window.location = urlred+'/?zip='+zipval;
+                            jQuery(document).ready(function ($) {
+                                $(".mobsearch #zipcode").submit(function (event) {
+                                    event.preventDefault();
+                                    var zipval = $('.mobsearch .zipc').val();
+                                    urlred = '<?php echo $search_result_link; ?>';
+                                    window.location = urlred + '/?zip=' + zipval;
+                                });
                             });
-                          });
-
-                        </script> 
-            <?php } else { ?>
-            <?php if($show_primary_cta == 'yes'){ ?>
-                                <div class="center-title__link pop-getstart">
-                                    <?php if(!empty($top_button_text)){ ?>
-                                        <?php if(!empty($top_button_link)){ ?>
-                                           <a href="<?php echo $top_button_link; ?>" class="link-filled">
-                                        <?php } else { ?>
-                                            <a href="JavaScript:Void(0);" class="link-filled banneropen"> 
-                                        <?php } ?> 
-                                            <?php echo $top_button_text; ?>
-                                        </a>
-                                    <?php } ?>                  
-                                </div>
-                         <?php } ?>
+                        </script>
+                        <?php } else { ?>
+                        <?php if($show_primary_cta == 'yes'){ ?>
+                        <div class="center-title__link pop-getstart">
+                            <?php if(!empty($top_button_text)){ ?>
+                            <?php if(!empty($top_button_link)){ ?>
+                            <a href="<?php echo $top_button_link; ?>" class="link-filled">
+                                <?php } else { ?>
+                                <a href="JavaScript:Void(0);" class="link-filled banneropen">
+                                    <?php } ?>
+                                    <?php echo $top_button_text; ?>
+                                </a>
+                                <?php } ?>
+                        </div>
+                        <?php } ?>
                         <?php if($show_secondary_cta == 'yes'){ ?>
-                            <div class="center-title__linkunderline">
-                                <?php if(!empty($secondary_cta_text)){ ?>
-                                  <?php if(!empty($secondary_cta_link)){ ?>
-                                       <a href="<?php  echo $secondary_cta_link; ?>" class="link-underline">
-                                  <?php } else { ?>
-                                       <a href="JavaScript:Void(0);" class="link-underline underclick">
-                                  <?php } ?>
-                                       <?php  echo $secondary_cta_text; ?>
-                                  </a>
-                              <?php } ?>
-                            </div>
-                       <?php } 
+                        <div class="center-title__linkunderline">
+                            <?php if(!empty($secondary_cta_text)){ ?>
+                            <?php if(!empty($secondary_cta_link)){ ?>
+                            <a href="<?php  echo $secondary_cta_link; ?>" class="link-underline">
+                                <?php } else { ?>
+                                <a href="JavaScript:Void(0);" class="link-underline underclick">
+                                    <?php } ?>
+                                    <?php  echo $secondary_cta_text; ?>
+                                </a>
+                                <?php } ?>
+                        </div>
+                        <?php } 
 
-                   } ?>
-             
-          </div>
-          </div>
-       </div>
-      <div class="banner__col">
+                        } ?>
+
+                    </div>
+                </div>
+            </div>
+            <div class="banner__col">
                 <div class="banner__cell">
                 </div>
             </div>
-    </div>
+        </div>
+
         <div class="banner__row banner__row3">
             <div class="banner__col">
                 <div class="banner__cell">
@@ -288,7 +294,7 @@ $book_art_content = get_field('book_art_content',get_the_ID());
             <div class="banner__col">
                 <div class="banner__cell">
                     <?php if(!empty($bottom_right_image)){ ?>
-                    <img class="banner__art banner__art6" src="<?php echo $bottom_right_image['url']; ?>" alt="<?php echo $bottom_right_image['alt']; ?>">
+                        <?php echo wp_get_attachment_image( $bottom_right_image['id'], "medium", "", array( "class" => "banner__art banner__art6" ) );  ?>
                     <?php } ?>
                 </div>
             </div>
@@ -304,10 +310,10 @@ $book_art_content = get_field('book_art_content',get_the_ID());
             <div class="brands__slider">
                 <?php 
                     $rows = get_field('brand_images');
-                     if($rows)
+                    if($rows)
                         {
-                          foreach($rows as $row)
-                           {  ?>
+                        foreach($rows as $row)
+                        {  ?>
                             <div>
                                 <div class="brands__cell">                      
                                     <img src="<?php echo $row['image']; ?>" alt=".">
@@ -320,10 +326,10 @@ $book_art_content = get_field('book_art_content',get_the_ID());
             <div class="brands__slidermobile">
                 <?php 
                     $rows = get_field('brand_images');
-                     if($rows)
+                    if($rows)
                         {
-                          foreach($rows as $row)
-                           {  ?>
+                        foreach($rows as $row)
+                        {  ?>
                             <div>
                                 <div class="brands__cell">                      
                                     <img src="<?php echo $row['image']; ?>" alt=".">
@@ -335,8 +341,6 @@ $book_art_content = get_field('book_art_content',get_the_ID());
             </div>
         </div>
     </div>
-    
-
 
     <div class="works">
         <div class="container container__lineicon">
@@ -357,7 +361,7 @@ $book_art_content = get_field('book_art_content',get_the_ID());
                 <div class="works__right">
                     <?php if(!empty($how_right_description)){ ?>
                                 <p><?php echo $how_right_description; ?></p>
-                   <?php } ?>                   
+                <?php } ?>                   
                 </div>
             </div>
             <div class="works__content d-flex justify-content-between">
@@ -381,10 +385,10 @@ $book_art_content = get_field('book_art_content',get_the_ID());
                 <div class="works__right">
                     <?php 
                     $rows = get_field('how_right_work_list');
-                     if($rows)
+                    if($rows)
                         {
-                          foreach($rows as $row)
-                           {  ?>
+                        foreach($rows as $row)
+                        {  ?>
                             <div class="works__list">
                                 <div class="works__number">
                                     <span><?php echo $row['list_number']; ?></span>
@@ -396,7 +400,7 @@ $book_art_content = get_field('book_art_content',get_the_ID());
                             </div>
                     <?php  }
                         }
-                         ?>
+                        ?>
                 </div>
             </div>
         </div>
@@ -406,26 +410,26 @@ $book_art_content = get_field('book_art_content',get_the_ID());
         <div class="container">
             <div class="center-title">
                 <?php if(!empty($ourwriters_main_title)){ ?>
-                      <h5><?php echo $ourwriters_main_title; ?></h5>
+                    <h5><?php echo $ourwriters_main_title; ?></h5>
                 <?php } ?>
                 <?php if(!empty($ourwriters_big_title)){ ?>
-                      <h2><?php echo $ourwriters_big_title; ?></h2>
+                    <h2><?php echo $ourwriters_big_title; ?></h2>
                 <?php } ?>
                 <?php if(!empty($ourwriters_description)){ ?>
-                      <p><?php echo $ourwriters_description; ?></p>
+                    <p><?php echo $ourwriters_description; ?></p>
                 <?php } ?>
                 <div class="center-title__link">
                     <?php if(!empty($ourwriters_button_text)){ ?>
-                         <a href="<?php echo $ourwriters_button_link; ?>" class="link-outlined"><?php echo $ourwriters_button_text; ?></a>
+                        <a href="<?php echo $ourwriters_button_link; ?>" class="link-outlined"><?php echo $ourwriters_button_text; ?></a>
                     <?php } ?>              
                 </div>
             </div>          
         </div>
         <div class="our-writers__art">
             <img class="our-writers__artmobile" src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/writers-art--mobile.png" alt=".">
-             <?php if(!empty($ourwriters_writer_image)){ ?>
-                  <img class="our-writers__artdesktop" src="<?php echo $ourwriters_writer_image['url'] ?>" alt="<?php echo $ourwriters_writer_image['alt'] ?>">
-             <?php } ?>     
+            <?php if(!empty($ourwriters_writer_image)){ ?>
+                <img class="our-writers__artdesktop" src="<?php echo $ourwriters_writer_image['url'] ?>" alt="<?php echo $ourwriters_writer_image['alt'] ?>">
+            <?php } ?>     
         </div>
     </div>
 
@@ -433,50 +437,50 @@ $book_art_content = get_field('book_art_content',get_the_ID());
         <div class="container">
             <div class="center-title">
                 <?php if(!empty($testimonials_main_title)){ ?>
-                      <h5><?php echo $testimonials_main_title; ?></h5>
+                    <h5><?php echo $testimonials_main_title; ?></h5>
                 <?php } ?>
                 <?php if(!empty($testimonials_big_title)){ ?>
-                      <h2><?php echo $testimonials_big_title; ?></h2>
+                    <h2><?php echo $testimonials_big_title; ?></h2>
                 <?php } ?>
                 <?php if(!empty($testimonials_description)){ ?>
-                      <p><?php echo $testimonials_description; ?></p>
+                    <p><?php echo $testimonials_description; ?></p>
                 <?php } ?>
             </div>
             <div class="testimonials__slider testimonials__slider--js">
                 <?php 
                     $rows = get_field('home_testimonials_list');
-                     if($rows)
+                    if($rows)
                         {
-                          foreach($rows as $row)
-                           {  ?>
-                               <div class="testimonials__col">
-                                  <div class="testimonials__cell">
+                        foreach($rows as $row)
+                        {  ?>
+                            <div class="testimonials__col">
+                                <div class="testimonials__cell">
                                     <div class="testimonials__grid d-flex justify-content-between align-items-center">
-                                      <img src="<?php echo $row['video_image']; ?>" alt=".">
-                                      <div class="testimonials__left">
+                                    <img src="<?php echo $row['video_image']; ?>" alt=".">
+                                    <div class="testimonials__left">
                                         <div class="testimonials__mobiletop">
-                                          <h6><?php echo $row['title']; ?></h6>
-                                          <h5><?php echo $row['writer_name']; ?></h5>
-                                          <div class="testimonials__time">
+                                        <h6><?php echo $row['title']; ?></h6>
+                                        <h5><?php echo $row['writer_name']; ?></h5>
+                                        <div class="testimonials__time">
                                             <?php echo $row['time']; ?>
-                                          </div>
+                                        </div>
                                         </div>
                                         <p><?php echo $row['description_home_testimonials']; ?></p>
-                                      </div>
-                                      <div class="testimonials__right">
+                                    </div>
+                                    <div class="testimonials__right">
                                         <div class="videoicon" vidurl="<?php echo $row['video_link']; ?>">
-                                          <i class="fa fa-play" aria-hidden="true"></i>
+                                        <i class="fa fa-play" aria-hidden="true"></i>
                                         </div>
-                                      </div>              
+                                    </div>              
                                     </div>
                                     <div class="testimonials__mobilecontent">
-                                      <p><?php echo $row['description_home_testimonials']; ?></p>
+                                    <p><?php echo $row['description_home_testimonials']; ?></p>
                                     </div>
-                                  </div>          
+                                </div>          
                                 </div>
                     <?php  }
                         }
-                         ?>
+                        ?>
             </div>
         </div>
     </div>
@@ -655,4 +659,4 @@ $book_art_content = get_field('book_art_content',get_the_ID());
         })
     </script>
 
-<?php get_footer(); ?>
+    <?php get_footer(); ?>

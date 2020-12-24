@@ -368,3 +368,10 @@ function link_words( $text ) { //ToDo: use Search Regexp
 }
 add_filter( 'the_content', 'link_words' );
 add_filter( 'the_excerpt', 'link_words' );
+
+/**
+ * Get image depends on the device
+ */
+function get_image_size() {
+	return wp_is_mobile() ? 'thumbnail' : 'large';
+}
