@@ -1,6 +1,43 @@
 jQuery(document).ready(function() {	
 	"use strict";
 
+	// homepage scripts
+	jQuery(document).ready(function(){
+		jQuery(".banneropen").click(function(event) {
+			event.preventDefault();
+			jQuery("html").addClass("html--oh");
+			jQuery(".bannerpop").fadeIn();
+		});
+		jQuery(".bannerpop__close").click(function() {
+			jQuery("html").removeClass("html--oh");
+			jQuery(".bannerpop").fadeOut();
+		});
+
+		jQuery(".underclick").click(function(event) {
+			event.preventDefault();
+			jQuery("html").addClass("html--oh");
+			jQuery(".underclick_pop").fadeIn();
+		});
+		jQuery(".underclick__close").click(function() {
+			jQuery("html").removeClass("html--oh");
+			jQuery(".underclick_pop").fadeOut();
+		});
+		
+		jQuery(".bookopen").click(function(event) {
+			event.preventDefault();
+			jQuery("html").addClass("html--oh");
+			jQuery(".bookspoopup").fadeIn();
+			var databook = $(this).attr('databook');
+			$('.globalpopup__bottom .clickbook1, .globalpopup__bottom .clickbook2, .globalpopup__bottom .clickbook3').hide();
+			$('.globalpopup__bottom .'+databook).show();
+		});
+		jQuery(".book__close").click(function() {
+			jQuery("html").removeClass("html--oh");
+			jQuery(".bookspoopup").fadeOut();
+		});
+	})
+
+	// pricing scripts
 	jQuery(".pricingfaq__title").click(function() {
 		var thisParents = jQuery(this).parents(".pricingfaq__row");
 		if( thisParents.hasClass("pricingfaq__row--active") ) {
