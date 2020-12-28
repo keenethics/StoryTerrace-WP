@@ -32,16 +32,12 @@
     <link rel="profile" href="http://gmpg.org/xfn/11">
 
     <!-- Preload Fonts -->
-    <link rel="preload" as="font" type="font/woff2" href="<?php echo get_stylesheet_directory_uri(); ?>/assets/webfonts/KaufmannScript.woff" crossorigin="anonymous">
     <link rel="preload" as="font" type="font/woff2" href="<?php echo get_stylesheet_directory_uri(); ?>/assets/webfonts/Gotham-Book.woff" crossorigin="anonymous">
     <link rel="preload" as="font" type="font/woff2" href="<?php echo get_stylesheet_directory_uri(); ?>/assets/webfonts/Gotham-Medium.woff" crossorigin="anonymous">
     <link rel="preload" as="font" type="font/woff2" href="<?php echo get_stylesheet_directory_uri(); ?>/fonts/font-awesome.woff" crossorigin="anonymous">
 
     <!-- Favicon -->
-    <?php if (ot_get_option('ut_favicon')) : ?>
-
-        <?php
-
+    <?php if (ot_get_option('ut_favicon')) {
         /* get icon info */
         $favicon = ot_get_option('ut_favicon');
         $favicon_info = pathinfo($favicon);
@@ -58,10 +54,7 @@
         if (isset($favicon_info['extension']) && $favicon_info['extension'] == 'gif') {
             $type = 'type="image/gif"';
         }
-
-        ?>
-
-    <?php endif; ?>
+    } ?>
 
     <!-- Apple Touch Icons -->
     <?php if (ot_get_option('ut_apple_touch_icon_iphone')) : ?>
@@ -142,7 +135,7 @@ $scrollspeed     = ot_get_option('ut_scrollto_speed', '650');
     <a class="ut-offset-anchor" id="top" style="top:0px !important;"></a>
 
     <?php ut_before_header_hook(); // action hook, see inc/ut-theme-hooks.php
-    
+
     /*
     |--------------------------------------------------------------------------
     | Navigation Setting
@@ -307,8 +300,3 @@ $scrollspeed     = ot_get_option('ut_scrollto_speed', '650');
     } else {
         get_template_part('template-part', 'hero');
     } ?>
-    <style type="text/css">
-        ul.sub-menu {
-            display: none;
-        }
-    </style>
