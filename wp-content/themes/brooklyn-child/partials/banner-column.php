@@ -3,9 +3,9 @@
  * Banner column image part
 */
 
-$image_field = $args['image_field'];
-$image_size = $args['image_size'];
-$image_class = $args['image_class'];
+$image_field = $args['image_field'] ?? '';
+$image_size = $args['image_size'] ?? get_image_size();
+$image_class = $args['image_class'] ?? '';
 ?>
 
 <div class="banner__col">

@@ -194,7 +194,6 @@ $book_art_content = get_field('book_art_content',get_the_ID());
                         'partials/banner', 'column-image', 
                         array( 
                             'image_field' => $center_right_image,
-                            'image_size' => 'medium',
                             'image_class' => 'banner__art5 banner__art--hidemobile'
                         ) 
                     );  
@@ -319,7 +318,6 @@ $book_art_content = get_field('book_art_content',get_the_ID());
                 'partials/banner', 'column', 
                 array( 
                     'image_field' => $bottom_right_image,
-                    'image_size' => 'medium',
                     'image_class' => 'banner__art6'
                 ) 
             ); 
