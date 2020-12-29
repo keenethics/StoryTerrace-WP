@@ -53,7 +53,7 @@ function my_theme_scripts() {
         wp_enqueue_style( 'oldstyle-css', get_stylesheet_directory_uri().'/oldstyle.css' );
 
         // Add main styles for request section
-        if ( is_page(array('about-us', 'faq', 'ourwriters', 'onze-schrijvers', 'the-team')) ) {
+        if ( is_page(array('about-us', 'faq', 'ourwriters', 'onze-schrijvers', 'the-team', 'het-team')) ) {
             wp_enqueue_style( 'main-css', get_stylesheet_directory_uri().'/assets/css/main.css', array(), '0.1.0', 'all' );        
         } 
     }
