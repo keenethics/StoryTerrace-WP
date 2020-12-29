@@ -58,6 +58,7 @@
            $subscribe_hubspot_form = get_field('subscribe_hubspot_form','options');
     ?>
     <?php include_once( 'bottom-banner-section.php' ); ?> 
+    
         <div class="footer">
         <div class="container">
             <div class="footer__inner d-flex">

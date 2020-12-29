@@ -53,6 +53,11 @@ function my_theme_scripts() {
         wp_enqueue_style( 'oldstyle-css', get_stylesheet_directory_uri().'/oldstyle.css' );
     }
 
+    // Add main styles for request section
+    if ( is_page(array('about-us', 'faq')) ) {
+        wp_enqueue_style( 'main-css', get_stylesheet_directory_uri().'/assets/css/main.css', array(), '0.1.0', 'all' );
+    }
+
     // GeoIP redirect
     wp_enqueue_script( 'countryfinder-js', get_stylesheet_directory_uri().'/js/countryfinder.js', array( 'jquery' ), '1.0.1', false );
 

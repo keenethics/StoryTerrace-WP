@@ -419,6 +419,7 @@ h6 {
 }
 
 .request__inner {
+    margin: 0 auto;
     padding-top: 86px;
     padding-bottom: 86px;    
     position: relative;
@@ -445,8 +446,10 @@ h6 {
 }
 
 .request__inner p {
+    max-width: 650px;
+    margin: auto;
     font-size: 21px;
-    line-height: 1.6
+    line-height: 1.6;
 }
 
 .request__link {
