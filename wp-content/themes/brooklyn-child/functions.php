@@ -48,14 +48,15 @@ function my_theme_scripts() {
         wp_enqueue_style( 'bootstrap-css', get_stylesheet_directory_uri().'/assets/css/bootstrap.min.css' );
         wp_enqueue_style( 'main-css', get_stylesheet_directory_uri().'/assets/css/main.css', array(), '0.1.0', 'all' );
 
+    
+    // Add main styles for request section
+    } else if ( is_page(array('about-us', 'faq')) ) {
+        wp_enqueue_style( 'main-css', get_stylesheet_directory_uri().'/assets/css/main.css', array(), '0.1.0', 'all' );
+        wp_enqueue_style( 'oldstyle-css', get_stylesheet_directory_uri().'/oldstyle.css' );
+    
     } else {
         wp_enqueue_style( 'bootstrapold-css', 'https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css' );
         wp_enqueue_style( 'oldstyle-css', get_stylesheet_directory_uri().'/oldstyle.css' );
-    }
-
-    // Add main styles for request section
-    if ( is_page(array('about-us', 'faq')) ) {
-        wp_enqueue_style( 'main-css', get_stylesheet_directory_uri().'/assets/css/main.css', array(), '0.1.0', 'all' );
     }
 
     // GeoIP redirect
