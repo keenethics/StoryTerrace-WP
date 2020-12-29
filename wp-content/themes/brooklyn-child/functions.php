@@ -47,16 +47,15 @@ function my_theme_scripts() {
     } else if (is_page(37644) || is_page(32679) || is_page(39348) || is_page(39695) || is_page(32678) || is_page(37383) || is_page(39349) || is_page(37621) ||is_page(37559) ){
         wp_enqueue_style( 'bootstrap-css', get_stylesheet_directory_uri().'/assets/css/bootstrap.min.css' );
         wp_enqueue_style( 'main-css', get_stylesheet_directory_uri().'/assets/css/main.css', array(), '0.1.0', 'all' );
-
-    
-    // Add main styles for request section
-    } else if ( is_page(array('about-us', 'faq')) ) {
-        wp_enqueue_style( 'main-css', get_stylesheet_directory_uri().'/assets/css/main.css', array(), '0.1.0', 'all' );
-        wp_enqueue_style( 'oldstyle-css', get_stylesheet_directory_uri().'/oldstyle.css' );
     
     } else {
         wp_enqueue_style( 'bootstrapold-css', 'https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css' );
         wp_enqueue_style( 'oldstyle-css', get_stylesheet_directory_uri().'/oldstyle.css' );
+
+        // Add main styles for request section
+        if ( is_page(array('about-us', 'faq', 'ourwriters', 'onze-schrijvers', 'the-team', 'het-team')) ) {
+            wp_enqueue_style( 'main-css', get_stylesheet_directory_uri().'/assets/css/main.css', array(), '0.1.0', 'all' );        
+        } 
     }
 
     // GeoIP redirect
