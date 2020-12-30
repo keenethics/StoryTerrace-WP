@@ -1334,8 +1334,8 @@ $banner_time = get_field('banner_time');
 </script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jscroll/2.4.1/jquery.jscroll.min.js"></script>
 <script>
-jQuery(document).ready(function() {
-  jQuery('.presspost').jscroll({
+jQuery(document).ready(function($) {
+  $('.presspost').jscroll({
       nextSelector: '.jscroll-next a',
       contentSelector: '.presspost__lists',
       autoTrigger: false,
@@ -1346,9 +1346,9 @@ jQuery(document).ready(function() {
     $('.jscroll-next a')[0].click();
   });
   function neueFade() {
-    var newadded = jQuery('.jscroll-added').html();
-    jQuery('.presspost__inner').append(newadded);
-    jQuery('.jscroll-added').remove();
+    var newadded = $('.jscroll-added').html();
+    $('.presspost__inner').append(newadded);
+    $('.jscroll-added').remove();
   }
 });
 </script>
