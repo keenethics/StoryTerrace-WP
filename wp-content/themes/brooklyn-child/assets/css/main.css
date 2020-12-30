@@ -844,14 +844,13 @@ h6 {
     width: 100%
 }
 
-body .testimonials {
+.page .testimonials {
     overflow: hidden;
     background-color: #f5f5f5;
     padding: 260px 0 90px;
     margin-top: -110px
 }
-
-.testimonials>.container {
+.page .testimonials > .container {
     position: relative;
     z-index: 9
 }
@@ -2604,7 +2603,7 @@ body .testimonials {
         max-width: 90%
     }
 
-    .testimonials {
+    .page .testimonials {
         padding-top: 200px
     }
 
@@ -3199,7 +3198,7 @@ body .testimonials {
         padding: 0 15px
     }
 
-    .testimonials {
+    .page .testimonials {
         margin-top: 0;
         padding: 50px 0
     }
@@ -4219,17 +4218,17 @@ body .testimonials {
 
 .customer-reviews .slick-dots li button:before,
 .download-book .slick-dots li button:before,
-.testimonials .slick-dots li button:before {
+.page .testimonials .slick-dots li button:before {
     font-size: 45px !important
 }
 
-.testimonials .slick-dots {
+.page .testimonials .slick-dots {
     bottom: -40px
 }
 
 .customer-reviews .slick-dots li button:before,
 .download-book .slick-dots li button:before,
-.testimonials .slick-dots li button:before {
+.page .testimonials .slick-dots li button:before {
     color: #b3b3b3
 }
 
@@ -4419,12 +4418,12 @@ body .testimonials {
 
 .customer-reviews .slick-dots li button:before,
 .download-book .slick-dots li button:before,
-.testimonials .slick-dots li button:before {
+.page .testimonials .slick-dots li button:before {
     font-size: 45px !important
 }
 
 .customer-reviews .slick-dots,
-.testimonials .slick-dots {
+.page .testimonials .slick-dots {
     bottom: -40px
 }
 
@@ -4440,7 +4439,7 @@ body .testimonials {
 
 .customer-reviews .slick-dots li button:before,
 .download-book .slick-dots li button:before,
-.testimonials .slick-dots li button:before {
+.page .testimonials .slick-dots li button:before {
     color: #b3b3b3
 }
 
