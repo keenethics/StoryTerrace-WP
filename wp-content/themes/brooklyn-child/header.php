@@ -220,11 +220,14 @@ $scrollspeed     = ot_get_option('ut_scrollto_speed', '650');
         <div class="container">
             <div class="header__inner d-flex justify-content-between align-items-center">
                 <div class="header__logo">
-                    <a href="<?php echo get_site_url(); ?><?php if ($curlangs == 'en-GB') {
-                                                                echo '/en-GB';
-                                                            } elseif ($curlangs == 'nl') {
-                                                                echo '/nl';
-                                                            } ?>"><img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/logo.svg" alt="StoryTerrace"></a>
+                    <a href="<?php echo get_site_url(); ?>
+                        <?php if ($curlangs == 'en-GB') {
+                            echo '/en-GB';
+                        } elseif ($curlangs == 'nl') {
+                            echo '/nl';
+                        } ?>">
+                        <img width="142" height="34" src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/logo.svg" alt="StoryTerrace">
+                    </a>
                 </div>
                 <div class="header__menu">
                     <?php

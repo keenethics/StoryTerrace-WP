@@ -76,6 +76,42 @@ Text Domain: unitedthemes
 	content: "\f16d";
 }
 
+/** Top Bar **/
+span.close-bar {
+    text-decoration: underline;
+    cursor: pointer;
+}
+.golden-top-bar {
+    background: #A2804F;
+    padding: 8px 15px;
+    text-align: center;
+   
+}
+.golden-top-bar p {
+    color: #fff !important;
+    font-size: 16px !important;
+}
+.header {
+	padding: 0 0 24px;
+	z-index: 9999;
+}
+.header__inner {
+	padding-top: 24px;
+}
+
+@media only screen and (max-width: 1080px) {
+	.header {
+		padding: 0;
+		position: relative;
+	}
+
+	.header__inner {
+		padding: 24px 0 16px;
+		position: relative;
+	}
+}
+
+
 /* Writer Search Styles */
 .writer-search-form {
 	max-width: 550px;
@@ -1363,30 +1399,6 @@ body.oh {
 	.footer .mbl__menu h6 {
 	    display: none;
 	}
-}
-
-
-/** Top Bar **/
-
-span.close-bar {
-    text-decoration: underline;
-    cursor: pointer;
-}
-.golden-top-bar {
-    background: #A2804F;
-    padding: 8px 15px;
-    text-align: center;
-   
-}
-.golden-top-bar p {
-    color: #fff !important;
-    font-size: 16px !important;
-}
-.header {
-    padding-top: 0px;
-}
-.header__inner {
-	padding-top: 24px;
 }
 
 #learn-more .affirm-modal-trigger {

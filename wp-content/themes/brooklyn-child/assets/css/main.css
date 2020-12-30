@@ -299,16 +299,6 @@ h6 {
     letter-spacing: .3px
 }
 
-.header {
-    padding: 24px 0;
-    position: relative;
-    z-index: 99999999999999
-}
-
-.header__inner {
-    position: relative
-}
-
 .header__toggler {
     display: none;
     position: absolute;
@@ -2686,14 +2676,6 @@ h6 {
         margin: 10px auto 0
     }
 
-    .header {
-        padding: 0
-    }
-
-    .header__inner {
-        padding: 16px 0
-    }
-
     .header__button {
         display: none
     }
@@ -4549,11 +4531,6 @@ h6 {
     .testimonials__col+.testimonials__col {
         margin-top: 0 !important
     }
-}
-
-.header {
-    position: relative;
-    z-index: 99
 }
 
 .brands h4 {

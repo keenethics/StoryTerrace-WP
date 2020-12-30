@@ -4374,12 +4374,14 @@ h3#ship-to-different-address input:checked + span:before{
   margin-bottom: 30px;
 }
 .aboutContent blockquote{
-  border-left-width: 2px;
   margin-bottom: 35px;
+  padding: 10px 20px;
+  margin: 0 0 20px;
+  font-size: 17.5px;
+  border-left: 2px solid #f06d66;
 }
 .aboutContent blockquote p{
   margin-bottom: 30px;
-  /*font-family: Circe;*/
   font-size: 20px;
   font-weight: bold;
   font-style: normal;
@@ -5517,16 +5519,6 @@ td.wccpf_label {
     }
 }
 
-.header {
-    padding: 24px 0;
-    position: relative;
-    z-index: 9999;
-}
-
-.header__inner {
-    position: relative;
-}
-
 .header__toggler {
     display: none;
     position: absolute;
@@ -5635,12 +5627,6 @@ td.wccpf_label {
 }
 
 @media only screen and (max-width: 1080px) {
-  .header {
-        padding: 0;
-    }
-    .header__inner {
-        padding: 16px 0;
-    }
     .header__button {
         display: none;
     }
