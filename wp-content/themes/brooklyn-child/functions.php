@@ -53,7 +53,7 @@ function my_theme_scripts() {
         wp_enqueue_style( 'bootstrap-css-3', 'https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css' );
 
         if ( is_page_template( 'press.tpl.php') ) {
-            wp_enqueue_style( 'press-css', get_stylesheet_directory_uri().'/assets/css/press.css' );
+            wp_enqueue_style( 'press-css', get_stylesheet_directory_uri().'/assets/css/page-press.css' );
         }
     } 
 
