@@ -93,7 +93,7 @@ span.close-bar {
 }
 .header {
 	padding: 0 0 24px;
-	z-index: 9999;
+	z-index: 999999;
 }
 .header__inner {
 	padding-top: 24px;
