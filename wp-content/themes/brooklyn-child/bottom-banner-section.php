@@ -16,52 +16,53 @@ if (!empty($bbs_background_image)){ ?>
     <?php if($show_bottom_banner_section){ ?>
         <div class="request">
             <?php echo wp_get_attachment_image( $bbs_background_image['id'], "large", "", array( "class" => "request__background-image" ) );  ?>
-                <div class="container">
-                    <div class="d-flex justify-content-center">
-                        <div class="request__inner">
-                            <img src="<?php echo get_stylesheet_directory_uri();?>/assets/images/logo-icon--red.svg" alt=".">
-                            <?php if(!empty($bbs_title)){ ?>
-                                <h5><?php echo $bbs_title; ?></h5>
-                            <?php } ?>
-                            <?php if(!empty($bbs_big_title)){ ?>
-                                <h2><?php echo $bbs_big_title; ?></h2>
-                            <?php } ?>
-                            <?php if(!empty($bbs_description)){ ?>
-                                    <p><?php echo $bbs_description; ?></p>
-                            <?php } ?>
+            
+            <div class="container">
+                <div class="d-flex justify-content-center">
+                    <div class="request__inner">
+                        <img src="<?php echo get_stylesheet_directory_uri();?>/assets/images/logo-icon--red.svg" alt=".">
+                        <?php if(!empty($bbs_title)){ ?>
+                            <h5><?php echo $bbs_title; ?></h5>
+                        <?php } ?>
+                        <?php if(!empty($bbs_big_title)){ ?>
+                            <h2><?php echo $bbs_big_title; ?></h2>
+                        <?php } ?>
+                        <?php if(!empty($bbs_description)){ ?>
+                                <p><?php echo $bbs_description; ?></p>
+                        <?php } ?>
 
-                            <?php if($show_search_banner == 'yes'){ ?>
-                                <div class="writer-search footer-banners-search">
-                                    <form id="zipcodebot" class="writer-search-form">
-                                    <div class="input-group">
-                                        <input class="zipf" type="text" placeholder="<?php if(!empty($search_placeholder_banner)){ echo $search_placeholder_banner; } else { ?>Enter Postal Code<?php } ?>">
-                                        <input type="submit" value="<?php if(!empty($search_button_text_banner)){ echo $search_button_text_banner; } else { ?>Search Writers<?php } ?>">
-                                    </div>
-                                    </form>
+                        <?php if($show_search_banner == 'yes'){ ?>
+                            <div class="writer-search footer-banners-search">
+                                <form id="zipcodebot" class="writer-search-form">
+                                <div class="input-group">
+                                    <input class="zipf" type="text" placeholder="<?php if(!empty($search_placeholder_banner)){ echo $search_placeholder_banner; } else { ?>Enter Postal Code<?php } ?>">
+                                    <input type="submit" value="<?php if(!empty($search_button_text_banner)){ echo $search_button_text_banner; } else { ?>Search Writers<?php } ?>">
                                 </div>
-                                <script>
-                                jQuery(document).ready(function($){
-                                    $( "#zipcodebot" ).submit(function( event ) {
-                                    event.preventDefault();
-                                    var zipf = $('.zipf').val();
-                                    urlredf = '<?php echo $search_result_link_banner; ?>';
-                                    window.location = urlredf+'/?zip='+zipf;
-                                    });
+                                </form>
+                            </div>
+                            <script>
+                            jQuery(document).ready(function($){
+                                $( "#zipcodebot" ).submit(function( event ) {
+                                event.preventDefault();
+                                var zipf = $('.zipf').val();
+                                urlredf = '<?php echo $search_result_link_banner; ?>';
+                                window.location = urlredf+'/?zip='+zipf;
                                 });
+                            });
 
-                                </script>
-                            <?php } else { 
-                                if(!empty($bbs_button_text)){ ?>
-                                    <div class="request__link">
-                                        <?php if(!empty($bbs_button_text)){ ?>
-                                        <a class="bottombtn" href="<?php echo $bbs_button_link; ?>"><?php echo $bbs_button_text; ?></a>
-                                        <?php } ?>
-                                    </div>
-                            <?php } 
-                            } ?>
-                        </div>
+                            </script>
+                        <?php } else { 
+                            if(!empty($bbs_button_text)){ ?>
+                                <div class="request__link">
+                                    <?php if(!empty($bbs_button_text)){ ?>
+                                    <a class="bottombtn" href="<?php echo $bbs_button_link; ?>"><?php echo $bbs_button_text; ?></a>
+                                    <?php } ?>
+                                </div>
+                        <?php } 
+                        } ?>
                     </div>
                 </div>
+            </div>
         </div>  
     <?php } ?>
 
