@@ -47,16 +47,10 @@ function my_theme_scripts() {
     } else if (is_page( array( 'how-it-works', 'hoe-het-werkt', 'testimonials', 'pricing', 'pakketten' )) ){
         wp_enqueue_style( 'bootstrap-css-4', get_stylesheet_directory_uri().'/assets/css/bootstrap4.min.css' );
         wp_enqueue_style( 'main-css', get_stylesheet_directory_uri().'/assets/css/main.css', array(), '0.1.0', 'all' );
-    
-    // Add main styles for request section    
-    } else if ( get_field( 'show_bottom_banner_section') || is_page_template( 'teamsingle.tpl.php') ) {
-        wp_enqueue_style( 'bootstrap-css-3', get_stylesheet_directory_uri().'/assets/css/bootstrap3.min.css' );
-        wp_enqueue_style( 'oldstyle-css', get_stylesheet_directory_uri().'/oldstyle.css' );
-        wp_enqueue_style( 'main-css', get_stylesheet_directory_uri().'/assets/css/main.css', array(), '0.1.0', 'all' ); 
 
     } else {
         wp_enqueue_style( 'oldstyle-css', get_stylesheet_directory_uri().'/oldstyle.css' );
-        wp_enqueue_style( 'bootstrap-css-3', get_stylesheet_directory_uri().'/assets/css/bootstrap3.min.css' );
+        wp_enqueue_style( 'bootstrap-css-3', 'https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css' );
 
         if ( is_page_template( 'press.tpl.php') ) {
             wp_enqueue_style( 'press-css', get_stylesheet_directory_uri().'/assets/css/press.css' );
