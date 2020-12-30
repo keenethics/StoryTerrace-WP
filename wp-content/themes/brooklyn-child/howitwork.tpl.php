@@ -107,5 +107,4 @@ $end_designed_text = get_field('end_designed_text');
         </div>
     </div>
     
-<?php //include_once( 'bottom-banner-section.php' ); ?>
 <?php get_footer(); ?>

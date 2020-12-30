@@ -52,7 +52,10 @@ function my_theme_scripts() {
     } else {
         wp_enqueue_style( 'bootstrap-css-3', get_stylesheet_directory_uri().'/assets/css/bootstrap3.min.css' );
         wp_enqueue_style( 'oldstyle-css', get_stylesheet_directory_uri().'/oldstyle.css' );
-        wp_enqueue_style( 'main-css', get_stylesheet_directory_uri().'/assets/css/main.css', array(), '0.1.0', 'all' ); 
+
+        if ( get_field( 'show_bottom_banner_section') || is_page_template( 'teamsingle.tpl.php') ) {
+            wp_enqueue_style( 'main-css', get_stylesheet_directory_uri().'/assets/css/main.css', array(), '0.1.0', 'all' ); 
+        }
     } 
 
     // GeoIP redirect
