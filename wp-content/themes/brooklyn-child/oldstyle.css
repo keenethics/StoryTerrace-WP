@@ -5613,7 +5613,8 @@ td.wccpf_label {
 }
 
 .aboutContent{
-    margin-top: 0;
+  margin-top: 0;
+  margin-bottom: 35px;
 }
 .ut-offset-anchor, .ut-mm-trigger, #ut-mobile-nav {
     display: none !important;
