@@ -4356,7 +4356,6 @@ h3#ship-to-different-address input:checked + span:before{
   margin: 0;
 }
 .aboutContent p{
-  /*font-family: Circe;*/
   font-size: 16px;
   font-weight: 300;
   font-style: normal;

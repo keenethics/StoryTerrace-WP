@@ -1295,9 +1295,7 @@ $banner_time = get_field('banner_time');
       </div>
     </div>
   </div>
-</div>
-<?php //get_template_part( 'common', 'banner' ); ?>
-  
+</div>  
 
 <script>
   jQuery(document).ready(function() {

@@ -16,7 +16,7 @@ if (!empty($bbs_background_image)){ ?>
     <?php if($show_bottom_banner_section){ ?>
         <div class="request">
             <?php echo wp_get_attachment_image( $bbs_background_image['id'], "large", "", array( "class" => "request__background-image" ) );  ?>
-            
+
             <div class="container">
                 <div class="d-flex justify-content-center">
                     <div class="request__inner">
