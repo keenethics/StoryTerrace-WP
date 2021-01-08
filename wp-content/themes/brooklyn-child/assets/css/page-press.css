@@ -723,17 +723,6 @@
     max-width: 150px;
 }
 
-.center-title {
-    position: relative;
-    z-index: 9;
-}
-
-.subhead-top {
-    max-width: 650px;
-    width: 100%;
-    margin: 0 auto 10px;
-}
-
 .presspost__topleft,
 .presspost__topleft .facetwp-facet {
     display: -webkit-box;
@@ -1149,23 +1138,6 @@
 
     .presspost__content h3 {
         font-size: 17px;
-    }
-
-    .banner__cell .center-title {
-        padding: 0 15px;
-    }
-
-    .subhead-top.subhead-top--desktop {
-        display: none;
-    }
-
-    .writer-search-form {
-        margin-top: 30px;
-    }
-
-    .banner__row2 .banner__col:nth-child(3) img {
-        max-width: calc(100% + 35px);
-        margin-left: -35px;
     }
 
     .presspost__topright .facetwp-search-wrap {

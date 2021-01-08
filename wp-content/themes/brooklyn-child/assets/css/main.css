@@ -299,6 +299,7 @@ h6 {
     letter-spacing: .3px
 }
 
+/* ToDo: separate header styles */
 .header__toggler {
     display: none;
     position: absolute;
@@ -386,7 +387,7 @@ h6 {
     color: #fff
 }
 
-
+/* ToDo: separate footer styles */
 .footer {
     background: #eae9e8 !important;
     padding: 70px 0;
@@ -1128,6 +1129,12 @@ h6 {
 
 .download-book--sample .download-book__art {
     background-color: transparent
+}
+
+.subhead-top {
+	max-width: 650px;
+	width: 100%;
+	margin: 0 auto 10px;
 }
 
 .banner {
@@ -2923,6 +2930,10 @@ h6 {
         padding: 20px 0
     }
 
+    .subhead-top.subhead-top--desktop {
+		display: none;
+	}
+
     .banner__row1 .banner__col:first-child,
     .banner__row1 .banner__col:nth-child(3) {
         display: none
@@ -2937,6 +2948,11 @@ h6 {
         margin-top: 0;
         padding-right: 0
     }
+
+    .banner__row2 .banner__col:nth-child(3) img {
+		max-width: calc(100% + 35px);
+		margin-left: -35px;
+	}
 
     .banner__art.banner__art--hidemobile {
         display: none
@@ -2989,6 +3005,10 @@ h6 {
     .banner__row3 .center-title img {
         margin-bottom: 20px
     }
+
+    .banner__cell .center-title {
+		padding: 0 15px;
+	}
 
     .brands__slider {
         display: none
