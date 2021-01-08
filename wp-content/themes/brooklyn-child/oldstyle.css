@@ -4356,7 +4356,6 @@ h3#ship-to-different-address input:checked + span:before{
   margin: 0;
 }
 .aboutContent p{
-  /*font-family: Circe;*/
   font-size: 16px;
   font-weight: 300;
   font-style: normal;
@@ -4374,12 +4373,13 @@ h3#ship-to-different-address input:checked + span:before{
   margin-bottom: 30px;
 }
 .aboutContent blockquote{
-  border-left-width: 2px;
-  margin-bottom: 35px;
+  padding: 10px 20px;
+  margin: 0 0 35px;
+  font-size: 17.5px;
+  border-left: 2px solid #f06d66;
 }
 .aboutContent blockquote p{
   margin-bottom: 30px;
-  /*font-family: Circe;*/
   font-size: 20px;
   font-weight: bold;
   font-style: normal;
@@ -4817,11 +4817,6 @@ h3#ship-to-different-address input:checked + span:before{
     padding-top: 20px;
     padding-bottom: 20px;
 }
-/*.caseStudyBlueBox {
-    background-color: rgba(0,183,193,1) !important;
-    padding: 20px;
-    color: white !important;
-}*/
 .writeUs-content .grid-100{
     padding: 0;
 }
@@ -5517,16 +5512,6 @@ td.wccpf_label {
     }
 }
 
-.header {
-    padding: 24px 0;
-    position: relative;
-    z-index: 9999;
-}
-
-.header__inner {
-    position: relative;
-}
-
 .header__toggler {
     display: none;
     position: absolute;
@@ -5622,7 +5607,8 @@ td.wccpf_label {
 }
 
 .aboutContent{
-    margin-top: 0;
+  margin-top: 0;
+  margin-bottom: 35px;
 }
 .ut-offset-anchor, .ut-mm-trigger, #ut-mobile-nav {
     display: none !important;
@@ -5635,12 +5621,6 @@ td.wccpf_label {
 }
 
 @media only screen and (max-width: 1080px) {
-  .header {
-        padding: 0;
-    }
-    .header__inner {
-        padding: 16px 0;
-    }
     .header__button {
         display: none;
     }

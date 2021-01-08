@@ -25,16 +25,37 @@ function my_theme_scripts() {
     wp_enqueue_style( 'slick-theme-css', get_stylesheet_directory_uri().'/assets/css/slick-theme.css' );
     wp_enqueue_style( 'slick-css', get_stylesheet_directory_uri().'/assets/css/slick.css' );
 
-    if(is_page( 36682 ) || is_page(37644) || is_page(32679) || is_page(39350) || is_page(36707) || is_page(39348) || is_page(39695) || is_page(32678) || is_page(37383) || is_page(39349) || is_page(37621) ||is_page(37559) ){
-        wp_enqueue_style( 'bootstrap-css', get_stylesheet_directory_uri().'/assets/css/bootstrap.min.css' );
+    if (is_home() || is_front_page()) {
+        wp_enqueue_style( 'bootstrap-custom-css', get_stylesheet_directory_uri().'/assets/css/bootstrap-custom.css' );
+        wp_enqueue_style( 'main-css', get_stylesheet_directory_uri().'/assets/css/main.css', array(), '0.1.0', 'all' );
+
+        // dequeue parent theme styles
+        wp_dequeue_style( 'main-font-face' );
+        wp_dequeue_style( 'ut-fontawesome' );        
+        wp_dequeue_style( 'ut-flexslider' );
+        wp_dequeue_style( 'ut-prettyphoto' );
+        wp_dequeue_style( 'ut-superfish' );
+        wp_dequeue_style( 'ut-animate' );
+
+        wp_dequeue_script( 'unitedthemes-init' );
+        wp_dequeue_script( 'ut-prettyphoto');
+        wp_dequeue_script( 'ut-flexslider-js');
+        wp_dequeue_script( 'ut-superfish');
+        wp_dequeue_script( 'ut-lazyload-js');
+        wp_dequeue_script( 'ut-easing');
+
+    } else if (is_page( array( 'how-it-works', 'hoe-het-werkt', 'testimonials', 'pricing', 'pakketten' )) ){
+        wp_enqueue_style( 'bootstrap-css-4', get_stylesheet_directory_uri().'/assets/css/bootstrap4.min.css' );
         wp_enqueue_style( 'main-css', get_stylesheet_directory_uri().'/assets/css/main.css', array(), '0.1.0', 'all' );
 
     } else {
-        wp_enqueue_style( 'bootstrapold-css', 'https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css' );
         wp_enqueue_style( 'oldstyle-css', get_stylesheet_directory_uri().'/oldstyle.css' );
+        wp_enqueue_style( 'bootstrap-css-3', 'https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css' );
 
-    }
-
+        if ( is_page_template( 'press.tpl.php') ) {
+            wp_enqueue_style( 'press-css', get_stylesheet_directory_uri().'/assets/css/page-press.css' );
+        }
+    } 
 
     // GeoIP redirect
     wp_enqueue_script( 'countryfinder-js', get_stylesheet_directory_uri().'/js/countryfinder.js', array( 'jquery' ), '1.0.1', false );
@@ -45,7 +66,6 @@ function my_theme_scripts() {
     /**
      * Check if WooCommerce is activated
      */
-
     if ( class_exists( 'woocommerce' ) && is_product() ){
         wp_enqueue_script( 'singleproductpage-js', get_stylesheet_directory_uri().'/js/singleproductpage.js', array( 'jquery' ), '1.0.1', true );
     }
@@ -55,12 +75,57 @@ function my_theme_scripts() {
     }
 }
 
-add_action( 'wp_enqueue_scripts', 'my_theme_scripts' );
+add_action( 'wp_enqueue_scripts', 'my_theme_scripts', 100 );
 
+/**
+ * Unload WooCommerce assets on non WooCommerce pages.
+ * @link https://sridharkatakam.com/how-to-load-woocommerce-css-and-js-only-on-shop-specific-pages-in-wordpress/
+ */
+function sk_conditionally_remove_wc_assets() {
 
+    // if WooCommerce is not active, abort.
+    if ( ! class_exists( 'WooCommerce' ) ) {
+        return;
+    }
 
-add_filter( 'woocommerce_variation_option_name', 'display_price_in_variation_option_name' );
+    // if this is a WooCommerce related page, abort.
+    if ( is_woocommerce() || is_cart() || is_checkout() || is_page( array( 'my-account' ) ) ) {
+        return;
+    }
 
+    remove_action( 'wp_enqueue_scripts', [ WC_Frontend_Scripts::class, 'load_scripts' ] );
+    remove_action( 'wp_print_scripts', [ WC_Frontend_Scripts::class, 'localize_printed_scripts' ], 5 );
+    remove_action( 'wp_print_footer_scripts', [ WC_Frontend_Scripts::class, 'localize_printed_scripts' ], 5 );
+
+    // disable all WooCommerce stylesheets
+    add_filter( 'woocommerce_enqueue_styles', '__return_empty_array' );
+
+}
+
+add_action( 'get_header', 'sk_conditionally_remove_wc_assets' );
+
+/**
+ * Disable WooCommerce block styles (front-end).
+ */
+function disable_woocommerce_block_styles() {
+    wp_dequeue_style( 'wc-block-style' );
+  }
+
+add_action( 'wp_enqueue_scripts', 'disable_woocommerce_block_styles' );
+
+/**
+ * Remove Gutenberg Block Library CSS from loading on the frontend
+ */
+function remove_wp_block_library_css(){
+    wp_dequeue_style( 'wp-block-library' );
+    wp_dequeue_style( 'wp-block-library-theme' );
+} 
+
+add_action( 'wp_enqueue_scripts', 'remove_wp_block_library_css', 100 );
+  
+/**
+ * Display price in variation option name
+ */
 function display_price_in_variation_option_name( $term ) {
     global $wpdb, $product;
 
@@ -87,6 +152,9 @@ function display_price_in_variation_option_name( $term ) {
     return $term;
 
 }
+
+add_filter( 'woocommerce_variation_option_name', 'display_price_in_variation_option_name' );
+
 //custom post type for in the media section
 function my_custom_post_types() {
     $labels = array(
@@ -278,14 +346,8 @@ if( function_exists('acf_add_options_page') ) {
         'menu_title'    => 'Reviews',
         'parent_slug'   => 'theme-general-settings',
     ));
-    
-    // acf_add_options_sub_page(array(
-    //     'page_title'    => 'Checkout Settings',
-    //     'menu_title'    => 'Checkout Settings',
-    //     'parent_slug'   => 'theme-general-settings',
-    // ));
-    
 }
+
 // code for site redirect based on condition
 $actual_link = "https://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
 if($actual_link == 'https://storyterrace.com/'){
@@ -298,96 +360,7 @@ if($actual_link == 'https://storyterrace.com/'){
             header('Location: https://storyterrace.com/nl/');
             exit();
          } 
-        //whether ip is from share internet
-        // if (!empty($_SERVER['HTTP_CLIENT_IP']))   
-        //   {
-        //     $ip_address = $_SERVER['HTTP_CLIENT_IP'];
-        //   }
-        // //whether ip is from proxy
-        // elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR']))  
-        //   {
-        //     $ip_address = $_SERVER['HTTP_X_FORWARDED_FOR'];
-        //   }
-        // //whether ip is from remote address
-        // else
-        //   {
-        //     $ip_address = $_SERVER['REMOTE_ADDR'];
-        //   }
-        //   $res = file_get_contents('https://www.iplocate.io/api/lookup/'.$ip_address);
-        //   $res = json_decode($res);
-        //   echo $res->country;
-        //     if($res->country == 'Netherlands' && $res->continent == 'Europe'){
-        //          header('Location: https://storyterrace.com/nl/');
-        //          exit();
-              
-        //     }
         }
-}
-// $actual_link = "https://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
-
-// if($actual_link == 'https://storyterrace.com/'){
-//         $dlang =  ICL_LANGUAGE_CODE;
-//         if($dlang == 'nl' || $dlang == 'en-GB'){
-
-//          } else {   
-//         //whether ip is from share internet
-//         if (!empty($_SERVER['HTTP_CLIENT_IP']))   
-//           {
-//             $ip_address = $_SERVER['HTTP_CLIENT_IP'];
-//           }
-//         //whether ip is from proxy
-//         elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR']))  
-//           {
-//             $ip_address = $_SERVER['HTTP_X_FORWARDED_FOR'];
-//           }
-//         //whether ip is from remote address
-//         else
-//           {
-//             $ip_address = $_SERVER['REMOTE_ADDR'];
-//           }
-//           $res = file_get_contents('https://www.iplocate.io/api/lookup/'.$ip_address);
-//           $res = json_decode($res);
-//             if($res->country == 'Netherlands' && $res->continent == 'Europe'){
-//                  header('Location: https://storyterrace.com/nl/');
-//                  exit();
-              
-//             }elseif($res->country != 'Netherlands' && $res->continent == 'Europe'){
-//                  header('Location: https://storyterrace.com/en-GB/');
-//                  exit();
-//             } else {
-                
-//             }
-//         }
-// } else {
-//     //echo 'nothing';
-// }
-
-
-add_action( 'wp_enqueue_scripts', 'crunchify_disable_woocommerce_loading_css_js' );
- 
-function crunchify_disable_woocommerce_loading_css_js() {
-    // Check if WooCommerce plugin is active
-    if( function_exists( 'is_woocommerce' ) ){
- 
-        // Check if it's any of WooCommerce page
-        if(is_home() || is_front_page()) {         
-          
-            ## Dequeue WooCommerce styles
-            wp_dequeue_style('woocommerce-layout'); 
-            wp_dequeue_style('woocommerce-general'); 
-            wp_dequeue_style('woocommerce-smallscreen');    
-            wp_dequeue_style('woocommerce-inline-inline');    
- 
-            ## Dequeue WooCommerce scripts
-            wp_dequeue_script('wc-cart-fragments');
-            wp_dequeue_script('woocommerce'); 
-            wp_dequeue_script('wc-add-to-cart'); 
-        
-            wp_deregister_script( 'js-cookie' );
-            wp_dequeue_script( 'js-cookie' );
- 
-        }
-    }   
 }
 
 function link_words( $text ) { //ToDo: use Search Regexp
@@ -399,3 +372,10 @@ function link_words( $text ) { //ToDo: use Search Regexp
 }
 add_filter( 'the_content', 'link_words' );
 add_filter( 'the_excerpt', 'link_words' );
+
+/**
+ * Get image depends on the device
+ */
+function get_image_size() {
+	return wp_is_mobile() ? 'thumbnail' : 'large';
+}

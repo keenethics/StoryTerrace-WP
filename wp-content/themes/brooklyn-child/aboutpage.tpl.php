@@ -9,97 +9,6 @@ $inmedia_main_button_text = get_field("inmedia_main_button_text");
 $inmedia_main_button_link = get_field("inmedia_main_button_link");
 get_header(); ?>
 
-	<style type="text/css">
-		.request{
-		    position: relative;
-		    background-image: url(//storyterrace.com/wp-content/themes/brooklyn-child/assets/css/../images/request-bg.jpg);
-		    background-position: center center;
-		    background-size: cover;
-		    padding: 86px 0;
-		    z-index: 1;
-		}
-		.request:before{
-		    content: "";
-		    position: absolute;
-		    top: 0;
-		    right: 0;
-		    bottom: 0;
-		    left: 0;
-		    background-color: rgba(72,72,72,.488);
-		    z-index: -1;
-		}
-		.request .justify-content-center {
-		    -ms-flex-pack: center!important;
-		    justify-content: center!important;
-		}
-		.request__inner {
-		    position: relative;
-		    z-index: 9;
-		    text-align: center;
-		    max-width: 900px;
-		    width: 100%;
-		}
-		.request__inner img {
-		    margin-bottom: 43px;
-		}
-		.request__inner * {
-		    color: #fff!important;
-		}
-		.request__inner h5 {
-			font-size: 17px;
-			letter-spacing: .3px;
-		    text-transform: uppercase;
-			margin-top: 0;
-			margin-bottom: 10px;
-			font-weight: 500;
-			line-height: 1.1;
-			font-family: Gotham-Medium !important;
-		}
-		.request__inner h2 {
-			font-size: 56px;
-		    margin: 32px 0;
-		}
-		.request__inner p {
-			max-width: 650px;
-    		margin: auto;
-		    font-size: 21px;
-		    line-height: 1.6;
-		}
-		@media only screen and (max-width: 1280px){
-			.request__inner p {
-			    font-size: 18px;
-			}
-		}
-		@media only screen and (max-width: 1080px){
-			.request__inner img {
-			    margin-bottom: 23px;
-			}
-			.request__inner h5 {
-				font-size: 15px;
-				line-height: 1.3;
-			}
-			.request__inner h2 {
-				font-size: 36px;
-			    margin: 12px 0 17px;
-			}
-		}
-		@media (max-width: 767px){
-			.request {
-			    padding: 40px 0;
-			}
-			.request__inner h5 {
-			    font-size: 14px;
-			}
-			.request__inner h2{
-			    font-size: 23px;
-			    line-height: 1.2;
-			}
-			.request__inner p {
-		    	font-size: 14px;
-			}
-		}
-	</style>
-
         <div class="grid-container">
         	
             <?php $grid = !empty( $ut_get_sidebar_settings ) && $ut_get_sidebar_settings['primary_sidebar'] != 'no_sidebar' && is_active_sidebar( $ut_get_sidebar_settings['primary_sidebar'] ) ? 'grid-75 tablet-grid-75 mobile-grid-100' : 'grid-100 tablet-grid-100 mobile-grid-100'; ?>
@@ -175,12 +84,10 @@ get_header(); ?>
 		        </div>
 		 </div>
 		</div>
-
-
-		<?php //get_template_part( 'model', 'content' ); ?>
-		<?php //get_template_part( 'common', 'banner' ); ?>
-        <div class="ut-scroll-up-waypoint" data-section="section-<?php echo ut_clean_section_id($post->post_name); ?>"></div>  
+		<div class="ut-scroll-up-waypoint" data-section="section-<?php echo ut_clean_section_id($post->post_name); ?>"></div>  
+		
 <?php get_footer(); ?>
+
 <script type="text/javascript" src="<?php echo get_stylesheet_directory_uri(); ?>/js/jquery.jscroll.min.js"></script>
 <script type="text/javascript">
 	var $jq = jQuery.noConflict();
