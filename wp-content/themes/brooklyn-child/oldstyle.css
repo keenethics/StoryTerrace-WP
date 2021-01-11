@@ -181,7 +181,6 @@ div[tabindex]:focus {
   color: #0C1B1E;
 }
 
-
 .center-title {
   max-width: 860px;
   width: 100%;
@@ -293,7 +292,6 @@ a.link-filled:hover {
   transform: translate(-50%, -50%);
 }
 
-
 body h1,
 body h2 {
   font-family: 'Gotham-Medium' !important;
@@ -312,7 +310,6 @@ body h3,
 body h4,
 body h5,
 body h6 {
-
   font-weight: 500;
   line-height: 1.1;
   color: #0C1B1E;
@@ -443,7 +440,6 @@ p:last-child {
 
 @media (min-width:1025px) {
   #header-section #navigation ul ul {
-
     margin-top: 0 !important;
     -webkit-box-shadow: 0px 5px 15px -2px rgba(0, 0, 0, 0.15) !important;
     box-shadow: 0px 5px 15px -2px rgba(0, 0, 0, 0.15) !important;
@@ -688,8 +684,6 @@ p:last-child {
 .footer .wpml-ls-legacy-dropdown .wpml-ls-sub-menu {
   border-top: none !important;
 }
-
-
 
 /* ============= hubspot elements css ==============*/
 .packages-pricing {
@@ -1286,7 +1280,6 @@ a.toTop {
 }
 
 .works-outer-wrapper {
-
   margin-left: auto;
   margin-right: auto;
 }
@@ -1565,86 +1558,6 @@ a.toTop {
   .modal-dialog {
     width: 89%;
   }
-}
-
-.woocommerce div.product {
-  width: 100%;
-  max-width: 100%;
-}
-
-.woocommerce div.product .product_title {
-  font-family: Circe;
-  font-size: 28px;
-  font-weight: bold;
-  font-style: normal;
-  font-stretch: normal;
-  line-height: 1;
-  letter-spacing: normal;
-  text-align: left;
-  margin-bottom: -5px;
-}
-
-.fa-ul>li {
-  font-family: Circe;
-  font-size: 14px;
-  font-weight: normal;
-  font-style: normal;
-  font-stretch: normal;
-  line-height: 1;
-  letter-spacing: normal;
-  text-align: left;
-  color: #414b56;
-}
-
-.woocommerce-product-details__short-description h3 {
-
-  font-size: 20px;
-  font-weight: bold;
-  font-style: normal;
-  font-stretch: normal;
-  line-height: normal;
-  letter-spacing: normal;
-  text-align: left;
-  margin-bottom: 0;
-  margin-top: 20px;
-  font-family: 'Gotham-Book' !important;
-}
-
-.woocommerce-product-details__short-description h4 {
-  font-size: 20px;
-  font-weight: 300;
-  font-style: normal;
-  font-stretch: normal;
-  line-height: 0.95;
-  letter-spacing: normal;
-  text-align: left;
-  margin-top: 10px;
-  margin-bottom: 10px;
-}
-
-.woocommerce-product-details__short-description p {
-  font-family: Circe;
-  font-size: 14px;
-  font-weight: 300;
-  font-style: normal;
-  font-stretch: normal;
-  line-height: 1.43;
-  letter-spacing: normal;
-  text-align: left;
-}
-
-.woocommerce div.product div.images.woocommerce-product-gallery {
-  width: 50%;
-}
-
-.woocommerce div.product div.summary {
-  width: 50%;
-  padding-left: 30px;
-}
-
-.woocommerce-product-gallery__wrapper {
-  max-width: 425px;
-  margin: 0 auto !important;
 }
 
 .fa-ul {
@@ -2218,6 +2131,88 @@ button.slick-next {
   width: calc(100% / 6);
 }
 
+/**
+ * WooCommerce product styles
+ */
+.woocommerce div.product {
+  width: 100%;
+  max-width: 100%;
+}
+
+.woocommerce div.product .product_title {
+  font-family: Circe;
+  font-size: 28px;
+  font-weight: bold;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1;
+  letter-spacing: normal;
+  text-align: left;
+  margin-bottom: -5px;
+}
+
+.fa-ul>li {
+  font-family: Circe;
+  font-size: 14px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1;
+  letter-spacing: normal;
+  text-align: left;
+  color: #414b56;
+}
+
+.woocommerce-product-details__short-description h3 {
+  font-size: 20px;
+  font-weight: bold;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: left;
+  margin-bottom: 0;
+  margin-top: 20px;
+  font-family: 'Gotham-Book' !important;
+}
+
+.woocommerce-product-details__short-description h4 {
+  font-size: 20px;
+  font-weight: 300;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 0.95;
+  letter-spacing: normal;
+  text-align: left;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.woocommerce-product-details__short-description p {
+  font-family: Circe;
+  font-size: 14px;
+  font-weight: 300;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.43;
+  letter-spacing: normal;
+  text-align: left;
+}
+
+.woocommerce div.product div.images.woocommerce-product-gallery {
+  width: 50%;
+}
+
+.woocommerce div.product div.summary {
+  width: 50%;
+  padding-left: 30px;
+}
+
+.woocommerce-product-gallery__wrapper {
+  max-width: 425px;
+  margin: 0 auto !important;
+}
+
 .product-footer {
   background-color: #f8f8f8;
   float: left;
@@ -2260,6 +2255,10 @@ button.slick-next {
   -ms-transform: translateX(100%);
   transform: translateX(100%);
   right: 0;
+}
+
+.single-product .modal .hs_this_book_is_about {
+  display: none;
 }
 
 .main-content-background {
@@ -2577,7 +2576,6 @@ button.slick-next {
 }
 
 @media (max-width:767px) {
-
   .shipping-text,
   .continue-checkout {
     width: auto;
@@ -3598,7 +3596,6 @@ p#account_password_field {
 }
 
 @media (max-width: 500px) {
-
   .checkout .woocommerce-thankyou-order-details li,
   .checkout .woocommerce-order .order_details.bacs_details li {
     width: 100%;
@@ -4348,7 +4345,6 @@ div.addon-description p {
 }
 
 .writer-tabs-group .ut-nav-tabs li a {
-
   font-size: 13px !important;
   font-weight: 400;
   font-style: normal;
@@ -4451,7 +4447,6 @@ div.addon-description p {
 }
 
 @media (min-width:992px) {
-
   .writer-tabs-group .ut-tab-content,
   .the-team-wrapper {
     max-width: 1024px;
@@ -4647,7 +4642,6 @@ h3#ship-to-different-address input:checked+span:before {
   width: 100%;
 }
 
-
 .contact-pageContent {
   position: relative;
   padding-top: 120px;
@@ -4823,7 +4817,6 @@ h3#ship-to-different-address input:checked+span:before {
 .contactRight .hs_firstname {
   padding-right: 10px;
 }
-
 
 .contactRight .hs_lastname {
   padding-left: 10px;
@@ -5496,7 +5489,6 @@ h3#ship-to-different-address input:checked+span:before {
 }
 
 @media (min-width:767px) {
-
   .testimonialGreyBar .col-md-8,
   .testimonialWhiteBar .col-md-8 {
     padding-left: 50px;
@@ -5504,7 +5496,6 @@ h3#ship-to-different-address input:checked+span:before {
 }
 
 @media (max-width: 991px) {
-
   .testimonialGreyBar .col-md-4,
   .testimonialWhiteBar .col-md-4 {
     margin-left: auto;
@@ -6209,8 +6200,6 @@ td.wccpf_label {
   }
 }
 
-
-
 #hubspotContactContainer .hs-input select {
   -moz-appearance: none !important;
   -webkit-appearance: none !important;
@@ -6343,7 +6332,6 @@ td.wccpf_label {
   -webkit-box-direction: normal !important;
   flex-direction: column !important;
 }
-
 
 .header .container {
   max-width: 1574px;
@@ -6516,9 +6504,7 @@ td.wccpf_label {
     padding: 14px;
   }
 }
-
 /* header css end here */
-
 
 /* footer css start here */
 .footer {
@@ -6955,15 +6941,12 @@ td.wccpf_label {
     font-size: 14px;
   }
 }
-
 /* footer css end here */
-
 
 .getstartpop,
 .videopopup {
   display: none;
 }
-
 
 .contactRight p {
   line-height: 1.6;
@@ -7170,7 +7153,6 @@ h1#storystarter {
   line-height: normal !important;
 }
 
-
 .page-id-19699 .one_half,
 .page-id-19699 .one_third {
   padding: 0px 10px 15px 40px;
@@ -7213,7 +7195,6 @@ h1#storystarter {
 }
 
 @media only screen and (max-width: 1080px) {
-
   .footer__lang .wpml-ls-legacy-dropdown,
   .footer__form .hbspt-form {
     margin: 0 auto !important;
@@ -7236,8 +7217,6 @@ h1#storystarter {
     float: left;
   }
 }
-
-
 
 /* global popup */
 .globalpopup {
@@ -7377,14 +7356,12 @@ h1#storystarter {
 
 }
 
-
 .globalpopup__bottom textarea {
   min-height: 80px;
   resize: none;
 }
 
 .globalpopup__bottom .hs-richtext p {
-
   line-height: 1.6;
   font-size: 16px;
   font-weight: 400;
@@ -7553,8 +7530,6 @@ h1#storystarter {
   display: none !important;
 }
 
-
-
 .header__menu .sub-menu {
   visibility: hidden;
   position: absolute;
@@ -7676,9 +7651,7 @@ h1#storystarter {
 }
 
 /* pricing page tooltip css end here*/
-
 @media (min-width:768px) {
-
   .writer-tabs-group .ut-nav-tabs:before,
   .writer-tabs-group .ut-nav-tabs:after {
     display: none;

@@ -232,9 +232,10 @@ $request_form_description = get_field('request_form_description', 'option');
     <?php } ?>
   </div>
 </div>
-<div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<div class="globalpopup modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content contactRight bottom-popup">
+      <i class="fa fa-times globalpopup__close topheader__close" data-dismiss="modal" aria-hidden="true"></i>
       <div class="modal-body">
         <?php if (!empty($request_form_title)) { ?>
         <h2 class="title"><?php echo $request_form_title; ?></h2>
@@ -242,7 +243,7 @@ $request_form_description = get_field('request_form_description', 'option');
         <?php if (!empty($request_form_description)) {
           echo $request_form_description;
         } ?>
-        <div class="popup-form">
+        <div class="globalpopup__bottom popup-form">
           <?php if (!empty($request_form)) {
             echo $request_form;
           } ?>

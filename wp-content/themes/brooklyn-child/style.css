@@ -15,10 +15,9 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: unitedthemes
 */
 
-/* 
+/** 
  * Font Awesome Costom Icons
- * ToDo: enable after removing font-awesome from plugins
-*/
+ */
 @font-face {
 	font-family: 'font-awesome';
 	src: url('fonts/font-awesome.woff') format('woff');
@@ -78,9 +77,9 @@ Text Domain: unitedthemes
 	content: "\f16d";
 }
 
-/* 
+/** 
  * Global Classes
-*/
+ */
 body.oh {
 	overflow: hidden;
 }
@@ -101,9 +100,9 @@ body.oh {
 	display: none;
 }
 
-/* 
+/** 
  * Top Bar
-*/
+ */
 span.close-bar {
 	text-decoration: underline;
 	cursor: pointer;
@@ -142,9 +141,9 @@ span.close-bar {
 	}
 }
 
-/* 
+/** 
  * Writer Search Styles
-*/
+ */
 .writer-search-form {
 	max-width: 550px;
 	width: 100%;
@@ -313,9 +312,9 @@ span.close-bar {
 	display: block !important;
 }
 
-/* 
+/** 
  * Request Page styles
-*/
+ */
 .request {
 	position: relative;
 }
@@ -459,4 +458,544 @@ span.close-bar {
 		letter-spacing: 1.2px;
 		padding: 16px 24px;
 	}
+}
+
+/**
+ * ! Styles from WP theme options 
+ */
+
+.wp-caption-text {
+	color: white !important;
+}
+
+h1 {
+	padding-bottom: 15px;
+}
+
+iframe[name=google_conversion_frame],
+a[title="hide"] {
+	display: none !important;
+}
+
+body {
+	height: auto !important;
+	max-height: initial;
+	min-height: initial;
+}
+
+body:not(.single-post) .post .entry-content {
+	height: 180px;
+	overflow: hidden;
+}
+
+#primary {
+	padding-top: 80px;
+}
+
+.mobile-process {
+	display: none;
+}
+
+@media (min-width : 120px) and (max-width : 480px) {
+	.mobile-process {
+		display: block !important;
+	}
+
+	.desktop-process {
+		display: none !important;
+	}
+}
+
+.menu-item-language,
+#navigation ul.sub-menu li>a,
+#navigation ul ul {
+	min-width: 50px !important;
+}
+
+.how-it-works-left-img {
+	float: left;
+}
+
+.how-it-works-main-content {
+	margin-left: 165px;
+	margin-bottom: 30px;
+	padding: 10px;
+	border-radius: 15px;
+	border: 3px solid gold;
+}
+
+@media (min-width : 120px) and (max-width : 480px) {
+	.how-it-works-left-img {
+		float: none;
+	}
+
+	.how-it-works-main-content {
+		margin-left: 0;
+	}
+}
+
+li.wpmenucartli a.wpmenucart-contents span {
+	display: none !important;
+}
+
+.wpcf7-submit.medium.ut-btn {
+	font-size: 13px;
+}
+
+.ut-footer-so {
+	text-align: center;
+}
+
+.ut-post-thumbnail {
+	max-width: 100% !important;
+	overflow: hidden !important;
+}
+
+.content-wrapper {
+	height: 420px;
+	position: relative;
+	overflow: hidden;
+	margin-bottom: 20px;
+}
+
+.error404 .search-submit,
+.search-no-results .search-submit {
+	margin-top: 54px;
+}
+
+.woocommerce .quantity .qty {
+	width: 5.631em;
+	text-align: center;
+}
+
+label {
+	float: left;
+	width: 100%;
+	height: 20px;
+}
+
+.woocommerce label {
+	float: initial;
+	width: initial;
+	height: initial;
+}
+
+.woocommerce input[type="radio"] {
+	-webkit-appearance: radio;
+}
+
+.checkbox {
+	width: 50%;
+	float: left;
+}
+
+.bold {
+	font-weight: 600;
+}
+
+input[type="checkbox"] {
+	float: left;
+	width: 20px !important;
+	margin-top: 4px !important;
+}
+
+.ut-pt-title-slogan {
+	text-transform: none;
+	padding: 10px;
+}
+
+.ut-pt-featured i {
+	display: none;
+}
+
+.ut-pricing-table .ut-pt-featured {
+	background-color: #f4f7f8 !important;
+	color: gray !important;
+}
+
+.ut-pt-header {
+	padding: 0px;
+}
+
+.ut-pt-mp {
+	display: none;
+}
+
+.ut-pricing-table .ut-pt-mp {
+	display: inherit !important;
+}
+
+.ut-pt-featured-table {
+	overflow: hidden;
+}
+
+.ut-pt-title {
+	background: #F1C40F;
+	position: relative;
+	top: -58px;
+	left: -23%;
+	color: white !important;
+	text-align: center;
+	width: 146%;
+	padding-bottom: 13px;
+	padding: 10px;
+}
+
+.ut-pricing-table .ut-pt-title {
+	top: 0px;
+	color: white !important;
+}
+
+.bg-ordernow {
+	background: #000 url('https://woocommerce-380490-1201116.cloudwaysapps.com/wp-content/uploads/2014/02/vintagesm.jpg') no-repeat;
+	padding-top: 160px;
+	padding-bottom: 140px;
+	position: relative;
+	background-position: center center;
+	background-size: cover;
+}
+
+#navigation a.custom {
+	text-indent: -9999px;
+	border-top: 1px dashed rgb(153, 153, 153);
+	height: 5px !important;
+}
+
+#navigation ul li a {
+	font-size: 14px !important;
+	text-transform: none;
+}
+
+#navigation ul li a:after {
+	content: '' !important;
+}
+
+.archive .no-break {
+	position: absolute;
+	bottom: 0;
+}
+
+.st_twitterfollow_hcount {
+	display: none;
+}
+
+.copyright {
+	display: none;
+}
+
+.footer .grid-container {
+	max-width: inherit;
+	text-align: left;
+}
+
+.footer-content a {
+	text-transform: none !important;
+}
+
+.ut-twitter-rotator h3 {
+	font-size: 30px;
+}
+
+.ut-twitter-rotator h3 a {
+	color: #F1C40F;
+}
+
+#recaptcha_image {
+	border: 1px solid #DDDDDD !important;
+	background: white;
+	width: 100% !important;
+	height: 61px !important;
+	margin-top: 7px !important;
+}
+
+#recaptcha_challenge_image {
+	display: block !important;
+	margin: 0 auto !important;
+}
+
+.recaptcha_text small {
+	font-size: 10px;
+}
+
+body:not(.your-stories, .uw-verhalen) .tptn_counter {
+	display: none !important;
+}
+
+/* Change mobile anchors color */
+.ut-mobile-menu .sub-menu {
+	margin-left: 40px !important;
+}
+
+#recaptcha_widget_div {
+	height: 126px;
+	overflow: hidden;
+}
+
+.st_fblike_hcount span {
+	margin: 0 !important;
+}
+
+/* Tags Social buttons hide */
+.tag-cta .no-break,
+.tag-intro .no-break,
+.tag-feed .no-break,
+.contact-wrap .no-break,
+.story-books .no-break {
+	display: none !important;
+}
+
+.stButton .stButton_gradient {
+	padding-bottom: 19px !important;
+}
+
+/* CTA TAG */
+.tag-cta a {
+	margin-top: -206px;
+	padding-top: 200px !important;
+}
+
+/* blog meta info hide */
+.author-links,
+.cat-links,
+.permalink {
+	display: none !important;
+}
+
+/* Feed fixes */
+#u_0_6 {
+	display: none !important;
+}
+
+.st_twitter_hcount span {
+	margin-left: 0 !important;
+	margin-right: 0 !important;
+}
+
+.tag-feed {
+	width: 47.8% !important;
+	height: 760px !important;
+	overflow: scroll;
+}
+
+.tag-feed .cff-wrapper {
+	padding-top: 50px !important;
+	background: #3b5998 url(/wp-content/uploads/2014/06/facebook-logo.png) center 12px no-repeat;
+}
+
+.tag-feed .cff-wrapper #cff {
+	background: #f3f3f3;
+	padding: 10px;
+}
+
+.tag-feed .thinkTwitFollow {
+	background: #f3f3f3;
+	margin-top: -2px;
+	padding-bottom: 18px;
+}
+
+.tag-feed #twitter-widget-0 {
+	margin-left: 15px;
+	margin-top: 6px;
+}
+
+.tag-feed .tptn_counter {
+	display: none;
+}
+
+.widget-title,
+.viaviwidget-title {
+	display: none !important;
+}
+
+.viavi_twitter_feeds {
+	padding-top: 50px !important;
+	background: #55ACEE url(https://woocommerce-380490-1201116.cloudwaysapps.com/wp-content/uploads/2014/06/Twitter_logo_white.png) center 12px no-repeat;
+}
+
+#contact-section .tptn_counter {
+	display: none;
+}
+
+#contact-section #kento-pvc,
+#contact-section .ecae-link {
+	display: none;
+}
+
+.pt-style-1 .page-title span,
+.pt-style-1 .section-title span {
+	background: none !important;
+}
+
+.main-content-background {
+	background: none !important;
+}
+
+.hero-title {
+	font-size: 90px !important;
+	max-width: 820px;
+}
+
+.custom-heading {
+	padding: 0 30px;
+	padding-top: 20px;
+}
+
+.custom-text {
+	padding: 0px 30px;
+	border-bottom: 1px solid rgba(128, 128, 128, 0.15);
+	padding-bottom: 22px;
+}
+
+.first {
+	width: 50%;
+	float: left;
+}
+
+.second {
+	width: 50%;
+	float: right;
+}
+
+#hero-sub {
+	color: white;
+	font-size: 30px;
+}
+
+p {
+	color: black !important;
+}
+
+.ecae-link {
+	display: inline-block;
+	padding: 2px 6px;
+	background: #F1C40F;
+	color: white;
+	font-size: 11px;
+	font-weight: bold;
+}
+
+.parallax-overlay-pattern.style_one,
+.parallax-overlay-pattern {
+	background-image: none !important;
+}
+
+.blog .hero-title {
+	color: black;
+}
+
+.single-post p,
+.single-post h2 {
+	overflow: visible !important;
+}
+
+/* Intro Pop-up */
+.spu-button {
+	float: left;
+}
+
+@media (min-width : 120px) and (max-width : 480px) {
+	.ecae-link {
+		margin-bottom: 17px;
+	}
+
+	.mobile-process {
+		display: block !important;
+	}
+
+	.desktop-process {
+		display: none !important;
+	}
+
+	.st_twitter_hcount {
+		position: static !important;
+	}
+
+	.your-stories:not(.single-post).archive #primary article {
+		width: 100% !important;
+		overflow: hidden !important;
+	}
+
+	#ut-sitebody .hero-inner h1 {
+		font-size: 50px !important;
+	}
+
+	.your-stories:not(.single-post) #primary article,
+	.your-stories:not(.single-post) #primary article.tag-intro .entry-content {
+		height: auto !important;
+	}
+
+	.uw-verhalen:not(.single-post).archive #primary article {
+		width: 100% !important;
+		overflow: hidden !important;
+	}
+
+	#ut-sitebody .hero-inner h1 {
+		font-size: 50px !important;
+	}
+
+	.uw-verhalen:not(.single-post) #primary article,
+	.uw-verhalen:not(.single-post) #primary article.tag-intro .entry-content {
+		height: auto !important;
+	}
+
+	.one_half,
+	.one_third {
+		padding: 0 !important;
+	}
+}
+
+#comments,
+.page-id-478 .entry-content .tptn_counter,
+.page-id-478 .entry-content .no-break,
+.page-id-480 .entry-content .tptn_counter,
+.page-id-480 .entry-content .no-break,
+.page-id-418 .entry-content .tptn_counter,
+.page-id-418 .entry-content .no-break,
+.page-id-416 .entry-content .tptn_counter,
+.page-id-416 .entry-content .no-break {
+	display: none;
+}
+
+html {
+	padding: 0 !important;
+	margin: 0 !important;
+}
+
+.our-writers .one_half h2 a {
+	width: 150px;
+	height: 150px;
+	display: block;
+	overflow: hidden;
+	margin: 0 auto;
+	border-radius: 4px;
+}
+
+.one_half,
+.one_third {
+	padding: 0px 10px 0px 40px;
+}
+
+.one_half p,
+.one_third p {
+	text-align: justify;
+}
+
+.en-US .dutch-popup {
+	display: none !important;
+}
+
+.nl-NL .english-popup {
+	display: none !important;
+}
+
+.post .entry-content {
+	height: 180px;
+	overflow: hidden;
+}
+
+.tag-cta .entry-content,
+.tag-intro .entry-content,
+.tag-picture .entry-content {
+	height: auto;
+	overflow: visible;
 }

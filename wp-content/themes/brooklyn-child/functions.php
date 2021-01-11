@@ -21,6 +21,9 @@ function show_cart_summary( ) {
 }
 
 function my_theme_scripts() {    
+    wp_dequeue_style( 'main-font-face' );
+    wp_dequeue_style( 'ut-fontawesome' );       
+
     wp_enqueue_style( 'webfonts-css', get_stylesheet_directory_uri().'/assets/webfonts/webfonts.css' );
     wp_enqueue_style( 'slick-theme-css', get_stylesheet_directory_uri().'/assets/css/slick-theme.css' );
     wp_enqueue_style( 'slick-css', get_stylesheet_directory_uri().'/assets/css/slick.css' );
@@ -29,9 +32,7 @@ function my_theme_scripts() {
         wp_enqueue_style( 'bootstrap-custom-css', get_stylesheet_directory_uri().'/assets/css/bootstrap-custom.css' );
         wp_enqueue_style( 'main-css', get_stylesheet_directory_uri().'/assets/css/main.css', array(), '0.1.0', 'all' );
 
-        // dequeue parent theme styles
-        wp_dequeue_style( 'main-font-face' );
-        wp_dequeue_style( 'ut-fontawesome' );        
+        // dequeue parent theme styles 
         wp_dequeue_style( 'ut-flexslider' );
         wp_dequeue_style( 'ut-prettyphoto' );
         wp_dequeue_style( 'ut-superfish' );
