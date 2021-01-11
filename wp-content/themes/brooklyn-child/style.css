@@ -988,11 +988,6 @@ html {
 	display: none !important;
 }
 
-.post .entry-content {
-	height: 180px;
-	overflow: hidden;
-}
-
 .tag-cta .entry-content,
 .tag-intro .entry-content,
 .tag-picture .entry-content {

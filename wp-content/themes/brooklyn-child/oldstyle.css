@@ -2256,6 +2256,10 @@ button.slick-next {
   display: none;
 }
 
+.single-product .globalpopup .modal-dialog {
+  margin: 50px auto;
+}
+
 .main-content-background {
   overflow-x: hidden;
 }
@@ -2606,6 +2610,10 @@ button.slick-next {
   .product-footer.pbstick {
     position: relative;
     bottom: 100%;
+  }
+
+  .single-product .globalpopup .modal-dialog {
+    margin-top: 30px;
   }
 }
 
@@ -3883,10 +3891,6 @@ html:lang(en-GB) .checkout-progress {
 
   .woocommerce div.product div.images.woocommerce-product-gallery {
     width: 100%;
-  }
-
-  .product-footer+div {
-    display: none !important;
   }
 
   .skl .label-writer-text {
