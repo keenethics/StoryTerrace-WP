@@ -20,60 +20,39 @@ defined('ABSPATH') || exit;
 
 global $product;
 
-?>
-<?php
 $langg =  ICL_LANGUAGE_CODE;
-if ($langg == 'en-US') { ?>
-<?php
-  $payment_text_plan = get_field('payment_text_plan', 'option');
-  $shipping_text_plan = get_field('shipping_text_plan', 'option');
-  $confirmation_text_plan = get_field('confirmation_text_plan', 'option');
-  ?>
+$payment_text_plan = get_field('payment_text_plan', 'option') ?? 'Choose Payment Plan';
+$shipping_text_plan = get_field('shipping_text_plan', 'option') ?? 'Shipping / Payment Details';
+$confirmation_text_plan = get_field('confirmation_text_plan', 'option') ?? 'Confirmation';
+
+$get_help_text = get_field('get_help_text', 'option');
+$get_help_number = get_field('get_help_number', 'option');
+$get_help_call_text = get_field('get_help_call_text', 'option');
+$delivery_text_product = get_field('delivery_text_product', 'option');
+$welcome_pack_text = get_field('welcome_pack_text', 'option');
+$request_button_text = get_field('request_button_text', 'option');
+$continue_buy_button_text = get_field('continue_buy_button_text', 'option') ?? 'Continue Buying Online';
+$continue_option_button_text = get_field('continue_option_button_text', 'option') ?? 'Continue';
+$request_form = get_field('request_form', 'option');
+$request_form_title = get_field('request_form_title', 'option');
+$request_form_description = get_field('request_form_description', 'option');
+
+?>
+
 <div class="checkout-progress">
   <div class="step step1 active"><span>1</span>
-    <?php if (!empty($payment_text_plan)) {
-      echo $payment_text_plan;
-    } else { ?>Choose Payment Plan <?php } ?>
+    <?php echo $payment_text_plan; ?>
   </div>
 
   <div class="step step2"><span>2</span>
-    <?php if (!empty($shipping_text_plan)) {
-      echo $shipping_text_plan;
-    } else { ?>Shipping / Payment Details <?php } ?>
+    <?php echo $shipping_text_plan; ?>
   </div>
 
   <div class="step step3"><span>3</span>
-    <?php if (!empty($confirmation_text_plan)) {
-      echo $confirmation_text_plan;
-    } else { ?>Confirmation <?php } ?>
+    <?php echo $confirmation_text_plan; ?>
   </div>
 </div>
-<?php } else { ?>
-<?php
-  $payment_text_plan = get_field('payment_text_plan', 'option');
-  $shipping_text_plan = get_field('shipping_text_plan', 'option');
-  $confirmation_text_plan = get_field('confirmation_text_plan', 'option');
-  ?>
-<div style="display: none;" class="checkout-progress">
-  <div class="step step1 active"><span>1</span>
-    <?php if (!empty($payment_text_plan)) {
-      echo $payment_text_plan;
-    } else { ?>Choose Payment Plan <?php } ?>
-  </div>
 
-  <div class="step step2"><span>2</span>
-    <?php if (!empty($shipping_text_plan)) {
-      echo $shipping_text_plan;
-    } else { ?>Shipping / Payment Details <?php } ?>
-  </div>
-
-  <div class="step step3"><span>3</span>
-    <?php if (!empty($confirmation_text_plan)) {
-      echo $confirmation_text_plan;
-    } else { ?>Confirmation <?php } ?>
-  </div>
-</div>
-<?php } ?>
 <?php
 /**
  * Hook: woocommerce_before_single_product.
@@ -133,20 +112,7 @@ if (post_password_required()) {
 </div><!-- #product-<?php the_ID(); ?> -->
 
 <?php do_action('woocommerce_after_single_product'); ?>
-<?php
-$get_help_text = get_field('get_help_text', 'option');
-$get_help_number = get_field('get_help_number', 'option');
-$get_help_call_text = get_field('get_help_call_text', 'option');
-$delivery_text_product = get_field('delivery_text_product', 'option');
-$welcome_pack_text = get_field('welcome_pack_text', 'option');
-$request_button_text = get_field('request_button_text', 'option');
-$continue_buy_button_text = get_field('continue_buy_button_text', 'option');
-$continue_option_button_text = get_field('continue_option_button_text', 'option');
-$request_form = get_field('request_form', 'option');
-$request_form_title = get_field('request_form_title', 'option');
-$request_form_description = get_field('request_form_description', 'option');
 
-?>
 <div class="product-footer">
   <?php if ($langg == 'en-US') { ?>
   <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 shipping-text">
@@ -198,38 +164,47 @@ $request_form_description = get_field('request_form_description', 'option');
   </div>
   <?php } ?>
   <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 continue-checkout">
-    <?php if ($langg == 'en-US') { ?>
-    <h4 class="t-price"><span class='tps'>Total Price:</span><span class="prie2"></span><span class="prie3"></span></h4>
-    <div class="addshowgr" style="
-              display: none;
-          "><a class="btn-gotocart addgry" href="#">Continue</a></div>
-    <a class="btn-gotocart cartload" style="display: none;" href="#">
-      <?php if (!empty($continue_option_button_text)) {
-          echo $continue_option_button_text;
-        } else { ?>Continue<?php } ?>
-    </a>
-    <i class="btn-tick fa fa-check done"></i>
-    <?php } else { ?>
-    <h4 class="t-price"><span class='tps'>Total Price:</span><span class="prie2"></span><span class="prie3"></span></h4>
-    <?php if (!empty($request_button_text)) { ?>
-    <a href="#" class="btn-request" data-toggle="modal" data-target="#myModal1"><?php echo $request_button_text; ?></a>
-    <?php } ?>
-    <a class="btn-continue" href="#">
-      <?php if (!empty($continue_buy_button_text)) {
-        echo $continue_buy_button_text;
-        } else { ?>Continue Buying Online<?php } ?>
-    </a>
 
-    <div class="addshowgr" style="display: none;">
-      <a class="btn-gotocart addgry" href="#">Continue</a>
-    </div>
-    <a class="btn-gotocart cartload" style="display: none;" href="#">
-      <?php if (!empty($continue_option_button_text)) {
-          echo $continue_option_button_text;
-        } else { ?>Continue<?php } ?>
-    </a>
-    <i class="btn-tick fa fa-check done"></i>
-    <?php } ?>
+    <?php if ($langg == 'en-US') { ?>
+      <h4 class="t-price"><span class='tps'>Total Price:</span>
+        <span class="prie2"></span><span class="prie3"></span>
+      </h4>
+      <?php if (!empty($request_button_text)) { ?>
+        <a href="javascript:;" class="btn-request" data-toggle="modal" data-target="#myModal1">
+          <?php echo $request_button_text; ?>
+        </a>
+      <?php } ?>
+      <div class="addshowgr" style="display: none;">
+        <a class="btn-gotocart addgry" href="javascript:;">Continue</a>
+      </div>
+      <a class="btn-gotocart cartload" style="display: none;" href="javascript:;">
+        <?php echo $continue_option_button_text; ?>
+      </a>
+      <i class="btn-tick fa fa-check done"></i>
+
+    <?php } else { //if $langg not 'en-US' ?> 
+
+      <h4 class="t-price"><span class='tps'>Total Price:</span>
+        <span class="prie2"></span><span class="prie3"></span>
+      </h4>
+      <?php if (!empty($request_button_text)) { ?>
+        <a href="javascript:;" class="btn-request" data-toggle="modal" data-target="#myModal1">
+          <?php echo $request_button_text; ?>
+        </a>
+      <?php } ?>
+      <a class="btn-continue" href="javascript:;">
+        <?php echo $continue_buy_button_text; ?>
+      </a>
+
+      <div class="addshowgr" style="display: none;">
+        <a class="btn-gotocart addgry" href="javascript:;">Continue</a>
+      </div>
+      <a class="btn-gotocart cartload" style="display: none;" href="javascript:;">
+        <?php echo $continue_option_button_text; ?>
+      </a>
+      <i class="btn-tick fa fa-check done"></i>
+    <?php } //end if $langg == 'en-US'?>
+
   </div>
 </div>
 <div class="globalpopup modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -252,6 +227,7 @@ $request_form_description = get_field('request_form_description', 'option');
     </div>
   </div>
 </div>
+
 <?php
 $lang =  ICL_LANGUAGE_CODE;
 if ($lang == 'en-US') { ?>
@@ -264,11 +240,6 @@ if ($lang == 'en-US') { ?>
 
   .woocommerce-variation-add-to-cart.variations_button.woocommerce-variation-add-to-cart-enabled {
     display: block !important;
-  }
-
-  .btn-request,
-  .btn-continue {
-    display: none !important;
   }
 </style>
 

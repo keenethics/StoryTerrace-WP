@@ -2215,14 +2215,9 @@ button.slick-next {
 
 .product-footer {
   background-color: #f8f8f8;
-  float: left;
-  clear: both;
-  display: block;
   width: 100%;
   position: relative;
   margin-top: 40px;
-  padding-top: 10px;
-  padding-bottom: 10px;
 }
 
 .product-footer+div {
@@ -3763,7 +3758,9 @@ p#account_password_field {
 }
 
 html:lang(nl-NL) .woocommerce-checkout-payment .payment_methods .payment_method_affirm,
-html:lang(en-GB) .woocommerce-checkout-payment .payment_methods .payment_method_affirm {
+html:lang(en-GB) .woocommerce-checkout-payment .payment_methods .payment_method_affirm,
+html:lang(nl-NL) .checkout-progress,
+html:lang(en-GB) .checkout-progress {
   display: none !important;
 }
 
