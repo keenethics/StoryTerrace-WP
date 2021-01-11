@@ -2211,19 +2211,7 @@ button.slick-next{
 
 @media only screen and (max-height:768px) and (orientation:landscape){
     .product-footer{
-        /*position:fixed;
-        bottom:0px;
-        -webkit-transition:all 200ms ease-in;
-        -moz-transition:all 200ms ease-in;
-        -ms-transition:all 200ms ease-in;
-        transition:all 200ms ease-in;*/
-        z-index: 9999;
-    }
-    /*.product-footer:hover, .product-footer:focus{
-        bottom:0;
-    }*/
-    #primary{
-        /*padding-bottom: 90px;*/
+        z-index: 999;
     }
     #primary.footeractive{
         padding-bottom: 0px;

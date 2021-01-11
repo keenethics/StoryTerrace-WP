@@ -68,6 +68,7 @@ function my_theme_scripts() {
      */
     if ( class_exists( 'woocommerce' ) && is_product() ){
         wp_enqueue_script( 'singleproductpage-js', get_stylesheet_directory_uri().'/js/singleproductpage.js', array( 'jquery' ), '1.0.1', true );
+        wp_enqueue_script( 'bootstrap-js', get_stylesheet_directory_uri().'/assets/js/bootstrap.min.js', array( 'jquery' ), '3.4.1', true );
     }
 
     if ( class_exists( 'woocommerce' ) && is_checkout() ){
