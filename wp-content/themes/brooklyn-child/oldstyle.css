@@ -1803,9 +1803,15 @@ img {
   text-align: center;
 }
 
+@media only screen and (max-width: 767px) {
+	.page-template-writerssingle-tpl .entry-content {
+		padding: 0 10px;
+	}
+}
 /************************
   End writer details page
 ************************/
+
 @media (max-width:1199px) {
   .grid-container {
     padding-left: 15px;
