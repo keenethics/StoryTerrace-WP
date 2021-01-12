@@ -396,6 +396,7 @@ span.close-bar {
 
 .request__link a:hover {
 	background-color: #0c1b1e;
+	text-decoration: none;
 }
 
 @media only screen and (max-width:1600px) {
@@ -2180,12 +2181,6 @@ body.writer-match-form #primary {
 
 .hubspotContactContainer .inputs-list li:not(:last-child) {
 	margin-bottom: 10px;
-}
-
-@media only screen and (max-width: 767px) {
-	.page-template-writerssingle-tpl .entry-content {
-		padding: 0 10px;
-	}
 }
 
 .footer {

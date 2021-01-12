@@ -1803,9 +1803,15 @@ img {
   text-align: center;
 }
 
+@media only screen and (max-width: 767px) {
+	.page-template-writerssingle-tpl .entry-content {
+		padding: 0 10px;
+	}
+}
 /************************
   End writer details page
 ************************/
+
 @media (max-width:1199px) {
   .grid-container {
     padding-left: 15px;
@@ -6555,12 +6561,6 @@ td.wccpf_label {
   line-height: 1.1;
 }
 
-.footer__col ul {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
 .footer__col li {
   line-height: 1;
 }
@@ -6848,7 +6848,7 @@ td.wccpf_label {
 
 .footer__info address {
   line-height: 1.8;
-  color: #212529;
+  color: #545353;
 }
 
 @media only screen and (max-width: 1080px) {
