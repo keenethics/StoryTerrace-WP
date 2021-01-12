@@ -1765,6 +1765,10 @@ a.toTop {
   color: #f06d66;
 }
 
+.ut-btn:hover {
+  text-decoration: none;
+}
+
 .ut-mobile-menu a:hover:after,
 .ut-mobile-menu a:hover {
   color: #fff;
