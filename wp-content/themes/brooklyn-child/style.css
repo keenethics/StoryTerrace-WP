@@ -396,6 +396,7 @@ span.close-bar {
 
 .request__link a:hover {
 	background-color: #0c1b1e;
+	text-decoration: none;
 }
 
 @media only screen and (max-width:1600px) {
