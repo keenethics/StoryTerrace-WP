@@ -1,0 +1,7 @@
+{
+  "vars": {},
+  "js": [
+    "modal.js",
+    "transition.js"
+  ]
+}

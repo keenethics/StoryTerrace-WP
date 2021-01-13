@@ -28,9 +28,6 @@ get_header(); ?>
             
 		</div><!-- close grid-container -->
 
-
-<?php //get_template_part( 'model', 'content' ); ?>
-
 <?php include_once( 'bottom-banner-section.php' ); ?>   
         <div class="ut-scroll-up-waypoint" data-section="section-<?php echo ut_clean_section_id($post->post_name); ?>"></div>
   <script type="text/javascript">
