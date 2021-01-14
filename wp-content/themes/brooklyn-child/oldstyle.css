@@ -2530,7 +2530,7 @@ button.slick-next {
 }
 
 .woocommerce .label {
-  display: none;
+  color: #414b56;
 }
 
 .woocommerce.single-product .footer,
@@ -2659,10 +2659,6 @@ button.slick-next {
 }
 
 .woocommerce-variation-price {
-  display: none;
-}
-
-#payment-plan {
   display: none;
 }
 

@@ -258,7 +258,6 @@ if ($lang == 'en-US') { ?>
         $jq('.tps').text('Total Price:');
       }
     });
-    $jq("#payment-plan input:radio:eq(0)").prop("checked", true).trigger("click");
   });
 </script>
 <?php } else { ?>

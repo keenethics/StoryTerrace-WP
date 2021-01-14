@@ -128,7 +128,6 @@
 
 		});		   
 		$(".btn-continue").click(function(){
-			$(".p1").show(); 
 			$(".btn-gotocart").show(); 
 			$(".p0").hide(); 
 			$(".btn-continue").hide(); 
@@ -170,7 +169,6 @@
 		var datav4 = $('.alldatav .instalment-x2-to-be-paid').html();
 		$('.skl .instalment-x2-to-be-paid').html(datav4);
 		$('.skl .in-termijnen-twee-betalingen').html(datav4);
-		$('.p1').hide();
 		var pay0 = $('.alldatav .pay-0').html();
 		$('.skl .pay-0').html(pay0);
 		var pay1 = $('.alldatav .pay-1').html();
