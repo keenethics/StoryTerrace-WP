@@ -157,6 +157,15 @@ function display_price_in_variation_option_name( $term ) {
 
 add_filter( 'woocommerce_variation_option_name', 'display_price_in_variation_option_name' );
 
+/**
+ * Ensure variation combinations are working properly - standard limit is 30
+ */
+function woo_custom_ajax_variation_threshold( $qty, $product ) {
+    return 150;
+}       
+
+add_filter( 'woocommerce_ajax_variation_threshold', 'woo_custom_ajax_variation_threshold', 10, 2 );
+
 //custom post type for in the media section
 function my_custom_post_types() {
     $labels = array(
@@ -185,6 +194,7 @@ function my_custom_post_types() {
         register_post_type( 'inthemedia', $args );
 }
 add_action( 'init', 'my_custom_post_types' );
+
 //taxonomy 
 add_action( 'init', 'create_medialanguage_taxonomy' );
 
