@@ -391,3 +391,38 @@ add_filter( 'the_excerpt', 'link_words' );
 function get_image_size() {
 	return wp_is_mobile() ? 'thumbnail' : 'large';
 }
+
+/**
+ * Variations Radio Buttons for WooCommerce
+ */
+function print_attribute_radios($checked_value, $value, $label, $name, $vi, $description = '') {
+    // This handles < 2.4.0 bw compatibility where text attributes were not sanitized.
+    $checked = sanitize_title($checked_value) === $checked_value ? checked($checked_value, sanitize_title($value), false) : checked($checked_value, $value, false);
+
+    $input_name = 'attribute_' . esc_attr($name);
+    $esc_value = esc_attr($value);
+    $id = esc_attr($name . '_v_' . $value);
+    $smallval = strtolower(str_replace(" ", "-", $value));
+    $smallval1 = str_replace("(", "", $smallval);
+    $smallval2 = str_replace(")", "", $smallval1);
+    $filtered_label = apply_filters('woocommerce_variation_option_name', $label);
+
+    // ToDo: check and remove
+    if ($vi <=  2) {
+        if (strpos($label, 'Writer') !== false) {
+            $count = $vi;
+        } elseif (strpos($label, 'schrijver') !== false) {
+            $count = $vi;
+        } elseif (strpos($label, 'Schrijver') !== false) {
+            $count = $vi;
+        } else {
+            $count = '';
+            $custompayclass = 'pay-' . $vi;
+        }
+    }
+
+    $count = $vi;
+
+    printf('<div><label for="%3$s"><input type="radio" class="variation_price" data-variation="' . $count . '" name="%1$s" value="%2$s" id="%3$s" %4$s><div class="labelback"></div>%5$s<div class="label-writer-text %6$s ' . $custompayclass . '"></div>
+    <span id="varUpdation' . $count . '"></span><div class="label-writer-text">%7$s</div></label></div>', $input_name, $esc_value, $id, $checked, $filtered_label, $smallval2, $description);
+}

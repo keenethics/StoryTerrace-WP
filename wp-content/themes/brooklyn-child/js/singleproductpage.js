@@ -9,7 +9,6 @@
 			var priceVal = priceVal.replace('</bdi>',"");
 			var priceVal = priceVal.replace(',',"");
 			priceVal = parseInt(priceVal);
-			// console.log(priceVal);
 			allPrices.push(priceVal);
 			$.each(allPrices, function(i, e) {
 				if ($.inArray(e, result) == -1) result.push(e);
@@ -18,12 +17,17 @@
 
 		result=result.sort(function(a, b){return b-a});
 
+		//ToDo: fix hardcoded values
 		$('.variations_form input').on('change', function() {
-			var data = $('input[name=attribute_writer-level]:checked', '.variations_form').attr("data-variation");
-			var data1 = $('input[name=attribute_schijversniveau]:checked', '.variations_form').attr("data-variation");
-			var data2 = $('input[name=attribute_niveau-schrijver]:checked', '.variations_form').attr("data-variation");
+			$('.variations_form .p0 .variation_price').each(function(){
+				var index = 0;
+				var data = {
+				  [index]: $(this).attr("data-variation")
+				}
+			});
+			
 			var curen = $('.woocommerce-Price-currencySymbol').html();
-			if (data == 0 || data1 == 0 || data2 == 0){
+			if (data[0] == 0 || data[1] == 0 || data[2] == 0){
 				var variOne="";
 				var variTwo=result[0]-result[1];
 				var variThree=result[0]-result[2];
@@ -31,7 +35,7 @@
 				$("#varUpdation1").html("-" + curen + variTwo);
 				$("#varUpdation2").html("-" + curen + variThree);	 
 			}
-			if (data == 1 || data1 == 1 || data2 == 1){
+			if (data[0] == 1 || data[1] == 1 || data[2] == 1){
 				var variOne=result[0]-result[1];
 				var variTwo="";
 				var variThree=result[1]-result[2];
@@ -39,7 +43,7 @@
 				$("#varUpdation1").html(variTwo);
 				$("#varUpdation2").html("-" + curen + variThree);
 			}
-			if (data == 2 || data1 == 2 || data2 == 2){
+			if (data[0] == 2 || data[1] == 2 || data[2] == 2){
 				var variOne=result[0]-result[2];
 				var variTwo=result[1]-result[2];
 				var variThree="";
@@ -154,27 +158,7 @@
 			$('.quantity,.wc-pao-addon-choose-additional-copies').hide(); 
 			$('.wc-pao-addon').hide(); 
 			$('#product-addons-total').hide(); 
-		}, 200);
-		var datav = $('.alldatav .premium-writer').html();
-		$('.skl .premium-writer').html(datav);
-		var datav1 = $('.alldatav .senior-writer').html();
-		$('.skl .senior-writer').html(datav1);
-		$('.skl .senior-schrijver').html(datav1);
-		var datav2 = $('.alldatav .junior-writer').html();
-		$('.skl .junior-writer').html(datav2);
-		$('.skl .junior-schrijver').html(datav2);
-		var datav3 = $('.alldatav .single-payment').html();
-		$('.skl .single-payment').html(datav3);
-		$('.skl .eenmalige-betaling').html(datav3);
-		var datav4 = $('.alldatav .instalment-x2-to-be-paid').html();
-		$('.skl .instalment-x2-to-be-paid').html(datav4);
-		$('.skl .in-termijnen-twee-betalingen').html(datav4);
-		var pay0 = $('.alldatav .pay-0').html();
-		$('.skl .pay-0').html(pay0);
-		var pay1 = $('.alldatav .pay-1').html();
-		$('.skl .pay-1').html(pay1);
-		var pay2 = $('.alldatav .pay-2').html();
-		$('.skl .pay-2').html(pay2);
+		}, 200);		
 	});
 	jQuery(document).ready(function($){
 		  jQuery('.wccpf-field').change(function() {
