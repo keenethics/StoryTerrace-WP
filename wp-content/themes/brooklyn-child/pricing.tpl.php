@@ -107,7 +107,6 @@ $curlangss =  ICL_LANGUAGE_CODE;
                             <div class="or-price">OR</div>
                             <div class="price-discounted">
                               <span>As Low As</span>
-                              <!-- <div class="discpunt-price <?php //echo strtolower($row['title']).'-price'; ?>"><?php //echo "$".number_format($row['book_first_price_discount'])."/mo"; ?></div> -->
                               <div class="discpunt-price"><?php echo "$".number_format($row['book_first_price_discount'])."/mo"; ?></div>
                                 <div class="affirm-logo">
                                 <span>with</span>

@@ -19,14 +19,19 @@
 
 		//ToDo: fix hardcoded values
 		$('.variations_form input').on('change', function() {
+			var data = {};
+			var index = 0;
+
 			$('.variations_form .p0 .variation_price').each(function(){
-				var index = 0;
-				var data = {
+				data = {
 				  [index]: $(this).attr("data-variation")
 				}
+
+				index++;
 			});
 			
 			var curen = $('.woocommerce-Price-currencySymbol').html();
+
 			if (data[0] == 0 || data[1] == 0 || data[2] == 0){
 				var variOne="";
 				var variTwo=result[0]-result[1];
@@ -35,6 +40,7 @@
 				$("#varUpdation1").html("-" + curen + variTwo);
 				$("#varUpdation2").html("-" + curen + variThree);	 
 			}
+
 			if (data[0] == 1 || data[1] == 1 || data[2] == 1){
 				var variOne=result[0]-result[1];
 				var variTwo="";
@@ -43,6 +49,7 @@
 				$("#varUpdation1").html(variTwo);
 				$("#varUpdation2").html("-" + curen + variThree);
 			}
+
 			if (data[0] == 2 || data[1] == 2 || data[2] == 2){
 				var variOne=result[0]-result[2];
 				var variTwo=result[1]-result[2];
@@ -124,6 +131,7 @@
 				var numx = incrnum.toLocaleString();
 				var ftil = curen + numx + '.00';
 				var newf =  $('.variations_form .price .woocommerce-Price-amount').html(ftil);
+				
 				if(newvals == 0){
 					$('.prie2').show();
 					$('.quantity-down').css('pointer-events','none');
@@ -145,14 +153,19 @@
 			$('.woocommerce-variation-add-to-cart').show(); 
 			return false;
 		});
+
 		$('.form-row-wide label').hide();
+
 		setInterval(function(){ 
-			$('.prie2').html($('.variations_form .price .woocommerce-Price-amount').html());
-		}, 100);
+			$('.prie2').html($('.variations_form .price .woocommerce-Price-amount').html())
+			}, 100);
+
 		setInterval(function(){ 
 			$('.prie').html($('.wc-pao-addon-totals dd:eq(1)').html());
 		}, 100);
+
 		$('.quantity-down').css('pointer-events','none');
+
 		setTimeout(function(){ 
 			$('.woocommerce-variation-add-to-cart').hide(); 
 			$('.quantity,.wc-pao-addon-choose-additional-copies').hide(); 
