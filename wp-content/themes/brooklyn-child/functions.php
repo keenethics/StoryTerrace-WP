@@ -426,3 +426,19 @@ function print_attribute_radios($checked_value, $value, $label, $name, $vi, $des
     printf('<div><label for="%3$s"><input type="radio" class="variation_price" data-variation="' . $count . '" name="%1$s" value="%2$s" id="%3$s" %4$s><div class="labelback"></div>%5$s<div class="label-writer-text %6$s ' . $custompayclass . '"></div>
     <span id="varUpdation' . $count . '"></span><div class="label-writer-text">%7$s</div></label></div>', $input_name, $esc_value, $id, $checked, $filtered_label, $smallval2, $description);
 }
+
+
+/**
+ * Convert text to underscore
+ * Non-alpha and non-numeric characters become spaces
+ * 
+ * @return string
+ */
+function convert_text_to_underscore($str, array $noStrip = []){        
+        $str = preg_replace('/[^a-z0-9' . implode("", $noStrip) . ']+/i', ' ', $str);
+        $str = trim($str);
+        $str = str_replace(" ", "_", $str);
+        $str = strtolower($str);
+
+        return $str;
+}

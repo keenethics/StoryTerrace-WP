@@ -18,16 +18,14 @@
 		result=result.sort(function(a, b){return b-a});
 
 		//ToDo: fix hardcoded values
-		$('.variations_form input').on('change', function() {
+		$('.variations_form .p0 .variation_price').on('change', function() {
 			var data = {};
 			var index = 0;
 
-			$('.variations_form .p0 .variation_price').each(function(){
-				data = {
-				  [index]: $(this).attr("data-variation")
-				}
+			$('.variations_form .variation_price:checked').each(function(){
+				var index = $(this).attr("data-variation");
 
-				index++;
+				return data[index] = index;
 			});
 			
 			var curen = $('.woocommerce-Price-currencySymbol').html();
@@ -59,6 +57,7 @@
 				$("#varUpdation2").html(variThree);
 			}
 		});
+
 		$(".btn-gotocart").click(function(){
 			$( ".cartload" ).addClass('addgry');
 

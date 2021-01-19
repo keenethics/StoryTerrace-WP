@@ -21,7 +21,7 @@ defined('ABSPATH') || exit;
 global $product;
 
 $langg =  ICL_LANGUAGE_CODE;
-$payment_text_plan = get_field('payment_text_plan', 'option') ?? 'Choose Payment Plan';
+$payment_text_plan = get_field('payment_text_plan', 'option') ?? 'Package Details';
 $shipping_text_plan = get_field('shipping_text_plan', 'option') ?? 'Shipping / Payment Details';
 $confirmation_text_plan = get_field('confirmation_text_plan', 'option') ?? 'Confirmation';
 
