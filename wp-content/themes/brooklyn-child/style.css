@@ -1701,6 +1701,7 @@ body.writer-match-form #primary {
 
 .product-footer .learn-more-affirm p#learn-more {
 	display: inline;
+	margin-left: 3px;
 	font-size: 19px;
 	color: #000 !important;
 }
@@ -1768,10 +1769,6 @@ body.writer-match-form #primary {
 
 .woocommerce-checkout-payment .payment_methods li {
 	display: block !important;
-}
-
-.woocommerce-checkout #payment .payment_methods .payment_method_paypal .tab-wrap {
-	background-position-x: 60px !important;
 }
 
 .woocommerce-checkout-payment .payment_methods li {
@@ -1844,10 +1841,6 @@ body.writer-match-form #primary {
 	max-width: none;
 	padding: 0 !important;
 	margin-bottom: 25px !important;
-}
-
-.woocommerce-checkout #payment .payment_methods .wc_payment_method:first-child .tab-wrap {
-	background-position-x: 60px;
 }
 
 .woocommerce-checkout #payment .payment_methods>li.payment_method_stripe img,
