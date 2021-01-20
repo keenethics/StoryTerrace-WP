@@ -257,7 +257,7 @@ $banner_time = get_field('banner_time');
             <?php
             wp_reset_postdata();
             else :
-              esc_html_e( 'No In The Media Found', 'text-domain' );
+              esc_html_e( 'No In The Media Found', 'storyterrace' );
             endif;
             ?>
                <div style="display: none;" class="jscroll-next"><?php next_posts_link( 'Load More', $inthemedia->max_num_pages) ?></div>

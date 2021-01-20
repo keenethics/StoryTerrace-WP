@@ -32,7 +32,7 @@ do_action( 'woocommerce_before_add_to_cart_form' ); ?>
 			<?php $i = 0; ?>
 				<?php foreach ( $attributes as $name => $options ) : ?>
 						<div class="variation-label">
-							<h3><?php echo __( 'Choose ', 'woocommerce' ) . wc_attribute_label( $name ); ?></h3>
+							<h3><?php echo __( 'Choose ', 'storyterrace' ) . wc_attribute_label( $name ); ?></h3>
 							<div class="variation-label-description">
 								<?php echo get_field(convert_text_to_underscore( wc_attribute_label( $name ) ) . '_description'); ?>
 							</div>
