@@ -3245,12 +3245,6 @@ input[type=number] {
   margin: 0;
 }
 
-#add_payment_method #payment ul.payment_methods li img,
-.woocommerce-cart #payment ul.payment_methods li img,
-.woocommerce-checkout #payment ul.payment_methods li img {
-  max-width: 40px;
-}
-
 .checkoutBilling-details input,
 .select2-container--default .select2-selection--single,
 textarea#order_comments,
@@ -3735,7 +3729,7 @@ p#account_password_field {
   color: #333;
   position: relative;
   background-repeat: no-repeat;
-  background-position: left center;
+  background-position: 70px center;
   display: inherit;
 }
 
@@ -3778,16 +3772,28 @@ html:lang(en-GB) .checkout-progress {
   display: none !important;
 }
 
-.woocommerce-checkout #payment .payment_methods .wc_payment_method:first-child .tab-wrap {
+.woocommerce-checkout #payment .payment_methods .payment_method_stripe .tab-wrap {
   background-image: url('images/ic-payment.svg');
-  background-position-x: 20px;
-  text-indent: 30px;
+  background-size: 35px;
+  background-position-y: 8px;
+  text-indent: 50px;
 }
 
 .woocommerce-checkout #payment .payment_methods .payment_method_paypal .tab-wrap {
-  background-image: url('images/paypal.svg') !important;
-  background-position: center center !important;
-  color: transparent !important;
+  background-image: url('images/paypal.svg');
+  color: transparent;
+}
+
+.woocommerce-checkout #payment .payment_methods .payment_method_affirm .tab-wrap {
+  display: flex;
+}
+
+.woocommerce-checkout #payment .payment_methods .payment_method_affirm .tab-wrap .payment-affirm-title {
+  order: 1;
+}
+
+.woocommerce-checkout #payment .payment_methods .payment_method_affirm .tab-wrap img {
+  margin: 8px 0;
 }
 
 .tabs-gateway {
