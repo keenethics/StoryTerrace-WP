@@ -37,6 +37,7 @@ $request_form = get_field('request_form', 'option');
 $request_form_title = get_field('request_form_title', 'option');
 $request_form_description = get_field('request_form_description', 'option');
 
+$total_price_text = __( 'Total Price: ', 'storyterrace' );
 ?>
 
 <div class="checkout-progress">
@@ -165,8 +166,8 @@ if (post_password_required()) {
   <?php } ?>
   <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 continue-checkout">
 
-    <?php if ($langg == 'en-US') { ?>
-      <h4 class="t-price"><span class='tps'>Total Price:</span>
+      <h4 class="t-price">
+        <span class="tps" data-total-price-text="<?php echo $total_price_text ?>"><?php echo $total_price_text ?></span>        
         <span class="prie2"></span><span class="prie3"></span>
       </h4>
       <?php if (!empty($request_button_text)) { ?>
@@ -174,27 +175,12 @@ if (post_password_required()) {
           <?php echo $request_button_text; ?>
         </a>
       <?php } ?>
-      <div class="addshowgr" style="display: none;">
-        <a class="btn-gotocart addgry" href="javascript:;">Continue</a>
-      </div>
-      <a class="btn-gotocart cartload" style="display: none;" href="javascript:;">
-        <?php echo $continue_option_button_text; ?>
-      </a>
-      <i class="btn-tick fa fa-check done"></i>
 
-    <?php } else { //if $langg not 'en-US' ?> 
-
-      <h4 class="t-price"><span class='tps'>Total Price:</span>
-        <span class="prie2"></span><span class="prie3"></span>
-      </h4>
-      <?php if (!empty($request_button_text)) { ?>
-        <a href="javascript:;" class="btn-request" data-toggle="modal" data-target="#myModal1">
-          <?php echo $request_button_text; ?>
+      <?php if ($langg !== 'en-US') { ?>
+        <a class="btn-continue" href="javascript:;">
+          <?php echo $continue_buy_button_text; ?>
         </a>
-      <?php } ?>
-      <a class="btn-continue" href="javascript:;">
-        <?php echo $continue_buy_button_text; ?>
-      </a>
+      <?php }?>
 
       <div class="addshowgr" style="display: none;">
         <a class="btn-gotocart addgry" href="javascript:;">Continue</a>
@@ -203,7 +189,6 @@ if (post_password_required()) {
         <?php echo $continue_option_button_text; ?>
       </a>
       <i class="btn-tick fa fa-check done"></i>
-    <?php } //end if $langg == 'en-US'?>
 
   </div>
 </div>
@@ -250,14 +235,10 @@ if ($lang == 'en-US') { ?>
   $jq(document).ready(function ($) {
     $('div.learn-more-affirm').insertAfter('.product-footer h4.t-price');
     $('a.affirm-modal-trigger').text('Affirm.');
-    $jq(".variation_price").click(function () {
-      var tps = $(this).val();
-      if (tps == 'Installment (x2 to be paid)' || tps == '10% Refundable Deposit') {
-        $jq('.tps').text('First Payment:');
-      } else {
-        $jq('.tps').text('Total Price:');
-      }
-    });
+
+
+
+
   });
 </script>
 <?php } else { ?>
@@ -276,14 +257,7 @@ if ($lang == 'en-US') { ?>
   var $jq = jQuery.noConflict();
   $jq(document).ready(function ($) {
     $('div.learn-more-affirm').remove();
-    $jq(".variation_price").click(function () {
-      var tps = $(this).val();
-      if (tps == 'Instalment (x2 to be paid)' || tps == '10% Refundable Deposit') {
-        $jq('.tps').text('First Payment:');
-      } else {
-        $jq('.tps').text('Total Price:');
-      }
-    });
+
     $jq("#payment-plan input:radio:eq(0)").prop("checked", true).trigger("click");
   });
 </script>
@@ -294,21 +268,6 @@ if ($lang == 'nl') { ?>
   var $jq = jQuery.noConflict();
   $jq(document).ready(function ($) {
     $jq('div.learn-more-affirm').remove();
-    $jq('.tps').html('Totale prijs:');
-    $jq('.variation_price').click(function () {
-      var tps = $(this).val();
-
-      if (tps == 'In termijnen (twee betalingen)') {
-        $jq('.tps').text('Eerste betaling:');
-      } else {
-        $jq('.tps').text('Totale prijs:');
-      }
-      if (tps == 'Termijnen (2x een betaling)') {
-        $jq('.tps').text('Eerste betaling:');
-      } else {
-        $jq('.tps').text('Totale prijs:');
-      }
-    });
     $jq("#payment-plan input:radio:eq(0)").prop("checked", true).trigger("click");
   });
 </script>
