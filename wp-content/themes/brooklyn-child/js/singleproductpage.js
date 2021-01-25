@@ -79,6 +79,22 @@
 		}
 
 		$(".variation_price").click(function () {
+			// change text on the product page bottom
+			var $totalPriceElement = $('.product-footer .tps');
+			var totalPriceElementText = $totalPriceElement.data('total-price-text');
+
+			if ($(this).parents('#pa_payment-plan').length) {
+				if ($(this).val().startsWith('single-payment')) {
+					$totalPriceElement.text(totalPriceElementText);
+				} else {
+					$totalPriceElement.text($('.variations_form').data('first-payment-text'));
+				}	
+			} else {
+				if ($totalPriceElement[0].innerText === totalPriceElementText) return;				
+
+				$totalPriceElement.text(totalPriceElementText);
+			}
+
 			$('.form-row-wide').each(function () {
 				var spinnerx = $(this);
 				spinnerx.find("input").val(0);
