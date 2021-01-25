@@ -250,14 +250,10 @@ if ($lang == 'en-US') { ?>
   $jq(document).ready(function ($) {
     $('div.learn-more-affirm').insertAfter('.product-footer h4.t-price');
     $('a.affirm-modal-trigger').text('Affirm.');
-    $jq(".variation_price").click(function () {
-      var tps = $(this).val();
-      if (tps == 'Installment (x2 to be paid)' || tps == '10% Refundable Deposit') {
-        $jq('.tps').text('First Payment:');
-      } else {
-        $jq('.tps').text('Total Price:');
-      }
-    });
+
+
+
+
   });
 </script>
 <?php } else { ?>
@@ -276,6 +272,7 @@ if ($lang == 'en-US') { ?>
   var $jq = jQuery.noConflict();
   $jq(document).ready(function ($) {
     $('div.learn-more-affirm').remove();
+
     $jq(".variation_price").click(function () {
       var tps = $(this).val();
       if (tps == 'Instalment (x2 to be paid)' || tps == '10% Refundable Deposit') {
@@ -284,6 +281,7 @@ if ($lang == 'en-US') { ?>
         $jq('.tps').text('Total Price:');
       }
     });
+
     $jq("#payment-plan input:radio:eq(0)").prop("checked", true).trigger("click");
   });
 </script>
@@ -295,6 +293,7 @@ if ($lang == 'nl') { ?>
   $jq(document).ready(function ($) {
     $jq('div.learn-more-affirm').remove();
     $jq('.tps').html('Totale prijs:');
+  
     $jq('.variation_price').click(function () {
       var tps = $(this).val();
 
@@ -309,6 +308,7 @@ if ($lang == 'nl') { ?>
         $jq('.tps').text('Totale prijs:');
       }
     });
+    
     $jq("#payment-plan input:radio:eq(0)").prop("checked", true).trigger("click");
   });
 </script>

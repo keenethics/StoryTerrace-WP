@@ -79,20 +79,23 @@
 		}
 
 		$(".variation_price").click(function () {
-			jQuery('.form-row-wide').each(function () {
-				var spinnerx = jQuery(this);
+			$('.form-row-wide').each(function () {
+				var spinnerx = $(this);
 				spinnerx.find("input").val(0);
 				spinnerx.find("input").trigger("change");
 			});
 		});
-		jQuery('.form-row-wide').each(function () {
-			var spinnerx = jQuery(this);
+
+		$('.form-row-wide').each(function () {
+			var spinnerx = $(this);
 			spinnerx.find("input").val(0);
 			spinnerx.find("input").trigger("change");
 		});
-		jQuery('<div class="quantity-nav"><div class="quantity-button quantity-up">+</div><div class="quantity-button quantity-down">-</div></div>').insertAfter('.wc-pao-addon-input-multiplier');
-		jQuery('.form-row-wide').each(function () {
-			var spinner = jQuery(this),
+
+		$('<div class="quantity-nav"><div class="quantity-button quantity-up">+</div><div class="quantity-button quantity-down">-</div></div>').insertAfter('.wc-pao-addon-input-multiplier');
+		
+		$('.form-row-wide').each(function () {
+			var spinner = $(this),
 				input = spinner.find('input[type="number"]'),
 				btnUp = spinner.find('.quantity-up'),
 				btnDown = spinner.find('.quantity-down'),
@@ -142,8 +145,8 @@
 					$('.quantity-down').css('pointer-events', 'none');
 				}
 			});
-
 		});
+
 		$(".btn-continue").click(function () {
 			$(".btn-gotocart").show();
 			$(".p0").hide();
@@ -177,9 +180,8 @@
 			$('.wc-pao-addon').hide();
 			$('#product-addons-total').hide();
 		}, 200);
-	});
-	jQuery(document).ready(function ($) {
-		jQuery('.wccpf-field').change(function () {
+
+		$('.wccpf-field').change(function () {
 			if ($(this).prop('checked')) {
 				var curen = $('.woocommerce-Price-currencySymbol').html();
 				var pird = $('.variations_form .price .woocommerce-Price-amount').text();

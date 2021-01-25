@@ -19,6 +19,9 @@ defined( 'ABSPATH' ) || exit;
 
 global $product;
 $attribute_keys = array_keys( $attributes );
+var_dump($attribute_keys);
+echo '<br><br>';
+var_dump($attributes);
 
 do_action( 'woocommerce_before_add_to_cart_form' ); ?>
 
