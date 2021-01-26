@@ -3794,6 +3794,7 @@ html:lang(en-GB) .checkout-progress {
 
 .woocommerce-checkout #payment .payment_methods .payment_method_affirm .tab-wrap img {
   margin: 8px 0;
+  order: -1;
 }
 
 .tabs-gateway {
