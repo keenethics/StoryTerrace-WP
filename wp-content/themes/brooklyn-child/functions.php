@@ -406,6 +406,7 @@ function print_attribute_radios($checked_value, $value, $label, $name, $vi, $des
     $smallval1 = str_replace("(", "", $smallval);
     $smallval2 = str_replace(")", "", $smallval1);
     $filtered_label = apply_filters('woocommerce_variation_option_name', $label);
+    $custompayclass = '';
 
     // ToDo: check and remove
     if ($vi <=  2) {
