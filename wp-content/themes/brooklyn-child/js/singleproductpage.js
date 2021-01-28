@@ -1,64 +1,52 @@
-	var allPrices = [];
 	jQuery(document).ready(function ($) {
-		var result = [];
-		$(".woocommerce-Price-amount").each(function () {
-			var priceVal = $(this).html();
-			var curen = $('.woocommerce-Price-currencySymbol').html();
-			var priceVal = priceVal.replace('<span class="woocommerce-Price-currencySymbol">' + curen + '</span>', "");
-			var priceVal = priceVal.replace('<bdi>', "");
-			var priceVal = priceVal.replace('</bdi>', "");
-			var priceVal = priceVal.replace(',', "");
-			priceVal = parseInt(priceVal);
-			allPrices.push(priceVal);
-			$.each(allPrices, function (i, e) {
-				if ($.inArray(e, result) == -1) result.push(e);
+		var variationSections = [
+			'.variations_form .p0',
+			'.variations_form .p1'
+		]
+
+		// convert pricing with comma and dot to number
+		function convertPriceToNumber (number) {
+			return Number(number.replace(/[^0-9.-]+/g,""));
+		}
+
+		// add currency symbol and plus or minus
+		function getPriceWithSymbol(number, symbol) {
+			return number ? number < 0 ? '-' + symbol + Math.abs(number) : '+' + symbol + number : '';
+		}
+
+		// get price from .amount element and calculate diff
+		function calculatePricingDiff(variant) {
+			var generalVaration = variant.find('.variation_price');
+
+			function findPricingDiff(variant) {
+				var activeVariation = generalVaration.filter(':checked');
+				var activeVariationPrice = activeVariation.siblings('.label-title').find('.amount')[0].innerText;		
+				var passiveVariation = generalVaration.filter(':not(:checked)');
+				var shopSymbol = variant.find('.woocommerce-Price-currencySymbol')[0].innerText;
+
+				passiveVariation.each(function () {
+					var passiveVariationPrice = $(this).siblings('.label-title').find('.amount')[0].innerText;	
+					var pricingDiff = convertPriceToNumber(activeVariationPrice) - convertPriceToNumber(passiveVariationPrice);
+	
+					$(this).siblings('.variation-diff-price').html(getPriceWithSymbol(pricingDiff, shopSymbol));
+				})
+			}
+
+			// run pricing diff function
+			findPricingDiff(variant);
+
+			// calculate diff on click to the variant
+			generalVaration.on('change', function () {
+				$(this).siblings('.variation-diff-price').html('');
+
+				findPricingDiff(variant);
 			});
+		};
+
+		$.each(variationSections, function(...value) {
+			calculatePricingDiff($(value[1]));
 		});
 
-		result = result.sort(function (a, b) {
-			return b - a
-		});
-
-		//ToDo: fix hardcoded values
-		$('.variations_form .p0 .variation_price').on('change', function () {
-			var data = {};
-			var index = 0;
-
-			$('.variations_form .variation_price:checked').each(function () {
-				var index = $(this).attr("data-variation");
-
-				return data[index] = index;
-			});
-
-			var curen = $('.woocommerce-Price-currencySymbol').html();
-
-			if (data[0] == 0 || data[1] == 0 || data[2] == 0) {
-				var variOne = "";
-				var variTwo = result[0] - result[1];
-				var variThree = result[0] - result[2];
-				$("#varUpdation0").html(variOne);
-				$("#varUpdation1").html("-" + curen + variTwo);
-				$("#varUpdation2").html("-" + curen + variThree);
-			}
-
-			if (data[0] == 1 || data[1] == 1 || data[2] == 1) {
-				var variOne = result[0] - result[1];
-				var variTwo = "";
-				var variThree = result[1] - result[2];
-				$("#varUpdation0").html("+" + curen + variOne);
-				$("#varUpdation1").html(variTwo);
-				$("#varUpdation2").html("-" + curen + variThree);
-			}
-
-			if (data[0] == 2 || data[1] == 2 || data[2] == 2) {
-				var variOne = result[0] - result[2];
-				var variTwo = result[1] - result[2];
-				var variThree = "";
-				$("#varUpdation0").html("+" + curen + variOne);
-				$("#varUpdation1").html("+" + curen + variTwo);
-				$("#varUpdation2").html(variThree);
-			}
-		});
 
 		$(".btn-gotocart").click(function () {
 			$(".cartload").addClass('addgry');

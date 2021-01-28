@@ -409,27 +409,29 @@ function print_attribute_radios($checked_value, $value, $label, $name, $vi, $des
     $custompayclass = '';
 
     // ToDo: check and remove
-    if ($vi <=  2) {
-        if (strpos($label, 'Writer') !== false) {
-            $count = $vi;
-        } elseif (strpos($label, 'schrijver') !== false) {
-            $count = $vi;
-        } elseif (strpos($label, 'Schrijver') !== false) {
-            $count = $vi;
-        } else {
-            $count = '';
-            $custompayclass = 'pay-' . $vi;
-        }
-    }
+    // if ($vi <=  2) {
+    //     if (strpos($label, 'Writer') !== false) {
+    //         $count = $vi;
+    //     } elseif (strpos($label, 'schrijver') !== false) {
+    //         $count = $vi;
+    //     } elseif (strpos($label, 'Schrijver') !== false) {
+    //         $count = $vi;
+    //     } else {
+    //         $count = '';
+    //         $custompayclass = 'pay-' . $vi;
+    //     }
+    // }
 
     $count = $vi;
 
-    printf('<div><label for="%3$s"><input type="radio" class="variation_price" data-variation="' . $count . '"
+    printf('<label for="%3$s"><input type="radio" class="variation_price" data-variation="' . $count . '"
                 name="%1$s" value="%2$s" id="%3$s" %4$s>
-            <div class="labelback"></div>%5$s<div class="label-writer-text %6$s ' . $custompayclass . '"></div>
-            <span id="varUpdation' . $count . '"></span>
+            <div class="labelback"></div>
+            <div class="label-title">%5$s</div>
+            <div class="label-writer-text %6$s ' . $custompayclass . '"></div>
+            <span class="variation-diff-price" id="varUpdation' . $count . '"></span>
             <div class="label-writer-text">%7$s</div>
-        </label></div>', $input_name, $esc_value, $id, $checked, $filtered_label, $smallval2, $description);
+        </label>', $input_name, $esc_value, $id, $checked, $filtered_label, $smallval2, $description);
 }
 
 
