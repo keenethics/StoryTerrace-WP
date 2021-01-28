@@ -1817,10 +1817,6 @@ body.writer-match-form #primary {
 	left: 26px;
 }
 
-.woocommerce-checkout-payment .payment_methods li label.active:after {
-	display: block;
-}
-
 .woocommerce-checkout-payment .payment_methods li label input {
 	width: 0;
 	height: 0;
@@ -1873,16 +1869,6 @@ body.writer-match-form #primary {
 .woocommerce-checkout #payment .payment_methods>li:nth-child(5) {
 	position: relative;
 }
-
-.woocommerce-checkout-payment .payment_methods li:nth-child(even) label {
-	padding-left: 0 !important;
-}
-
-.woocommerce-checkout-payment .payment_methods li:nth-child(even) label:before,
-.woocommerce-checkout-payment .payment_methods li:nth-child(even) label:after {
-	display: none;
-}
-
 
 .price-discounted .affirm-logo {
 	line-height: 0;
@@ -2059,9 +2045,9 @@ body.writer-match-form #primary {
 
 }
 
-.woocommerce-checkout-payment .payment_methods li.payment_method_paypal label:before,
-.woocommerce-checkout-payment .payment_methods li.payment_method_paypal label.active:after {
-	display: block !important;
+.woocommerce-checkout-payment .payment_methods .tab-wrap:before,
+.woocommerce-checkout-payment .payment_methods .tab-wrap.active:after {
+	display: block;
 }
 
 .woocommerce .order_details {
@@ -2204,13 +2190,14 @@ body.writer-match-form #primary {
 	margin-top: -6px;
 }
 
-.woocommerce-checkout #payment .payment_methods>li.payment_method_stripe_ideal img {
-	display: inline-block;
-	float: left;
-	margin-top: 14px !important;
-	margin-right: 5px !important;
-	padding-left: 0 !important;
-	max-width: 26px !important;
+.woocommerce-checkout #payment .payment_methods>li.payment_method_stripe_ideal .stripe-ideal-icon {
+    display: inline-block;
+    float: left;
+    margin-top: 14px;
+    margin-right: 5px;
+    padding-left: 0;
+    max-width: 26px;
+    margin-left: 10px;
 }
 
 .writer-tabs-group .tab-pane>div img {
