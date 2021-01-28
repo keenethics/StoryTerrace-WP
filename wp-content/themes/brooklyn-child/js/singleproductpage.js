@@ -20,12 +20,14 @@
 
 			function findPricingDiff(variant) {
 				var activeVariation = generalVaration.filter(':checked');
-				var activeVariationPrice = activeVariation.siblings('.label-title').find('.amount')[0].innerText;		
+				var activeVariationTitle = activeVariation.siblings('.label-title');
+				var activeVariationPrice = activeVariationTitle.find('.label-title-price').length ? activeVariationTitle.find('.label-title-price')[0].textContent : '';
 				var passiveVariation = generalVaration.filter(':not(:checked)');
-				var shopSymbol = variant.find('.woocommerce-Price-currencySymbol')[0].innerText;
+				var shopSymbol = $('.price .woocommerce-Price-currencySymbol')[0].textContent;
 
 				passiveVariation.each(function () {
-					var passiveVariationPrice = $(this).siblings('.label-title').find('.amount')[0].innerText;	
+					var passiveVariationTitle = $(this).siblings('.label-title');
+					var passiveVariationPrice = passiveVariationTitle.find('.label-title-price').length ? passiveVariationTitle.find('.label-title-price')[0].textContent : '';	
 					var pricingDiff = convertPriceToNumber(activeVariationPrice) - convertPriceToNumber(passiveVariationPrice);
 	
 					$(this).siblings('.variation-diff-price').html(getPriceWithSymbol(pricingDiff, shopSymbol));
