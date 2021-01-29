@@ -28,7 +28,7 @@
 				passiveVariation.each(function () {
 					var passiveVariationTitle = $(this).siblings('.label-title');
 					var passiveVariationPrice = passiveVariationTitle.find('.label-title-price').length ? passiveVariationTitle.find('.label-title-price')[0].textContent : '';	
-					var pricingDiff = convertPriceToNumber(activeVariationPrice) - convertPriceToNumber(passiveVariationPrice);
+					var pricingDiff = convertPriceToNumber(passiveVariationPrice) - convertPriceToNumber(activeVariationPrice);
 	
 					$(this).siblings('.variation-diff-price').html(getPriceWithSymbol(pricingDiff, shopSymbol));
 				})

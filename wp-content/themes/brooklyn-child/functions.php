@@ -131,9 +131,6 @@ add_action( 'wp_enqueue_scripts', 'remove_wp_block_library_css', 100 );
  * @param  string $term Existing option term value.
  * @return string $term Existing option term value or updated term value with price.
  */
-//Add prices to variations
-add_filter('woocommerce_variation_option_name', 'display_price_in_variation_option_name');
-
 function display_price_in_variation_option_name($term) {
     global $wpdb, $product;
 
@@ -162,6 +159,8 @@ function display_price_in_variation_option_name($term) {
 
     return $term;
 }
+
+add_filter('woocommerce_variation_option_name', 'display_price_in_variation_option_name');
 
 /**
  * Ensure variation combinations are working properly - standard limit is 30
