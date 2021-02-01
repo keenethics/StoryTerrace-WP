@@ -13,6 +13,46 @@
 		function getPriceWithSymbol(number, symbol) {
 			return number ? number < 0 ? '-' + symbol + Math.abs(number) : '+' + symbol + number : '';
 		}
+		
+		function createCombination(variant, selector) {
+			var compare = [];
+
+			// ToDo: optimize
+			if (selector === '.p1 .variation_price') {
+				console.log('selector = ', selector === '.p1 .variation_price');
+				compare.push($(variant).val());			
+				compare.push($(selector + ':checked').val());
+			} else {	
+				compare.push($(selector + ':checked').val());
+				compare.push($(variant).val());		
+			}
+
+			return compare;
+		}
+
+		function addPriceToVariation(currentVariation, oppositeVariation) {
+			$(currentVariation).each(function() {
+				var result = filterFromData(createCombination(currentVariation, oppositeVariation));
+	
+				$(this).attr('data-variation-price', result);
+			})
+		}
+
+		function filterFromData(compare) {
+			var TestObj = $('.variations_form').data( 'product_variations' );
+
+			for (var i=0; i < TestObj.length; i++) {
+				var a = TestObj[i].attributes;
+				var result = Object.keys(a).map(function(key){
+					return a[key]
+				})								
+				
+				if (JSON.stringify(result) === JSON.stringify(compare)) {	
+					 return TestObj[i].display_price;
+				}	
+			}
+			
+		}
 
 		// get price from .amount element and calculate diff
 		function calculatePricingDiff(variant) {
@@ -37,11 +77,19 @@
 			// run pricing diff function
 			findPricingDiff(variant);
 
+			// ToDo: optimize
+			addPriceToVariation('.p0 .variation_price', '.p1 .variation_price');
+			addPriceToVariation('.p1 .variation_price', '.p0 .variation_price');
+
+
 			// calculate diff on click to the variant
 			generalVaration.on('change', function () {
 				$(this).siblings('.variation-diff-price').html('');
 
 				findPricingDiff(variant);
+				// ToDo: optimize
+				addPriceToVariation('.p0 .variation_price', '.p1 .variation_price');
+				addPriceToVariation('.p1 .variation_price', '.p0 .variation_price');
 			});
 		};
 
