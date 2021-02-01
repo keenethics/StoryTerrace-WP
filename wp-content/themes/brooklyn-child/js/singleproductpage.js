@@ -25,6 +25,8 @@
 		function addPriceToVariation(currentVariation, oppositeVariation) {
 			$(currentVariation).each(function() {
 				var result = filterFromData(createCombination(this, oppositeVariation));
+
+				
 				$(this).data('variation-price', result);
 			})
 		}
@@ -34,12 +36,13 @@
 			var formData = $('.variations_form').data( 'product_variations' );
 
 			for (var i=0; i < formData.length; i++) {
-				var a = formData[i].attributes;
+				var a = formData[i].attributes;				
 				var result = Object.keys(a).map(function(key){
-					return a[key]
-				})								
+					if (key !== 'attribute_pa_payment-plan') return a[key];									
+				})			
 				
-				if (JSON.stringify(result) === JSON.stringify(compare)) {	
+				// slice relust array for GB and NL locale
+				if (JSON.stringify(result.slice(0, 2)) === JSON.stringify(compare)) {	
 					 return formData[i].display_price;
 				}	
 			}			
