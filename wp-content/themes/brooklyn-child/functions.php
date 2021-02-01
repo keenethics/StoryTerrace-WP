@@ -410,7 +410,7 @@ function print_attribute_radios($checked_value, $value, $label, $name, $count, $
     $filtered_label = apply_filters('woocommerce_variation_option_name', $label);
 
     printf(
-        '<label for="%3$s"><input type="radio" class="variation_price" data-variation="' . $count . '"
+        '<label for="%3$s"><input type="radio" class="variation_price" data-variation="' . $count . '" data-variation-price=""
                 name="%1$s" value="%2$s" id="%3$s" %4$s>
             <div class="labelback"></div>
             <div class="label-title">%5$s</div>

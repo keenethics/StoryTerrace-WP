@@ -3,15 +3,18 @@
 			'.variations_form .p0',
 			'.variations_form .p1'
 		]
+		var variationInputClass = '.variation_price';
+		var dataVariationPrice = 'data-variation-price';
 
 		// add currency symbol and plus or minus
 		function getPriceWithSymbol(number, symbol) {
 			return number ? number < 0 ? '-' + symbol + Math.abs(number) : '+' + symbol + number : '';
 		}
 
-		// ToDo: optimize
-		addPriceToVariation('.p0 .variation_price', '.p1 .variation_price:checked');
-		addPriceToVariation('.p1 .variation_price', '.p0 .variation_price:checked');
+		function addPriceToAllVariations(selectorArray) {
+			addPriceToVariation(selectorArray[0] + ' ' + variationInputClass, selectorArray[1] + ' ' + variationInputClass + ':checked');
+			addPriceToVariation(selectorArray[1] + ' ' + variationInputClass, selectorArray[0] + ' ' + variationInputClass + ':checked');
+		}
 
 		// create array with writer level and interview format
 		function createCombination(variant, selector) {
@@ -25,9 +28,8 @@
 		function addPriceToVariation(currentVariation, oppositeVariation) {
 			$(currentVariation).each(function() {
 				var result = filterFromData(createCombination(this, oppositeVariation));
-
 				
-				$(this).data('variation-price', result);
+				$(this).attr(dataVariationPrice, result);
 			})
 		}
 
@@ -50,16 +52,16 @@
 
 		// get price from .amount element and calculate diff
 		function calculatePricingDiff(variant) {
-			var generalVaration = variant.find('.variation_price');
+			var generalVaration = variant.find(variationInputClass);
 			var shopSymbol = $('.price .woocommerce-Price-currencySymbol')[0].textContent;
 
 			function findPricingDiff(variant) {
-				var generalVaration = variant.find('.variation_price');
+				var generalVaration = variant.find(variationInputClass);
 				var activeVariation = generalVaration.filter(':checked');
 				var passiveVariation = generalVaration.filter(':not(:checked)');
 
 				passiveVariation.each(function () {
-					var pricingDiff = $(this).data('variation-price') - activeVariation.data('variation-price');
+					var pricingDiff = $(this).attr(dataVariationPrice) - activeVariation.attr(dataVariationPrice);
 	
 					$(this).siblings('.variation-diff-price').html(getPriceWithSymbol(pricingDiff, shopSymbol));
 				})
@@ -72,21 +74,20 @@
 			generalVaration.on('change', function () {
 				$(this).siblings('.variation-diff-price').html('');
 				
-				// ToDo: optimize
-				addPriceToVariation('.p0 .variation_price', '.p1 .variation_price:checked');
-				addPriceToVariation('.p1 .variation_price', '.p0 .variation_price:checked');
+				addPriceToAllVariations(variationSections);
 
-				// ToDo: optimize
 				$.each(variationSections, function(...value) {
 					findPricingDiff($(value[1]));
 				});
 			});
 		};
 
+		// run all variations functions
+		addPriceToAllVariations(variationSections);
+
 		$.each(variationSections, function(...value) {
 			calculatePricingDiff($(value[1]));
 		});
-
 
 		$(".btn-gotocart").click(function () {
 			$(".cartload").addClass('addgry');
