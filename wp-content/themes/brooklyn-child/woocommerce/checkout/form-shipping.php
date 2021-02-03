@@ -18,7 +18,7 @@
 
 defined( 'ABSPATH' ) || exit;
 ?>
-<div class="acc-btn"><h1 class="selected"><i class="checkout-step-counter">2</i>Shipping details</h1></div>
+<div class="acc-btn"><h1 class="selected"><i class="checkout-step-counter">2</i><?php _e( 'Shipping details', 'storyterrace' ) ?></h1></div>
 <div class="acc-content open">
 		  <div class="acc-content-inner">
 <div class="woocommerce-shipping-fields">
