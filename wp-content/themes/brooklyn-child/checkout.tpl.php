@@ -90,7 +90,7 @@ get_header(); ?>
 
 
         <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 continue-checkout">
-          <h4><span class="instt">Total Price</span>: <span class="prie">$2500</span></h4>
+          <h4><span class="instt">Total Price</span>: <span class="prie"></span></h4>
           <?php $price = $woocommerce->cart->total; ?>
           <div class="learn-more-affirm"><span>Or</span>
             <p id="learn-more" class="affirm-as-low-as" data-amount="<?php echo $woocommerce->cart->total * 100; ?>" data-affirm-color="blue" data-learnmore-show="true" data-page-type="product"></p>
@@ -116,7 +116,7 @@ get_header(); ?>
           <?php } ?>
         </div>
         <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 continue-checkout">
-          <h4><span class="instt">Total Price</span>: <span class="prie">$2500</span></h4>
+          <h4><span class="instt">Total Price</span>: <span class="prie"></span></h4>
           <a class="btn-gotocart" href="#">Complete</a>
         </div>
       </div>
@@ -187,7 +187,7 @@ if ($lang == 'nl') { ?>
       $('div.learn-more-affirm span').remove();
       $('li.payment_method_affirm').remove();
       $('.btn-gotocart').text('Compleet');
-      $('.instt').text('Totale prijs:');
+      $('.instt').text('Totale prijs');
       if ($('.deskcart a').is(':contains("betaling")')) {
         $('.psub').text('Eerste betaling');
         $('.instt').text('Eerste betaling');
