@@ -192,21 +192,6 @@
 			});
 		});
 
-		$(".btn-continue").click(function () {
-			$(".btn-gotocart").show();
-			$(".p0").hide();
-			$(".btn-continue").hide();
-			$(".btn-request").hide();
-			$(".checkout-progress").show();
-			$(".wril").hide();
-			$(".wrip").show();
-			$('.wc-pao-addon-choose-additional-copies').show();
-			$('.wc-pao-addon-container').show();
-			$('.quantity').hide();
-			$('.woocommerce-variation-add-to-cart').show();
-			return false;
-		});
-
 		$('.form-row-wide label').hide();
 
 		setInterval(function () {

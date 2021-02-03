@@ -1710,14 +1710,9 @@ body.writer-match-form #primary {
 	text-transform: lowercase;
 }
 
-.product-footer .btn-request,
-.product-footer .btn-continue {
+.product-footer .btn-request {
 	max-width: 300px;
 	font-family: 'Gotham-Medium' !important;
-}
-
-.product-footer .btn-continue {
-	margin-bottom: 0;
 }
 
 .product-footer .t-price .tps {
@@ -2022,8 +2017,7 @@ body.writer-match-form #primary {
 		font-size: 16px;
 	}
 
-	.product-footer .btn-request,
-	.product-footer .btn-continue {
+	.product-footer .btn-request {
 		font-size: 16px;
 	}
 

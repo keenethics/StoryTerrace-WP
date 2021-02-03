@@ -31,7 +31,6 @@ $get_help_call_text = get_field('get_help_call_text', 'option');
 $delivery_text_product = get_field('delivery_text_product', 'option');
 $welcome_pack_text = get_field('welcome_pack_text', 'option');
 $request_button_text = get_field('request_button_text', 'option');
-$continue_buy_button_text = get_field('continue_buy_button_text', 'option') ?? 'Continue Buying Online';
 $continue_option_button_text = get_field('continue_option_button_text', 'option') ?? 'Continue';
 $request_form = get_field('request_form', 'option');
 $request_form_title = get_field('request_form_title', 'option');
@@ -175,17 +174,7 @@ if (post_password_required()) {
           <?php echo $request_button_text; ?>
         </a>
       <?php } ?>
-
-      <?php if ($langg !== 'en-US') { ?>
-        <a class="btn-continue" href="javascript:;">
-          <?php echo $continue_buy_button_text; ?>
-        </a>
-      <?php }?>
-
-      <div class="addshowgr" style="display: none;">
-        <a class="btn-gotocart addgry" href="javascript:;">Continue</a>
-      </div>
-      <a class="btn-gotocart cartload" style="display: none;" href="javascript:;">
+      <a class="btn-gotocart cartload" href="javascript:;">
         <?php echo $continue_option_button_text; ?>
       </a>
       <i class="btn-tick fa fa-check done"></i>

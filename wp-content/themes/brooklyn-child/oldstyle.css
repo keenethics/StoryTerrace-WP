@@ -2380,7 +2380,6 @@ button.slick-next {
   width: 25%;
 }
 
-.btn-continue,
 .btn-gotocart {
   display: block;
   background-color: #f06d66;
@@ -2406,8 +2405,6 @@ button.slick-next {
   transition: all 300ms ease-in;
 }
 
-.btn-continue:hover,
-.btn-continue:focus,
 .btn-gotocart:hover,
 .btn-gotocart:focus {
   background-color: #e0615a;
