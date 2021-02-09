@@ -107,7 +107,7 @@
 
 			// calculate diff on click to the variant
 			generalVaration.on('change', function () {
-				if ($(this).val() === 'single-payment' || $(this).val() === '10-deposit') return;
+				if ($(this).val() === 'single-payment' || $(this).val().includes('10-deposit')) return;
 
 				$(this).siblings('.variation-diff-price').html('');
 				
