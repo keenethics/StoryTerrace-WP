@@ -2,13 +2,11 @@
 		var variationSections = []
 		var variationInputClass = '.variation_price';
 		var dataVariationPrice = 'data-variation-price';
+		var $variations = $('.variations .value');
 
-		$('.variations .value').each(function(index) {
-			console.log(this)
+		$variations.each(function(index) {
 			variationSections[index] = '#' + this.id + ' ' + variationInputClass;
 		});
-
-		// console.log('variationSections = ', variationSections);
 
 		addPriceToAllVariations(variationSections);
 
@@ -19,25 +17,12 @@
 
 		function addPriceToAllVariations(selectorArray) {
 			var combos = [];
-			
-			// $(selectorArray).each(function(index, element) {
 
-			// })
-
-			//ToDo: optimzie array
-			// addPriceToVariation(selectorArray[0], selectorArray[1] + ':checked', selectorArray[2] + ':checked');
-			// addPriceToVariation(selectorArray[1], selectorArray[2] + ':checked', selectorArray[0] + ':checked');
-			// addPriceToVariation(selectorArray[2], selectorArray[0] + ':checked', selectorArray[1] + ':checked');
-
-
+			//ToDo: optimzie iteration
 			var firstArrayCopy = Array.from(selectorArray);
 			var secondArray = firstArrayCopy.concat(firstArrayCopy.splice(0, 1));
 			var secondArrayCopy = Array.from(secondArray);
 			var thirdArray = secondArrayCopy.concat(secondArrayCopy.splice(0, 1));
-
-			console.log('thirdArray = ', thirdArray);
-			console.log('secondArray = ', secondArray);
-			console.log('selectorArray = ', selectorArray);
 
 			// ToDo: fix hardcoded condition
 			if (selectorArray.length === 2) {
@@ -55,32 +40,25 @@
 					addPriceToVariation(selectorArray[i], secondArray[i] + ':checked', thirdArray[i] + ':checked');
 				}
 			} 
-
-			console.log('combos = ', combos);
 		}
 
 		// create array with writer level and interview format
 		function createCombination(variant, firstSelector, secondSelector) {
 			var compare = [];
-			// console.log('variant = ', variant);
-			// console.log('firstSelector = ', firstSelector);
-			// console.log('secondSelector = ', secondSelector);
 
-			compare.push($(variant).val(), $(firstSelector).val(), $(secondSelector).val());	
+			compare.push($(variant).val(), $(firstSelector).val());	
 
-			console.log('compare = ', compare);
+			// ToDo: fix hardcoded
+			if (secondSelector) {
+				compare.push($(secondSelector).val());
+			}
+
 			return compare;
 		}
 
 		// add price to the variation data-variation-price 
 		function addPriceToVariation(currentVariation, secondVariation, thirdVariation) {
-			// console.log('currentVariation = ', currentVariation);
-			// console.log('secondVariation = ', secondVariation);
-			// console.log('thirdVariation = ', thirdVariation);
-
 			$(currentVariation).each(function() {
-
-				// console.log('start each compare');
 				var result = filterFromData(createCombination(this, secondVariation, thirdVariation));
 				
 				$(this).attr(dataVariationPrice, result);
@@ -94,18 +72,11 @@
 			for (var i=0; i < formData.length; i++) {
 				var a = formData[i].attributes;				
 				var result = Object.keys(a).map(function(key){
-					// if (key !== 'attribute_pa_payment-plan') return a[key];	
 					return a[key];									
 				})			
 				
-
-
-
-				// slice relust array for GB and NL locale
+				// compare arrays
 				if (JSON.stringify(result.sort()) == JSON.stringify(compare.sort())) {	
-					// console.log(JSON.stringify(result.sort()));
-					// console.log(JSON.stringify(compare.sort()));
-					// console.log('formData[i].display_price = ', formData[i].display_price);
 					return formData[i].display_price;
 				}	
 			}			
@@ -121,21 +92,11 @@
 				var activeVariation = generalVaration.filter(':checked');
 				var passiveVariation = generalVaration.filter(':not(:checked)');
 
-				console.log('passiveVariation = ', passiveVariation);
-				console.log('activeVariation = ', activeVariation);
-
 				passiveVariation.each(function () {
 					var pricingDiff = $(this).attr(dataVariationPrice) - activeVariation.attr(dataVariationPrice);
 
-					console.log('$(this).parents()', $(this).closest('#pa_payment-plan').length);
-					// console.log('!!!!!!pricingDiff = ', pricingDiff);
-					// console.log('!!!!!!pricingDiff 1 = ', $(this).attr(dataVariationPrice));
-					// console.log('!!!!!!pricingDiff 2 = ', activeVariation.attr(dataVariationPrice));
-					//if ($(this).parents('#pa_payment-plan')) return;
-					
-					//dont add diff for payment plan section
+					// exception for payment plan section
 					if ($(this).closest('#pa_payment-plan').length) return;
-
 	
 					$(this).siblings('.variation-diff-price').html(getPriceWithSymbol(pricingDiff, shopSymbol));
 				})
@@ -149,50 +110,18 @@
 				if ($(this).val() === 'single-payment' || $(this).val() === '10-deposit') return;
 
 				$(this).siblings('.variation-diff-price').html('');
-
-				console.log('$(this).siblings = ', $(this).siblings('.variation-diff-price'))
 				
 				addPriceToAllVariations(variationSections);
 
-				$('.variations .value').each(function() {
-					// console.log('value = ', $(this));
-			
+				$variations.each(function() {			
 					findPricingDiff($(this));
 				});
 			});
 		};
 
-		// run all variations functions
-		//addPriceToAllVariations(variationSections);
-
-		// var stuff = [];
-
-		$('.variations .value').each(function() {
+		$variations.each(function() {
 			calculatePricingDiff($(this));
-
-			// variationSections[index] = element;
-
-			//console.log('stuff = ', stuff)
-
-			//addPriceVariation($(this));
 		});
-
-		//addPriceToAllVariations(variationSections);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 		$(".btn-gotocart").click(function () {
 			$(".cartload").addClass('addgry');
