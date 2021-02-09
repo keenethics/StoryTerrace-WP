@@ -303,6 +303,7 @@ $curlangss =  ICL_LANGUAGE_CODE;
           jQuery(document).ready(function($){
               $(".pricing__select select").change(function (event) {
                   var newval = $(this).parents('.pricing__middle');
+
                   var current_price = $(this).children("option:selected").val(); 
                   var discount_price = $(this).children("option:selected").data('discount');
                   var cl = $(this).children("option:selected").data('cl');
@@ -312,16 +313,16 @@ $curlangss =  ICL_LANGUAGE_CODE;
                   $('#'+writers).css('display', 'inline-block');
                   $('#'+writers).addClass('this-price');
                   var affirm_price = newval.find('.this-price #learn-more .affirm-ala-price').text();
-                  // newval.find('.pricing__price').html($(this).val());
                   newval.find('.pricing__price .pay-price').html(current_price);
                   newval.find('.pricing__price .discpunt-price').html(affirm_price+'/mo');
                   var fortitle = $(this).parents('.pricing__bottom');
                   urls = fortitle.find('.link-filled').attr('data-price-link');
                   urls = urls.split('?')
+
                   getselecttect = newval.find(":selected").text();
-                  var getselecttect = getselecttect.split(' ').join('+');
+                  var getselecttect = getselecttect.toLowerCase().split(' ').join('-');
                   fortitle.find('.link-filled').attr('href','')
-                  fortitle.find('.link-filled').attr('href',urls[0]+'?attribute_writer-level='+getselecttect);
+                  fortitle.find('.link-filled').attr('href',urls[0]+'?attribute_pa_writer-level='+getselecttect);
              });     
              $('.hl1 .pricing__select select option:eq(1)').prop('selected', true);
              $('.hl2 .pricing__select select option:eq(2)').prop('selected', true);
@@ -339,10 +340,11 @@ $curlangss =  ICL_LANGUAGE_CODE;
                   var fortitle = $(this).parents('.pricing__bottom');
                   urls = fortitle.find('.link-filled').attr('data-price-link');
                   urls = urls.split('?')
+
                   getselecttect = newval.find(":selected").text();
-                  var getselecttect = getselecttect.split(' ').join('+');
+                  var getselecttect = getselecttect.toLowerCase().split(' ').join('-');
                   fortitle.find('.link-filled').attr('href','')
-                  fortitle.find('.link-filled').attr('href',urls[0]+'?attribute_writer-level='+getselecttect);
+                  fortitle.find('.link-filled').attr('href',urls[0]+'?attribute_pa_writer-level=' + getselecttect + '-en-gb');
              });     
              $('.hl1 .pricing__select select option:eq(1)').prop('selected', true);
              $('.hl2 .pricing__select select option:eq(2)').prop('selected', true);
@@ -359,10 +361,11 @@ $curlangss =  ICL_LANGUAGE_CODE;
                  var fortitle = $(this).parents('.pricing__bottom');
                  urls = fortitle.find('.link-filled').attr('data-price-link');
                  urls = urls.split('?')
+
                  getselecttect = newval.find(":selected").text();
-                 var getselecttect = getselecttect.split(' ').join('+');
-                 fortitle.find('.link-filled').attr('href','')
-                 fortitle.find('.link-filled').attr('href',urls[0]+'?attribute_schijversniveau='+getselecttect);
+                  var getselecttect = getselecttect.toLowerCase().split(' ').join('-');
+                  fortitle.find('.link-filled').attr('href','')
+                  fortitle.find('.link-filled').attr('href',urls[0]+'?attribute_pa_writer-level=' + getselecttect);
              });
              $('.hl1 .pricing__select select option:eq(1)').prop('selected', true);
              $('.hl2 .pricing__select select option:eq(2)').prop('selected', true);

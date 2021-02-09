@@ -45,7 +45,7 @@ if ( ! is_ajax() ) {
 		</ul>
 	<?php endif; ?>
 	
-	<div class="checkout-terms-text"><p>By clicking complete you agree to our <a href="/terms-and-conditions">Terms and Conditions</a></p></div>
+	<div class="checkout-terms-text"><p><?php _e( 'By clicking complete you agree to our <a href="/terms-and-conditions">Terms and Conditions</a>', 'storyterrace' ) ?></p></div>
 
 	<div class="form-row place-order">
 		<noscript>

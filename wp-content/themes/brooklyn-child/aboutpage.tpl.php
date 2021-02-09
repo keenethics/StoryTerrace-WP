@@ -77,7 +77,7 @@ get_header(); ?>
 						<?php
 						wp_reset_postdata();
 						else :
-						  esc_html_e( 'No In The Media Found', 'text-domain' );
+						  esc_html_e( 'No In The Media Found', 'storyterrace' );
 						endif;
 						?>
 		           

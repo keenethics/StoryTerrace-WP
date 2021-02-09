@@ -1,99 +1,153 @@
-	var allPrices = [];
-	jQuery(document).ready(function($) {
-		var result = [];
-		$(".woocommerce-Price-amount").each(function(){
-			var priceVal = $(this).html();
-			var curen = $('.woocommerce-Price-currencySymbol').html();
-			var priceVal = priceVal.replace('<span class="woocommerce-Price-currencySymbol">' + curen +'</span>',"");
-			var priceVal = priceVal.replace('<bdi>',"");
-			var priceVal = priceVal.replace('</bdi>',"");
-			var priceVal = priceVal.replace(',',"");
-			priceVal = parseInt(priceVal);
-			allPrices.push(priceVal);
-			$.each(allPrices, function(i, e) {
-				if ($.inArray(e, result) == -1) result.push(e);
+	jQuery(document).ready(function ($) {
+		var variationSections = [
+			'.variations_form .p0',
+			'.variations_form .p1'
+		]
+		var variationInputClass = '.variation_price';
+		var dataVariationPrice = 'data-variation-price';
+
+		// add currency symbol and plus or minus
+		function getPriceWithSymbol(number, symbol) {
+			return number ? number < 0 ? '-' + symbol + Math.abs(number) : '+' + symbol + number : '';
+		}
+
+		function addPriceToAllVariations(selectorArray) {
+			addPriceToVariation(selectorArray[0] + ' ' + variationInputClass, selectorArray[1] + ' ' + variationInputClass + ':checked');
+			addPriceToVariation(selectorArray[1] + ' ' + variationInputClass, selectorArray[0] + ' ' + variationInputClass + ':checked');
+		}
+
+		// create array with writer level and interview format
+		function createCombination(variant, selector) {
+			var compare = [];
+			compare.push($(variant).val(), $(selector).val());	
+
+			return $(variant).parents('.p0').length ? compare : compare.reverse();
+		}
+
+		// add price to the variation data-variation-price 
+		function addPriceToVariation(currentVariation, oppositeVariation) {
+			$(currentVariation).each(function() {
+				var result = filterFromData(createCombination(this, oppositeVariation));
+				
+				$(this).attr(dataVariationPrice, result);
+			})
+		}
+
+		// filter json data from woocommerce form
+		function filterFromData(compare) {
+			var formData = $('.variations_form').data( 'product_variations' );
+
+			for (var i=0; i < formData.length; i++) {
+				var a = formData[i].attributes;				
+				var result = Object.keys(a).map(function(key){
+					if (key !== 'attribute_pa_payment-plan') return a[key];									
+				})			
+				
+				// slice relust array for GB and NL locale
+				if (JSON.stringify(result.slice(0, 2)) === JSON.stringify(compare)) {	
+					 return formData[i].display_price;
+				}	
+			}			
+		}
+
+		// get price from .amount element and calculate diff
+		function calculatePricingDiff(variant) {
+			var generalVaration = variant.find(variationInputClass);
+			var shopSymbol = $('.price .woocommerce-Price-currencySymbol')[0].textContent;
+
+			function findPricingDiff(variant) {
+				var generalVaration = variant.find(variationInputClass);
+				var activeVariation = generalVaration.filter(':checked');
+				var passiveVariation = generalVaration.filter(':not(:checked)');
+
+				passiveVariation.each(function () {
+					var pricingDiff = $(this).attr(dataVariationPrice) - activeVariation.attr(dataVariationPrice);
+	
+					$(this).siblings('.variation-diff-price').html(getPriceWithSymbol(pricingDiff, shopSymbol));
+				})
+			}
+
+			// run pricing diff function
+			findPricingDiff(variant);
+
+			// calculate diff on click to the variant
+			generalVaration.on('change', function () {
+				$(this).siblings('.variation-diff-price').html('');
+				
+				addPriceToAllVariations(variationSections);
+
+				$.each(variationSections, function(...value) {
+					findPricingDiff($(value[1]));
+				});
 			});
+		};
+
+		// run all variations functions
+		addPriceToAllVariations(variationSections);
+
+		$.each(variationSections, function(...value) {
+			calculatePricingDiff($(value[1]));
 		});
 
-		result=result.sort(function(a, b){return b-a});
+		$(".btn-gotocart").click(function () {
+			$(".cartload").addClass('addgry');
 
-		//ToDo: fix hardcoded values
-		$('.variations_form .p0 .variation_price').on('change', function() {
-			var data = {};
-			var index = 0;
-
-			$('.variations_form .variation_price:checked').each(function(){
-				var index = $(this).attr("data-variation");
-
-				return data[index] = index;
-			});
-			
-			var curen = $('.woocommerce-Price-currencySymbol').html();
-
-			if (data[0] == 0 || data[1] == 0 || data[2] == 0){
-				var variOne="";
-				var variTwo=result[0]-result[1];
-				var variThree=result[0]-result[2];
-				$("#varUpdation0").html(variOne);
-				$("#varUpdation1").html("-" + curen + variTwo);
-				$("#varUpdation2").html("-" + curen + variThree);	 
-			}
-
-			if (data[0] == 1 || data[1] == 1 || data[2] == 1){
-				var variOne=result[0]-result[1];
-				var variTwo="";
-				var variThree=result[1]-result[2];
-				$("#varUpdation0").html("+" + curen + variOne);
-				$("#varUpdation1").html(variTwo);
-				$("#varUpdation2").html("-" + curen + variThree);
-			}
-
-			if (data[0] == 2 || data[1] == 2 || data[2] == 2){
-				var variOne=result[0]-result[2];
-				var variTwo=result[1]-result[2];
-				var variThree="";
-				$("#varUpdation0").html("+" + curen + variOne);
-				$("#varUpdation1").html("+" + curen + variTwo);
-				$("#varUpdation2").html(variThree);
-			}
-		});
-
-		$(".btn-gotocart").click(function(){
-			$( ".cartload" ).addClass('addgry');
-
-			setTimeout(function() {
-				$(".single_add_to_cart_button").click(); 
+			setTimeout(function () {
+				$(".single_add_to_cart_button").click();
 			}, 500);
-			   
+
 			return false;
 		});
-		if($(window).width() <= 767) {
-			$(".btn-continue").click(function() {
-				$("html, body").animate({ scrollTop: 0 }, "slow");
+
+		if ($(window).width() <= 767) {
+			$(".btn-continue").click(function () {
+				$("html, body").animate({
+					scrollTop: 0
+				}, "slow");
 			});
 		}
-		$(".variation_price").click(function(){
-			jQuery('.form-row-wide').each(function() {
-				var spinnerx = jQuery(this);
+
+		$(".variation_price").click(function () {
+			// change text on the product page bottom
+			var $totalPriceElement = $('.product-footer .tps');
+			var totalPriceElementText = $totalPriceElement.data('total-price-text');
+
+			if ($(this).parents('#pa_payment-plan').length) {
+				if ($(this).val().startsWith('single-payment')) {
+					$totalPriceElement.text(totalPriceElementText);
+				} else {
+					$totalPriceElement.text($('.variations_form').data('first-payment-text'));
+				}	
+			} else {
+				if ($totalPriceElement[0].innerText === totalPriceElementText) return;				
+
+				$totalPriceElement.text(totalPriceElementText);
+			}
+
+			$('.form-row-wide').each(function () {
+				var spinnerx = $(this);
 				spinnerx.find("input").val(0);
 				spinnerx.find("input").trigger("change");
 			});
 		});
-		jQuery('.form-row-wide').each(function() {
-			var spinnerx = jQuery(this);
+
+		$('.form-row-wide').each(function () {
+			var spinnerx = $(this);
 			spinnerx.find("input").val(0);
 			spinnerx.find("input").trigger("change");
 		});
-		jQuery('<div class="quantity-nav"><div class="quantity-button quantity-up">+</div><div class="quantity-button quantity-down">-</div></div>').insertAfter('.wc-pao-addon-input-multiplier');
-		jQuery('.form-row-wide').each(function() {
-			var spinner = jQuery(this),
-			input = spinner.find('input[type="number"]'),
-			btnUp = spinner.find('.quantity-up'),
-			btnDown = spinner.find('.quantity-down'),
-			min = input.attr('min'),
-			max = input.attr('max');
+
+		$('<div class="quantity-nav"><div class="quantity-button quantity-up">+</div><div class="quantity-button quantity-down">-</div></div>').insertAfter('.wc-pao-addon-input-multiplier');
+		
+		$('.form-row-wide').each(function () {
+			var spinner = $(this),
+				input = spinner.find('input[type="number"]'),
+				btnUp = spinner.find('.quantity-up'),
+				btnDown = spinner.find('.quantity-down'),
+				min = input.attr('min'),
+				max = input.attr('max');
 			var curen = $('.woocommerce-Price-currencySymbol').html();
-			btnUp.click(function() {
+			btnUp.click(function () {
 				var oldValue = parseFloat(input.val());
 				if (oldValue >= max) {
 					var newVal = oldValue;
@@ -103,17 +157,17 @@
 				spinner.find("input").val(newVal);
 				spinner.find("input").trigger("change");
 				var pird = $('.variations_form .price .woocommerce-Price-amount').text();
-				var numfinal = pird.replace( /[^\d.]/g, '' );
+				var numfinal = pird.replace(/[^\d.]/g, '');
 				var dataprice = $('.wc-pao-addon-input-multiplier').attr('data-price');
 				var addoncheckbox = $('.addon-checkbox').attr('data-price');
-				var incrnum  = parseInt(numfinal)+ parseInt(dataprice);
+				var incrnum = parseInt(numfinal) + parseInt(dataprice);
 				var numx = incrnum.toLocaleString();
 				var ftil = curen + numx + '.00';
-				var newf =  $('.variations_form .price .woocommerce-Price-amount').html(ftil);
-				$('.quantity-down').attr('style','');
+				var newf = $('.variations_form .price .woocommerce-Price-amount').html(ftil);
+				$('.quantity-down').attr('style', '');
 			});
 
-			btnDown.click(function() {
+			btnDown.click(function () {
 				var oldValue = parseFloat(input.val());
 				if (oldValue <= min) {
 					var newVal = oldValue;
@@ -124,77 +178,60 @@
 				spinner.find("input").trigger("change");
 				newvals = input.val();
 				var pird = $('.variations_form .price .woocommerce-Price-amount').text();
-				var numfinal = pird.replace( /[^\d.]/g, '' );
+				var numfinal = pird.replace(/[^\d.]/g, '');
 				var datapricem = $('.wc-pao-addon-input-multiplier').attr('data-price');
-				var incrnum  = parseInt(numfinal)- parseInt(datapricem);
+				var incrnum = parseInt(numfinal) - parseInt(datapricem);
 				var numx = incrnum.toLocaleString();
 				var ftil = curen + numx + '.00';
-				var newf =  $('.variations_form .price .woocommerce-Price-amount').html(ftil);
-				
-				if(newvals == 0){
+				var newf = $('.variations_form .price .woocommerce-Price-amount').html(ftil);
+
+				if (newvals == 0) {
 					$('.prie2').show();
-					$('.quantity-down').css('pointer-events','none');
+					$('.quantity-down').css('pointer-events', 'none');
 				}
 			});
-
-		});		   
-		$(".btn-continue").click(function(){
-			$(".btn-gotocart").show(); 
-			$(".p0").hide(); 
-			$(".btn-continue").hide(); 
-			$(".btn-request").hide(); 
-			$(".checkout-progress").show(); 
-			$(".wril").hide(); 
-			$(".wrip").show(); 
-			$('.wc-pao-addon-choose-additional-copies').show();
-			$('.wc-pao-addon-container').show();
-			$('.quantity').hide();
-			$('.woocommerce-variation-add-to-cart').show(); 
-			return false;
 		});
 
 		$('.form-row-wide label').hide();
 
-		setInterval(function(){ 
+		setInterval(function () {
 			$('.prie2').html($('.variations_form .price .woocommerce-Price-amount').html())
-			}, 100);
+		}, 100);
 
-		setInterval(function(){ 
+		setInterval(function () {
 			$('.prie').html($('.wc-pao-addon-totals dd:eq(1)').html());
 		}, 100);
 
-		$('.quantity-down').css('pointer-events','none');
+		$('.quantity-down').css('pointer-events', 'none');
 
-		setTimeout(function(){ 
-			$('.woocommerce-variation-add-to-cart').hide(); 
-			$('.quantity,.wc-pao-addon-choose-additional-copies').hide(); 
-			$('.wc-pao-addon').hide(); 
-			$('#product-addons-total').hide(); 
-		}, 200);		
-	});
-	jQuery(document).ready(function($){
-		  jQuery('.wccpf-field').change(function() {
-		        if ($(this).prop('checked')) {
-		        	var curen = $('.woocommerce-Price-currencySymbol').html();
-		            var pird = $('.variations_form .price .woocommerce-Price-amount').text();
-				    var numfinal = pird.replace( /[^\d.]/g, '' );
-				    $p = $(this).attr('value');
-				    var incrnum  = parseInt(numfinal)+ parseInt($p);
-				    var numx = incrnum.toLocaleString();
-				    var ftil = curen + numx + '.00';
-				    var newf =  $('.variations_form .price .woocommerce-Price-amount').html(ftil);
+		setTimeout(function () {
+			$('.woocommerce-variation-add-to-cart').hide();
+			$('.quantity,.wc-pao-addon-choose-additional-copies').hide();
+			$('.wc-pao-addon').hide();
+			$('#product-addons-total').hide();
+		}, 200);
 
-		        }
-		        else {
-		            var curen = $('.woocommerce-Price-currencySymbol').html();
-		            var pird = $('.variations_form .price .woocommerce-Price-amount').text();
-				    var numfinal = pird.replace( /[^\d.]/g, '' );
-				    $p = $(this).attr('value');
-				    var incrnum  = parseInt(numfinal)-parseInt($p);
-				    var numx = incrnum.toLocaleString();
-				    var ftil = curen + numx + '.00';
-				    var newf =  $('.variations_form .price .woocommerce-Price-amount').html(ftil);
-		        }
-         });
-		  $('.wccpf-field').after( "<span></span>" );
+		$('.wccpf-field').change(function () {
+			if ($(this).prop('checked')) {
+				var curen = $('.woocommerce-Price-currencySymbol').html();
+				var pird = $('.variations_form .price .woocommerce-Price-amount').text();
+				var numfinal = pird.replace(/[^\d.]/g, '');
+				$p = $(this).attr('value');
+				var incrnum = parseInt(numfinal) + parseInt($p);
+				var numx = incrnum.toLocaleString();
+				var ftil = curen + numx + '.00';
+				var newf = $('.variations_form .price .woocommerce-Price-amount').html(ftil);
+
+			} else {
+				var curen = $('.woocommerce-Price-currencySymbol').html();
+				var pird = $('.variations_form .price .woocommerce-Price-amount').text();
+				var numfinal = pird.replace(/[^\d.]/g, '');
+				$p = $(this).attr('value');
+				var incrnum = parseInt(numfinal) - parseInt($p);
+				var numx = incrnum.toLocaleString();
+				var ftil = curen + numx + '.00';
+				var newf = $('.variations_form .price .woocommerce-Price-amount').html(ftil);
+			}
+		});
+		$('.wccpf-field').after("<span></span>");
 	});

@@ -1992,7 +1992,6 @@ button.slick-next {
 }
 
 .skl .label-writer-text {
-  position: absolute;
   font-size: 13px;
   padding-left: 0;
   padding-right: 23px;
@@ -2381,7 +2380,6 @@ button.slick-next {
   width: 25%;
 }
 
-.btn-continue,
 .btn-gotocart {
   display: block;
   background-color: #f06d66;
@@ -2407,8 +2405,6 @@ button.slick-next {
   transition: all 300ms ease-in;
 }
 
-.btn-continue:hover,
-.btn-continue:focus,
 .btn-gotocart:hover,
 .btn-gotocart:focus {
   background-color: #e0615a;
@@ -3794,6 +3790,7 @@ html:lang(en-GB) .checkout-progress {
 
 .woocommerce-checkout #payment .payment_methods .payment_method_affirm .tab-wrap img {
   margin: 8px 0;
+  order: -1;
 }
 
 .tabs-gateway {
