@@ -29,44 +29,53 @@ if ( ! $checkout->is_registration_enabled() && $checkout->is_registration_requir
 
 ?>
 <div class="acc-container">
-<form name="checkout" method="post" class="checkout woocommerce-checkout" action="<?php echo esc_url( wc_get_checkout_url() ); ?>" enctype="multipart/form-data">
+	<form name="checkout" method="post" class="checkout woocommerce-checkout"
+		action="<?php echo esc_url( wc_get_checkout_url() ); ?>" enctype="multipart/form-data">
 
-	<?php if ( $checkout->get_checkout_fields() ) : ?>
+		<?php if ( $checkout->get_checkout_fields() ) : ?>
 
 		<?php do_action( 'woocommerce_checkout_before_customer_details' ); ?>
-        
-		<!-- <div class="acc-content open">
-		  <div class="acc-content-inner"> -->
-				<div class="col2-set" id="customer_details">
-					<div class="col-xs-12 col-sm-12 col-md-12">
-						<div class="acc-btn"><h1 class="selected"><i class="checkout-step-counter">1</i>Billing details</h1></div>
-						<div class="acc-content open">
-						    <div class="acc-content-inner">
-						         <?php do_action( 'woocommerce_checkout_billing' ); ?>
-							</div>
-						</div>
-                        <?php do_action( 'woocommerce_checkout_shipping' ); ?>
+
+		<div class="col2-set" id="customer_details">
+			<div class="col-xs-12 col-sm-12 col-md-12">
+				<div class="acc-btn">
+					<h1 class="selected">
+						<i class="checkout-step-counter">1</i>
+						<?php _e('Billing details', 'storyterrace') ?>
+					</h1>
+				</div>
+				<div class="acc-content open">
+					<div class="acc-content-inner">
+						<?php do_action( 'woocommerce_checkout_billing' ); ?>
 					</div>
 				</div>
-
-				<?php do_action( 'woocommerce_checkout_after_customer_details' ); ?>
-		<!--  </div>
-		</div> -->
-	<?php endif; ?>
-<div class="acc-btn"><h1 class="selected"><i class="checkout-step-counter">3</i>Payment Method</h1></div>
-		<div class="acc-content open">
-		  <div class="acc-content-inner">
-			<?php do_action( 'woocommerce_checkout_before_order_review' ); ?>
-
-			<div id="order_review" class="woocommerce-checkout-review-order">
-				<?php do_action( 'woocommerce_checkout_order_review' ); ?>
-			</div>
-
-			<?php do_action( 'woocommerce_checkout_after_order_review' ); ?>
+				<?php do_action( 'woocommerce_checkout_shipping' ); ?>
 			</div>
 		</div>
 
-</form>
+		<?php do_action( 'woocommerce_checkout_after_customer_details' ); ?>
+
+		<?php endif; ?>
+
+		<div class="acc-btn">
+			<h1 class="selected">
+				<i class="checkout-step-counter">3</i>
+				<?php _e('Payment Method', 'storyterrace') ?>
+			</h1>
+		</div>
+		<div class="acc-content open">
+			<div class="acc-content-inner">
+				<?php do_action( 'woocommerce_checkout_before_order_review' ); ?>
+
+				<div id="order_review" class="woocommerce-checkout-review-order">
+					<?php do_action( 'woocommerce_checkout_order_review' ); ?>
+				</div>
+
+				<?php do_action( 'woocommerce_checkout_after_order_review' ); ?>
+			</div>
+		</div>
+
+	</form>
 </div>
 
 <?php do_action( 'woocommerce_after_checkout_form', $checkout ); ?>

@@ -278,11 +278,12 @@
 }
 
 .pressblog__logo {
+    margin-top: auto;
     padding: 0 48px 48px;
 }
 
 .pressblog__logo img {
-    max-height: 30px;
+    max-height: 50px;
     -o-object-fit: contain;
     object-fit: contain;
 }

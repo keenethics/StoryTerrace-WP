@@ -126,36 +126,50 @@ function remove_wp_block_library_css(){
 add_action( 'wp_enqueue_scripts', 'remove_wp_block_library_css', 100 );
   
 /**
- * Display price in variation option name
+ * Display price in variation options dropdown for products that have only one attribute.
+ *
+ * @param  string $term Existing option term value.
+ * @return string $term Existing option term value or updated term value with price.
  */
-function display_price_in_variation_option_name( $term ) {
+function display_price_in_variation_option_name($term) {
     global $wpdb, $product;
 
-    $result = $wpdb->get_col( "SELECT slug FROM {$wpdb->prefix}terms WHERE name = '$term'" );
+    $result = $wpdb->get_col("SELECT slug FROM {$wpdb->prefix}terms WHERE name = '$term'");
 
-    $term_slug = ( !empty( $result ) ) ? $result[0] : $term;
-
+    $term_slug = (!empty($result)) ? $result[0] : $term;
 
     $query = "SELECT postmeta.post_id AS product_id
-                FROM {$wpdb->prefix}postmeta AS postmeta
-                    LEFT JOIN {$wpdb->prefix}posts AS products ON ( products.ID = postmeta.post_id )
-                WHERE postmeta.meta_key LIKE 'attribute_%'
-                    AND postmeta.meta_value = '$term_slug'
-                    AND products.post_parent = $product->id";
+            FROM {$wpdb->prefix}postmeta AS postmeta
+            LEFT JOIN {$wpdb->prefix}posts AS products ON ( products.ID = postmeta.post_id )
+            WHERE postmeta.meta_key LIKE 'attribute_%'
+            AND postmeta.meta_value = '$term_slug'
+            AND products.post_parent = $product->id";
 
-    $variation_id = $wpdb->get_col( $query );
+    $variation_id = $wpdb->get_col($query);
 
-    $parent = wp_get_post_parent_id( $variation_id[0] );
+    $parent = wp_get_post_parent_id($variation_id[0]);
 
-    if ( $parent > 0 ) {
-        $_product = new WC_Product_Variation( $variation_id[0] );
-        return $term . '<div style="display:none">(' . woocommerce_price( $_product->get_price() ) . ')</div>';
+    if ($parent > 0) {
+        $_product = new WC_Product_Variation($variation_id[0]);
+
+        $itemPrice = strip_tags(woocommerce_price($_product->get_price()));
+        
+        return $term . '<div class="label-title-price hidden">' . $itemPrice . '</div>';
     }
-    return $term;
 
+    return $term;
 }
 
-add_filter( 'woocommerce_variation_option_name', 'display_price_in_variation_option_name' );
+add_filter('woocommerce_variation_option_name', 'display_price_in_variation_option_name');
+
+/**
+ * Ensure variation combinations are working properly - standard limit is 30
+ */
+function woo_custom_ajax_variation_threshold( $qty, $product ) {
+    return 150;
+}       
+
+add_filter( 'woocommerce_ajax_variation_threshold', 'woo_custom_ajax_variation_threshold', 10, 2 );
 
 //custom post type for in the media section
 function my_custom_post_types() {
@@ -185,6 +199,7 @@ function my_custom_post_types() {
         register_post_type( 'inthemedia', $args );
 }
 add_action( 'init', 'my_custom_post_types' );
+
 //taxonomy 
 add_action( 'init', 'create_medialanguage_taxonomy' );
 
@@ -380,4 +395,41 @@ add_filter( 'the_excerpt', 'link_words' );
  */
 function get_image_size() {
 	return wp_is_mobile() ? 'thumbnail' : 'large';
+}
+
+/**
+ * Variations Radio Buttons for WooCommerce
+ */
+function print_attribute_radios($checked_value, $value, $label, $name, $count, $description = '') {
+    // This handles < 2.4.0 bw compatibility where text attributes were not sanitized.
+    $checked = sanitize_title($checked_value) === $checked_value ? checked($checked_value, sanitize_title($value), false) : checked($checked_value, $value, false);
+
+    $input_name = 'attribute_' . esc_attr($name);
+    $esc_value = esc_attr($value);
+    $id = esc_attr($name . '_v_' . $value);
+    $filtered_label = apply_filters('woocommerce_variation_option_name', $label);
+
+    printf(
+        '<label for="%3$s"><input type="radio" class="variation_price" data-variation="' . $count . '" data-variation-price=""
+                name="%1$s" value="%2$s" id="%3$s" %4$s>
+            <div class="labelback"></div>
+            <div class="label-title">%5$s</div>
+            <span class="variation-diff-price" id="varUpdation' . $count . '"></span>
+            <div class="label-writer-text">%6$s</div>
+        </label>', $input_name, $esc_value, $id, $checked, $filtered_label, $description);
+}
+
+/**
+ * Convert text to underscore
+ * Non-alpha and non-numeric characters become spaces
+ * 
+ * @return string
+ */
+function convert_text_to_underscore($str, array $noStrip = []){        
+        $str = preg_replace('/[^a-z0-9' . implode("", $noStrip) . ']+/i', ' ', $str);
+        $str = trim($str);
+        $str = str_replace(" ", "_", $str);
+        $str = strtolower($str);
+
+        return $str;
 }
