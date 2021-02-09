@@ -1,10 +1,14 @@
 	jQuery(document).ready(function ($) {
-		var variationSections = [
-			'.variations_form .p0',
-			'.variations_form .p1'
-		]
+		var variationSections = []
 		var variationInputClass = '.variation_price';
 		var dataVariationPrice = 'data-variation-price';
+		var $variations = $('.variations .value');
+
+		$variations.each(function(index) {
+			variationSections[index] = '#' + this.id + ' ' + variationInputClass;
+		});
+
+		addPriceToAllVariations(variationSections);
 
 		// add currency symbol and plus or minus
 		function getPriceWithSymbol(number, symbol) {
@@ -12,22 +16,50 @@
 		}
 
 		function addPriceToAllVariations(selectorArray) {
-			addPriceToVariation(selectorArray[0] + ' ' + variationInputClass, selectorArray[1] + ' ' + variationInputClass + ':checked');
-			addPriceToVariation(selectorArray[1] + ' ' + variationInputClass, selectorArray[0] + ' ' + variationInputClass + ':checked');
+			var combos = [];
+
+			//ToDo: optimzie iteration
+			var firstArrayCopy = Array.from(selectorArray);
+			var secondArray = firstArrayCopy.concat(firstArrayCopy.splice(0, 1));
+			var secondArrayCopy = Array.from(secondArray);
+			var thirdArray = secondArrayCopy.concat(secondArrayCopy.splice(0, 1));
+
+			// ToDo: fix hardcoded condition
+			if (selectorArray.length === 2) {
+				for (var i = 0; i < selectorArray.length; i++) {
+				
+					combos.push(selectorArray[i] + ',' + secondArray[i] + ':checked');
+					addPriceToVariation(selectorArray[i], secondArray[i] + ':checked');
+				}
+			} 
+
+			if (selectorArray.length === 3) {
+				for (var i = 0; i < selectorArray.length; i++) {
+				
+					combos.push(selectorArray[i] + ',' + secondArray[i] + ':checked' + ',' + thirdArray[i] + ':checked');
+					addPriceToVariation(selectorArray[i], secondArray[i] + ':checked', thirdArray[i] + ':checked');
+				}
+			} 
 		}
 
 		// create array with writer level and interview format
-		function createCombination(variant, selector) {
+		function createCombination(variant, firstSelector, secondSelector) {
 			var compare = [];
-			compare.push($(variant).val(), $(selector).val());	
 
-			return $(variant).parents('.p0').length ? compare : compare.reverse();
+			compare.push($(variant).val(), $(firstSelector).val());	
+
+			// ToDo: fix hardcoded
+			if (secondSelector) {
+				compare.push($(secondSelector).val());
+			}
+
+			return compare;
 		}
 
 		// add price to the variation data-variation-price 
-		function addPriceToVariation(currentVariation, oppositeVariation) {
+		function addPriceToVariation(currentVariation, secondVariation, thirdVariation) {
 			$(currentVariation).each(function() {
-				var result = filterFromData(createCombination(this, oppositeVariation));
+				var result = filterFromData(createCombination(this, secondVariation, thirdVariation));
 				
 				$(this).attr(dataVariationPrice, result);
 			})
@@ -35,17 +67,17 @@
 
 		// filter json data from woocommerce form
 		function filterFromData(compare) {
-			var formData = $('.variations_form').data( 'product_variations' );
+			var formData = $('.variations_form').data('product_variations');
 
 			for (var i=0; i < formData.length; i++) {
 				var a = formData[i].attributes;				
 				var result = Object.keys(a).map(function(key){
-					if (key !== 'attribute_pa_payment-plan') return a[key];									
+					return a[key];									
 				})			
 				
-				// slice relust array for GB and NL locale
-				if (JSON.stringify(result.slice(0, 2)) === JSON.stringify(compare)) {	
-					 return formData[i].display_price;
+				// compare arrays
+				if (JSON.stringify(result.sort()) == JSON.stringify(compare.sort())) {	
+					return formData[i].display_price;
 				}	
 			}			
 		}
@@ -62,6 +94,9 @@
 
 				passiveVariation.each(function () {
 					var pricingDiff = $(this).attr(dataVariationPrice) - activeVariation.attr(dataVariationPrice);
+
+					// exception for payment plan section
+					if ($(this).closest('#pa_payment-plan').length) return;
 	
 					$(this).siblings('.variation-diff-price').html(getPriceWithSymbol(pricingDiff, shopSymbol));
 				})
@@ -72,21 +107,20 @@
 
 			// calculate diff on click to the variant
 			generalVaration.on('change', function () {
+				if ($(this).val() === 'single-payment' || $(this).val() === '10-deposit') return;
+
 				$(this).siblings('.variation-diff-price').html('');
 				
 				addPriceToAllVariations(variationSections);
 
-				$.each(variationSections, function(...value) {
-					findPricingDiff($(value[1]));
+				$variations.each(function() {			
+					findPricingDiff($(this));
 				});
 			});
 		};
 
-		// run all variations functions
-		addPriceToAllVariations(variationSections);
-
-		$.each(variationSections, function(...value) {
-			calculatePricingDiff($(value[1]));
+		$variations.each(function() {
+			calculatePricingDiff($(this));
 		});
 
 		$(".btn-gotocart").click(function () {
