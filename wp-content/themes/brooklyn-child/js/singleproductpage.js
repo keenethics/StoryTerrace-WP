@@ -26,16 +26,14 @@
 
 			// ToDo: fix hardcoded condition
 			if (selectorArray.length === 2) {
-				for (var i = 0; i < selectorArray.length; i++) {
-				
+				for (var i = 0; i < selectorArray.length; i++) {				
 					combos.push(selectorArray[i] + ',' + secondArray[i] + ':checked');
 					addPriceToVariation(selectorArray[i], secondArray[i] + ':checked');
 				}
 			} 
 
 			if (selectorArray.length === 3) {
-				for (var i = 0; i < selectorArray.length; i++) {
-				
+				for (var i = 0; i < selectorArray.length; i++) {				
 					combos.push(selectorArray[i] + ',' + secondArray[i] + ':checked' + ',' + thirdArray[i] + ':checked');
 					addPriceToVariation(selectorArray[i], secondArray[i] + ':checked', thirdArray[i] + ':checked');
 				}
@@ -77,6 +75,9 @@
 				
 				// compare arrays
 				if (JSON.stringify(result.sort()) == JSON.stringify(compare.sort())) {	
+					// exception for 10% deposit
+					if (JSON.stringify(result).includes('10-deposit') && !JSON.stringify(result).includes('10-deposit-nl') ) return formData[i].display_price * 10;
+
 					return formData[i].display_price;
 				}	
 			}			
@@ -123,6 +124,7 @@
 			calculatePricingDiff($(this));
 		});
 
+		// Old scripts
 		$(".btn-gotocart").click(function () {
 			$(".cartload").addClass('addgry');
 
