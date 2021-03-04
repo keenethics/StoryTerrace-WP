@@ -272,6 +272,7 @@ function create_medialanguage_taxonomy() {
         )
     );
 }
+
 //custom post type for in the testimonials
 function testimonials_post_types() {
     $labels = array(
@@ -299,7 +300,9 @@ function testimonials_post_types() {
     );
         register_post_type( 'testimonials', $args );
 }
+
 add_action( 'init', 'testimonials_post_types' );
+
 //taxonomy for testimonials
 add_action( 'init', 'create_testimonials_taxonomy' );
 
@@ -338,8 +341,46 @@ function create_testimonials_taxonomy() {
         )
     );
 }
-if( function_exists('acf_add_options_page') ) {
+
+//custom post type for Our Team
+function team_custom_post_types() {
+    $labels = array(
+        'name'               => 'Team',
+        'singular_name'      => 'Team',
+        'menu_name'          => 'Team',
+        'name_admin_bar'     => 'Team',
+        'add_new'            => 'Add New',
+        'add_new_item'       => 'Add New',
+        'new_item'           => 'New',
+        'edit_item'          => 'Edit',
+        'view_item'          => 'View',
+        'all_items'          => 'All',
+        'search_items'       => 'Search',
+        'parent_item_colon'  => 'Parent:',
+        'not_found'          => 'Not found.',
+        'not_found_in_trash' => 'Not found in Trash.'
+    );
+
+    $args = array( 
+        'public'      => true, 
+        'labels'      => $labels,
+        'description' => 'published using this post type',
+        'supports'    => array( 'title', 'editor', 'author', 'thumbnail', 'excerpt' ),
+        'public'      => true,
+        // 'has_archive' => true,
+        'rewrite' => [
+            'slug' => '/',
+            'with_front' => false
+          ]
+    );
     
+    register_post_type( 'team', $args );
+}
+
+add_action( 'init', 'team_custom_post_types' );
+
+//add ACF options page
+if( function_exists('acf_add_options_page') ) {    
     acf_add_options_page(array(
         'page_title'    => 'Theme General Settings',
         'menu_title'    => 'Theme Settings',
@@ -432,4 +473,43 @@ function convert_text_to_underscore($str, array $noStrip = []){
         $str = strtolower($str);
 
         return $str;
+}
+
+/**
+ * Get The First Image From a Post
+ * @link https://css-tricks.com/snippets/wordpress/get-the-first-image-from-a-post/
+ * 
+ * @return string
+ */
+function catch_first_image() {
+    global $post;
+    $first_img = '';
+    ob_start();
+    ob_end_clean();
+
+    $output = preg_match_all('/<img.+?src=[\'"]([^\'"]+)[\'"].*?>/i', $post->post_content, $matches);
+    $first_img = $matches[1][0];
+
+    if (empty($first_img)) {
+        $first_img = get_template_directory_uri() . "/images/placeholder/team-member.png";
+    }
+
+    return $first_img;
+}
+
+/**
+ * Get The Team member role From a Post
+ * 
+ * @return string
+ */
+function catch_team_member_role() {
+    global $post;
+    $team_member_role = '';
+    ob_start();
+    ob_end_clean();
+
+    $output = preg_match_all('/<h3>(.*?)<\/h3>/', $post->post_content, $matches);
+    $team_member_role = $matches[1][0];
+
+    return $team_member_role;
 }
