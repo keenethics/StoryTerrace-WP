@@ -366,12 +366,11 @@ function team_custom_post_types() {
         'labels'      => $labels,
         'description' => 'published using this post type',
         'supports'    => array( 'title', 'editor', 'author', 'thumbnail', 'excerpt' ),
-        'public'      => true,
         // 'has_archive' => true,
-        'rewrite' => [
-            'slug' => '/',
-            'with_front' => false
-          ]
+        // 'rewrite' => [
+        //     'slug' => '/',
+        //     'with_front' => false
+        //   ]
     );
     
     register_post_type( 'team', $args );

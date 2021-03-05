@@ -6,11 +6,16 @@ $ut_page_class = get_post_meta($post->ID, 'ut_section_class', true);
 $ut_get_sidebar_settings = ut_get_sidebar_settings();
 $grid = !empty($ut_get_sidebar_settings) && $ut_get_sidebar_settings['primary_sidebar'] !== 'no_sidebar' && is_active_sidebar($ut_get_sidebar_settings['primary_sidebar']) ? 'grid-75 tablet-grid-75 mobile-grid-100' : 'grid-100 tablet-grid-100 mobile-grid-100';
 
+// global $sitepress;
+// $lang='en-GB';
+// $sitepress->switch_lang($lang);
+
 $query_args = array(
 	'post_type' => 'team',
 	'post_status' => 'publish',
 	'order' => 'ASC',
 	'orderby' => 'menu_order',
+	'suppress_filters' => true
 );
 
 // The Query
@@ -31,6 +36,7 @@ get_header(); ?>
 							<?php if ($the_query->have_posts()) {
 								while ($the_query->have_posts()) {
 									$the_query->the_post();
+									var_dump($the_query);
 									get_template_part('partials/content', 'team');
 								}
 
