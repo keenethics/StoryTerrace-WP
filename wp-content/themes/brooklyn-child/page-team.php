@@ -11,6 +11,7 @@ $query_args = array(
 	'post_status' => 'publish',
 	'order' => 'ASC',
 	'orderby' => 'menu_order',
+	'posts_per_page' => -1,
 	'suppress_filters' => false
 );
 
