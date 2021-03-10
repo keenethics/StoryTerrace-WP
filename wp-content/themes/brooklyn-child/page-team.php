@@ -1,5 +1,5 @@
 <?php
-/* Template Name: Team Page */
+/* Template Name: Team Page Redesign */
 
 $ut_page_skin = get_post_meta($post->ID, 'ut_section_skin', true);
 $ut_page_class = get_post_meta($post->ID, 'ut_section_class', true);

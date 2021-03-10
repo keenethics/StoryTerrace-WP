@@ -1,4 +1,5 @@
 <?php
+/* Template Name: Team single Page */
 
 $ut_page_skin = get_post_meta( $post->ID , 'ut_section_skin' , true);
 $ut_page_class = get_post_meta( $post->ID , 'ut_section_class' , true);
@@ -31,6 +32,6 @@ get_header(); ?>
 	</div><!-- close grid-container -->
 	
 	<div class="ut-scroll-up-waypoint" data-section="section-<?php echo ut_clean_section_id($post->post_name); ?>"></div>
-	
+
 <?php get_template_part( 'common', 'banner' ); ?>        
 <?php get_footer(); ?>
