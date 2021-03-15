@@ -1,5 +1,8 @@
 <?php
-/* Template Name: Team single Page */
+/**
+ * Template Name: Team single Page
+ * ToDo: Remove this file, use single-team template instead
+ */
 
 $ut_page_skin = get_post_meta( $post->ID , 'ut_section_skin' , true);
 $ut_page_class = get_post_meta( $post->ID , 'ut_section_class' , true);
