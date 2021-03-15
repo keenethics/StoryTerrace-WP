@@ -146,20 +146,13 @@ if ($lang == 'en-US') { ?>
   <script type="text/javascript">
     jQuery(document).ready(function($) {
       var error_affirm = $('.woocommerce-notices-wrapper .woocommerce-error').text().includes("Your order can no longer be cancelled. Please contact us if you need assistance");
-      
       if (error_affirm == true) {
         $('.woocommerce-notices-wrapper .woocommerce-error').remove();
       }
-      
       setInterval(function() {
-        var tnewprice = $('.order-total .woocommerce-Price-amount').html() || '';
-
-        if ($('.prie')) {
-          $('.prie').html(tnewprice.replace('.00', ""));
-        }
-
+        var tnewprice = $('.order-total .woocommerce-Price-amount').html();
+        $('.prie').html(tnewprice.replace('.00', ""));
       }, 100);
-
       if ($('.variation-PaymentPlan p').is(':contains("Instal")')) {
         $('.psub').text('First Payment');
         $('.instt').text('First Payment');
