@@ -35,5 +35,7 @@ get_header(); ?>
 		</div><!-- close grid-container -->
         
         <div class="ut-scroll-up-waypoint" data-section="section-<?php echo ut_clean_section_id($post->post_name); ?>"></div>
+
+	<?php get_template_part( 'common', 'banner' ); ?>
         
 <?php get_footer(); ?>
