@@ -20,9 +20,9 @@ function show_cart_summary( ) {
   wc_get_template_part( 'cart/cart' );
 }
 
-function my_theme_scripts() {    
+function my_theme_scripts() {
     wp_dequeue_style( 'main-font-face' );
-    wp_dequeue_style( 'ut-fontawesome' );       
+    wp_dequeue_style( 'ut-fontawesome' );
 
     wp_enqueue_style( 'webfonts-css', get_stylesheet_directory_uri().'/assets/webfonts/webfonts.css' );
     wp_enqueue_style( 'slick-theme-css', get_stylesheet_directory_uri().'/assets/css/slick-theme.css' );
@@ -32,7 +32,7 @@ function my_theme_scripts() {
         wp_enqueue_style( 'bootstrap-custom-css', get_stylesheet_directory_uri().'/assets/css/bootstrap-custom.css' );
         wp_enqueue_style( 'main-css', get_stylesheet_directory_uri().'/assets/css/main.css', array(), '0.1.0', 'all' );
 
-        // dequeue parent theme styles 
+        // dequeue parent theme styles
         wp_dequeue_style( 'ut-flexslider' );
         wp_dequeue_style( 'ut-prettyphoto' );
         wp_dequeue_style( 'ut-superfish' );
@@ -56,7 +56,7 @@ function my_theme_scripts() {
         if ( is_page_template( 'press.tpl.php') ) {
             wp_enqueue_style( 'press-css', get_stylesheet_directory_uri().'/assets/css/page-press.css' );
         }
-    } 
+    }
 
     // GeoIP redirect
     wp_enqueue_script( 'countryfinder-js', get_stylesheet_directory_uri().'/js/countryfinder.js', array( 'jquery' ), '1.0.1', false );
@@ -121,10 +121,10 @@ add_action( 'wp_enqueue_scripts', 'disable_woocommerce_block_styles' );
 function remove_wp_block_library_css(){
     wp_dequeue_style( 'wp-block-library' );
     wp_dequeue_style( 'wp-block-library-theme' );
-} 
+}
 
 add_action( 'wp_enqueue_scripts', 'remove_wp_block_library_css', 100 );
-  
+
 /**
  * Display price in variation options dropdown for products that have only one attribute.
  *
@@ -153,7 +153,7 @@ function display_price_in_variation_option_name($term) {
         $_product = new WC_Product_Variation($variation_id[0]);
 
         $itemPrice = strip_tags(woocommerce_price($_product->get_price()));
-        
+
         return $term . '<div class="label-title-price hidden">' . $itemPrice . '</div>';
     }
 
@@ -167,7 +167,7 @@ add_filter('woocommerce_variation_option_name', 'display_price_in_variation_opti
  */
 function woo_custom_ajax_variation_threshold( $qty, $product ) {
     return 150;
-}       
+}
 
 add_filter( 'woocommerce_ajax_variation_threshold', 'woo_custom_ajax_variation_threshold', 10, 2 );
 
@@ -190,8 +190,8 @@ function my_custom_post_types() {
         'not_found_in_trash' => 'Not found in Trash.'
     );
 
-    $args = array( 
-        'public'      => true, 
+    $args = array(
+        'public'      => true,
         'labels'      => $labels,
         'description' => 'published using this post type',
         'supports'           => array( 'title', 'editor', 'author', 'thumbnail', 'excerpt', 'comments' )
@@ -200,7 +200,7 @@ function my_custom_post_types() {
 }
 add_action( 'init', 'my_custom_post_types' );
 
-//taxonomy 
+//taxonomy
 add_action( 'init', 'create_medialanguage_taxonomy' );
 
 function create_medialanguage_taxonomy() {
@@ -237,7 +237,7 @@ function create_medialanguage_taxonomy() {
             )
         )
     );
-    
+
     $categories = array(
         'name'                           => 'Category Types',
         'singular_name'                  => 'Category Type',
@@ -292,8 +292,8 @@ function testimonials_post_types() {
         'not_found_in_trash' => 'Not found in Trash.'
     );
 
-    $args = array( 
-        'public'      => true, 
+    $args = array(
+        'public'      => true,
         'labels'      => $labels,
         'description' => 'published using this post type',
         'supports'           => array( 'title', 'editor', 'author', 'thumbnail', 'excerpt', 'comments' )
@@ -400,7 +400,7 @@ function team_parse_request( $query ) {
 add_action( 'pre_get_posts', 'team_parse_request' );
 
 //add ACF options page
-if( function_exists('acf_add_options_page') ) {    
+if( function_exists('acf_add_options_page') ) {
     acf_add_options_page(array(
         'page_title'    => 'Theme General Settings',
         'menu_title'    => 'Theme Settings',
@@ -413,7 +413,7 @@ if( function_exists('acf_add_options_page') ) {
         'menu_title'    => 'Single Product Settings',
         'parent_slug'   => 'theme-general-settings',
     ));
-    
+
     acf_add_options_sub_page(array(
         'page_title'    => 'Banner Settings',
         'menu_title'    => 'Banner Settings',
@@ -432,12 +432,12 @@ if($actual_link == 'https://storyterrace.com/'){
         $dlang =  ICL_LANGUAGE_CODE;
         if($dlang == 'nl' || $dlang == 'en-GB'){
 
-         } else {  
+         } else {
          $country_code = $_SERVER["HTTP_CF_IPCOUNTRY"];
          if($country_code == "NL"){
             header('Location: https://storyterrace.com/nl/');
             exit();
-         } 
+         }
         }
 }
 
@@ -483,10 +483,10 @@ function print_attribute_radios($checked_value, $value, $label, $name, $count, $
 /**
  * Convert text to underscore
  * Non-alpha and non-numeric characters become spaces
- * 
+ *
  * @return string
  */
-function convert_text_to_underscore($str, array $noStrip = []){        
+function convert_text_to_underscore($str, array $noStrip = []){
         $str = preg_replace('/[^a-z0-9' . implode("", $noStrip) . ']+/i', ' ', $str);
         $str = trim($str);
         $str = str_replace(" ", "_", $str);
@@ -498,7 +498,7 @@ function convert_text_to_underscore($str, array $noStrip = []){
 /**
  * Get The First Image From a Post
  * @link https://css-tricks.com/snippets/wordpress/get-the-first-image-from-a-post/
- * 
+ *
  * @return string
  */
 function catch_first_image() {
@@ -519,7 +519,7 @@ function catch_first_image() {
 
 /**
  * Get The Team member role From a Post
- * 
+ *
  * @return string
  */
 function catch_team_member_role() {
