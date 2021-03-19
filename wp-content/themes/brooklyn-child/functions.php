@@ -342,63 +342,6 @@ function create_testimonials_taxonomy() {
     );
 }
 
-//custom post type for Our Team
-function team_post_types() {
-	$labels = [
-		"name" => __( "Team", "storyterrace" ),
-		"singular_name" => __( "Team", "storyterrace" ),
-	];
-
-	$args = [
-		"label" => __( "Team", "storyterrace" ),
-		"labels" => $labels,
-		"public" => true,
-		"publicly_queryable" => true,
-		"show_ui" => true,
-		"show_in_rest" => true,
-		"show_in_menu" => true,
-		"show_in_nav_menus" => true,
-		"exclude_from_search" => false,
-		"capability_type" => "post",
-        'rewrite' => array( 'slug' => '/', 'with_front' => false ),
-		"query_var" => true,
-		"supports" => [ "title", "editor", "thumbnail" ],
-	];
-
-	register_post_type( "team", $args );
-}
-
-add_action( 'init', 'team_post_types' );
-
-//remove team slug from the permalink
-//@link https://wordpress.stackexchange.com/a/204210/141056
-function team_remove_slug( $post_link, $post, $team ) {
-
-    if ( 'team' !== $post->post_type || 'publish' !== $post->post_status ) {
-        return $post_link;
-    }
-
-    $post_link = str_replace( '/' . $post->post_type . '/', '/', $post_link );
-
-    return $post_link;
-}
-
-add_filter( 'post_type_link', 'team_remove_slug', 10, 3 );
-
-//parse team custom post type request
-function team_parse_request( $query ) {
-
-    if ( ! $query->is_main_query() || 2 !== count( $query->query ) || ! isset( $query->query['page'] ) ) {
-        return;
-    }
-
-    if ( ! empty( $query->query['name'] ) ) {
-        $query->set( 'post_type', array( 'post', 'team', 'page' ) );
-    }
-}
-
-add_action( 'pre_get_posts', 'team_parse_request' );
-
 //add ACF options page
 if( function_exists('acf_add_options_page') ) {
     acf_add_options_page(array(

@@ -1,5 +1,5 @@
 <?php
-/* Template Name: homepage */
+/* Template Name: Homepage */
 get_header(); 
 
 // Banner Section 
