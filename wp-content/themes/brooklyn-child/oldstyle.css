@@ -4474,6 +4474,19 @@ div.addon-description p {
   }
 }
 
+.the-team-wrapper .inner-content-wrap > div > div:first-of-type {
+  margin: -15px -15px 15px;
+}
+
+.the-team-wrapper .inner-content-wrap > div > div:first-of-type a {
+  width: 100%;
+}
+
+.the-team-wrapper .inner-content-wrap img {
+  min-height: 188px;
+  object-position: center -20px;
+}
+
 .heroDimmedContent h1 {
   font-family: Circe;
   font-size: 36px;
