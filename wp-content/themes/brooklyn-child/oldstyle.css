@@ -4474,7 +4474,8 @@ div.addon-description p {
   }
 }
 
-.the-team-wrapper .inner-content-wrap > div > div:first-of-type {
+.the-team-wrapper .inner-content-wrap > div > div:first-of-type,
+.the-team-wrapper .inner-content-wrap > div > h2:first-of-type {
   margin: -15px -15px 15px;
 }
 
