@@ -7,8 +7,14 @@ $ut_get_sidebar_settings = ut_get_sidebar_settings();
 $grid = !empty($ut_get_sidebar_settings) && $ut_get_sidebar_settings['primary_sidebar'] !== 'no_sidebar' && is_active_sidebar($ut_get_sidebar_settings['primary_sidebar']) ? 'grid-75 tablet-grid-75 mobile-grid-100' : 'grid-100 tablet-grid-100 mobile-grid-100';
 
 $query_args = array(
-	'post_type' => 'team',
+	'post_type' => 'page',
 	'post_status' => 'publish',
+	'meta_query' => array(
+		array(
+			'key' => '_wp_page_template',
+			'value' => 'teamsingle.tpl.php',
+		)
+	),
 	'order' => 'ASC',
 	'orderby' => 'menu_order',
 	'posts_per_page' => -1,

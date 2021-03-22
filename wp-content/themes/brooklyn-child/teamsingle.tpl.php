@@ -1,7 +1,6 @@
 <?php
 /**
- * Template Name: Team single Page
- * ToDo: Remove this file, use single-team template instead
+ * Template Name: Team Single Page
  */
 
 $ut_page_skin = get_post_meta( $post->ID , 'ut_section_skin' , true);
@@ -22,7 +21,7 @@ get_header(); ?>
 		
 			<?php
 				// If comments are open or we have at least one comment, load up the comment template
-				if ( comments_open() || '0' !== get_comments_number() )
+				if ( comments_open() || '0' != get_comments_number() )
 					comments_template();
 			?>
 
@@ -36,5 +35,6 @@ get_header(); ?>
 	
 	<div class="ut-scroll-up-waypoint" data-section="section-<?php echo ut_clean_section_id($post->post_name); ?>"></div>
 
-<?php get_template_part( 'common', 'banner' ); ?>        
+	<?php get_template_part( 'common', 'banner' ); ?>
+        
 <?php get_footer(); ?>
