@@ -20,9 +20,9 @@ function show_cart_summary( ) {
   wc_get_template_part( 'cart/cart' );
 }
 
-function my_theme_scripts() {    
+function my_theme_scripts() {
     wp_dequeue_style( 'main-font-face' );
-    wp_dequeue_style( 'ut-fontawesome' );       
+    wp_dequeue_style( 'ut-fontawesome' );
 
     wp_enqueue_style( 'webfonts-css', get_stylesheet_directory_uri().'/assets/webfonts/webfonts.css' );
     wp_enqueue_style( 'slick-theme-css', get_stylesheet_directory_uri().'/assets/css/slick-theme.css' );
@@ -32,7 +32,7 @@ function my_theme_scripts() {
         wp_enqueue_style( 'bootstrap-custom-css', get_stylesheet_directory_uri().'/assets/css/bootstrap-custom.css' );
         wp_enqueue_style( 'main-css', get_stylesheet_directory_uri().'/assets/css/main.css', array(), '0.1.0', 'all' );
 
-        // dequeue parent theme styles 
+        // dequeue parent theme styles
         wp_dequeue_style( 'ut-flexslider' );
         wp_dequeue_style( 'ut-prettyphoto' );
         wp_dequeue_style( 'ut-superfish' );
@@ -56,7 +56,7 @@ function my_theme_scripts() {
         if ( is_page_template( 'press.tpl.php') ) {
             wp_enqueue_style( 'press-css', get_stylesheet_directory_uri().'/assets/css/page-press.css' );
         }
-    } 
+    }
 
     // GeoIP redirect
     wp_enqueue_script( 'countryfinder-js', get_stylesheet_directory_uri().'/js/countryfinder.js', array( 'jquery' ), '1.0.1', false );
@@ -121,10 +121,10 @@ add_action( 'wp_enqueue_scripts', 'disable_woocommerce_block_styles' );
 function remove_wp_block_library_css(){
     wp_dequeue_style( 'wp-block-library' );
     wp_dequeue_style( 'wp-block-library-theme' );
-} 
+}
 
 add_action( 'wp_enqueue_scripts', 'remove_wp_block_library_css', 100 );
-  
+
 /**
  * Display price in variation options dropdown for products that have only one attribute.
  *
@@ -153,7 +153,7 @@ function display_price_in_variation_option_name($term) {
         $_product = new WC_Product_Variation($variation_id[0]);
 
         $itemPrice = strip_tags(woocommerce_price($_product->get_price()));
-        
+
         return $term . '<div class="label-title-price hidden">' . $itemPrice . '</div>';
     }
 
@@ -167,7 +167,7 @@ add_filter('woocommerce_variation_option_name', 'display_price_in_variation_opti
  */
 function woo_custom_ajax_variation_threshold( $qty, $product ) {
     return 150;
-}       
+}
 
 add_filter( 'woocommerce_ajax_variation_threshold', 'woo_custom_ajax_variation_threshold', 10, 2 );
 
@@ -190,8 +190,8 @@ function my_custom_post_types() {
         'not_found_in_trash' => 'Not found in Trash.'
     );
 
-    $args = array( 
-        'public'      => true, 
+    $args = array(
+        'public'      => true,
         'labels'      => $labels,
         'description' => 'published using this post type',
         'supports'           => array( 'title', 'editor', 'author', 'thumbnail', 'excerpt', 'comments' )
@@ -200,7 +200,7 @@ function my_custom_post_types() {
 }
 add_action( 'init', 'my_custom_post_types' );
 
-//taxonomy 
+//taxonomy
 add_action( 'init', 'create_medialanguage_taxonomy' );
 
 function create_medialanguage_taxonomy() {
@@ -237,7 +237,7 @@ function create_medialanguage_taxonomy() {
             )
         )
     );
-    
+
     $categories = array(
         'name'                           => 'Category Types',
         'singular_name'                  => 'Category Type',
@@ -272,6 +272,7 @@ function create_medialanguage_taxonomy() {
         )
     );
 }
+
 //custom post type for in the testimonials
 function testimonials_post_types() {
     $labels = array(
@@ -291,15 +292,17 @@ function testimonials_post_types() {
         'not_found_in_trash' => 'Not found in Trash.'
     );
 
-    $args = array( 
-        'public'      => true, 
+    $args = array(
+        'public'      => true,
         'labels'      => $labels,
         'description' => 'published using this post type',
         'supports'           => array( 'title', 'editor', 'author', 'thumbnail', 'excerpt', 'comments' )
     );
         register_post_type( 'testimonials', $args );
 }
+
 add_action( 'init', 'testimonials_post_types' );
+
 //taxonomy for testimonials
 add_action( 'init', 'create_testimonials_taxonomy' );
 
@@ -338,8 +341,9 @@ function create_testimonials_taxonomy() {
         )
     );
 }
+
+//add ACF options page
 if( function_exists('acf_add_options_page') ) {
-    
     acf_add_options_page(array(
         'page_title'    => 'Theme General Settings',
         'menu_title'    => 'Theme Settings',
@@ -352,7 +356,7 @@ if( function_exists('acf_add_options_page') ) {
         'menu_title'    => 'Single Product Settings',
         'parent_slug'   => 'theme-general-settings',
     ));
-    
+
     acf_add_options_sub_page(array(
         'page_title'    => 'Banner Settings',
         'menu_title'    => 'Banner Settings',
@@ -371,12 +375,12 @@ if($actual_link == 'https://storyterrace.com/'){
         $dlang =  ICL_LANGUAGE_CODE;
         if($dlang == 'nl' || $dlang == 'en-GB'){
 
-         } else {  
+         } else {
          $country_code = $_SERVER["HTTP_CF_IPCOUNTRY"];
          if($country_code == "NL"){
             header('Location: https://storyterrace.com/nl/');
             exit();
-         } 
+         }
         }
 }
 
@@ -422,14 +426,133 @@ function print_attribute_radios($checked_value, $value, $label, $name, $count, $
 /**
  * Convert text to underscore
  * Non-alpha and non-numeric characters become spaces
- * 
+ *
  * @return string
  */
-function convert_text_to_underscore($str, array $noStrip = []){        
+function convert_text_to_underscore($str, array $noStrip = []){
         $str = preg_replace('/[^a-z0-9' . implode("", $noStrip) . ']+/i', ' ', $str);
         $str = trim($str);
         $str = str_replace(" ", "_", $str);
         $str = strtolower($str);
 
         return $str;
+}
+
+
+/**
+ * truncateHtml can truncate a string up to a number of characters while preserving whole words and HTML tags
+ *
+ * @param string $text String to truncate.
+ * @param integer $length Length of returned string, including ellipsis.
+ * @param string $ending Ending to be appended to the trimmed string.
+ * @param boolean $exact If false, $text will not be cut mid-word
+ * @param boolean $considerHtml If true, HTML tags would be handled correctly
+ *
+ * @return string Trimmed string.
+ */
+function truncateHtml($text, $length = 100, $ending = '...', $exact = false, $considerHtml = true) {
+    if ($considerHtml) {
+        // if the plain text is shorter than the maximum length, return the whole text
+        if (strlen(preg_replace('/<.*?>/', '', $text)) <= $length) {
+            return $text;
+        }
+        // splits all html-tags to scanable lines
+        preg_match_all('/(<.+?>)?([^<>]*)/s', $text, $lines, PREG_SET_ORDER);
+        $total_length = strlen($ending);
+        $open_tags = array();
+        $truncate = '';
+        foreach ($lines as $line_matchings) {
+            // if there is any html-tag in this line, handle it and add it (uncounted) to the output
+            if (!empty($line_matchings[1])) {
+                // if it's an "empty element" with or without xhtml-conform closing slash
+                if (preg_match('/^<(\s*.+?\/\s*|\s*(img|br|input|hr|area|base|basefont|col|frame|isindex|link|meta|param)(\s.+?)?)>$/is', $line_matchings[1])) {
+                    // do nothing
+                    // if tag is a closing tag
+                } else if (preg_match('/^<\s*\/([^\s]+?)\s*>$/s', $line_matchings[1], $tag_matchings)) {
+                    // delete tag from $open_tags list
+                    $pos = array_search($tag_matchings[1], $open_tags);
+                    if ($pos !== false) {
+                        unset($open_tags[$pos]);
+                    }
+                    // if tag is an opening tag
+                } else if (preg_match('/^<\s*([^\s>!]+).*?>$/s', $line_matchings[1], $tag_matchings)) {
+                    // add tag to the beginning of $open_tags list
+                    array_unshift($open_tags, strtolower($tag_matchings[1]));
+                }
+                // add html-tag to $truncate'd text
+                $truncate .= $line_matchings[1];
+            }
+            // calculate the length of the plain text part of the line; handle entities as one character
+            $content_length = strlen(preg_replace('/&[0-9a-z]{2,8};|&#[0-9]{1,7};|[0-9a-f]{1,6};/i', ' ', $line_matchings[2]));
+            if ($total_length + $content_length > $length) {
+                // the number of characters which are left
+                $left = $length - $total_length;
+                $entities_length = 0;
+                // search for html entities
+                if (preg_match_all('/&[0-9a-z]{2,8};|&#[0-9]{1,7};|[0-9a-f]{1,6};/i', $line_matchings[2], $entities, PREG_OFFSET_CAPTURE)) {
+                    // calculate the real length of all entities in the legal range
+                    foreach ($entities[0] as $entity) {
+                        if ($entity[1] + 1 - $entities_length <= $left) {
+                            $left--;
+                            $entities_length += strlen($entity[0]);
+                        } else {
+                            // no more characters left
+                            break;
+                        }
+                    }
+                }
+                $truncate .= substr($line_matchings[2], 0, $left + $entities_length);
+                // maximum lenght is reached, so get off the loop
+                break;
+            } else {
+                $truncate .= $line_matchings[2];
+                $total_length += $content_length;
+            }
+            // if the maximum length is reached, get off the loop
+            if ($total_length >= $length) {
+                break;
+            }
+        }
+    } else {
+        if (strlen($text) <= $length) {
+            return $text;
+        } else {
+            $truncate = substr($text, 0, $length - strlen($ending));
+        }
+    }
+    // if the words shouldn't be cut in the middle...
+    if (!$exact) {
+        // ...search the last occurance of a space...
+        $spacepos = strrpos($truncate, ' ');
+        if (isset($spacepos)) {
+            // ...and cut the text in this position
+            $truncate = substr($truncate, 0, $spacepos);
+        }
+    }
+    // add the defined ending to the text
+    $truncate .= $ending;
+    if ($considerHtml) {
+        // close all unclosed html-tags
+        foreach ($open_tags as $tag) {
+            $truncate .= '</' . $tag . '>';
+        }
+    }
+    return $truncate;
+}
+
+/**
+ * Get specific content for team page
+ *
+ * @param integer $length Length of returned string, including ellipsis.
+ *
+ * @return string Team card cotnent
+ */
+function get_team_content($length) {
+    $content = get_the_content();
+    $content = apply_filters('the_content', $content);
+    $content = preg_replace('~<style(.*?)</style>~Usi', "", $content); //remove <style> tag
+    $content = preg_replace('#<div[^>]*class[^>]*>#is', '<div>', $content); //remove all classes
+    $content = truncateHtml($content, $length);
+
+    return $content;
 }
