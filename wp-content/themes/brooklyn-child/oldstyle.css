@@ -5027,11 +5027,6 @@ h3#ship-to-different-address input:checked+span:before {
   }
 }
 
-.aboutFounder {
-  padding-bottom: 40px;
-  text-align: center;
-}
-
 .aboutFounder h2 {
   font-size: 38px;
   font-weight: bold;
