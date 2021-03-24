@@ -4484,8 +4484,11 @@ div.addon-description p {
 }
 
 .the-team-wrapper .inner-content-wrap img {
-  min-height: 188px;
+	height: 210px;
+  min-height: 190px;
   object-position: center -20px;
+  width: 100%;
+	object-fit: cover;
 }
 
 .heroDimmedContent h1 {
