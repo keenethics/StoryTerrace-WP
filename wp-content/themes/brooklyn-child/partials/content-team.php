@@ -10,7 +10,7 @@
 <div class="col-xs-12 col-sm-6 col-md-4">
     <div class="content-wrapper">
         <div class="inner-content-wrap">
-            <?php echo get_team_content(150); ?>            
+            <?php echo get_team_content(140); ?>            
             <a target="_self" class="ut-btn dark small" href="<?php the_permalink(); ?>"><?php _e('Read more', 'storyterrace') ?></a>
         </div>
     </div>
