@@ -550,7 +550,8 @@ function truncateHtml($text, $length = 100, $ending = '...', $exact = false, $co
 function get_team_content($length) {
     $content = get_the_content();
     $content = apply_filters('the_content', $content);
-    $content = preg_replace('~<style(.*?)</style>~Usi', "", $content); //remove <style> tag
+    $content = preg_replace('~<style(.*?)</style>~Usi', '', $content); //remove <style> tag
+    $content = preg_replace('/ style=("|\')(.*?)("|\')/', '', $content); //remove inline styles
     $content = preg_replace('#<div[^>]*class[^>]*>#is', '<div>', $content); //remove all classes
     $content = truncateHtml($content, $length);
 
