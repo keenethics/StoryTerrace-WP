@@ -557,3 +557,4 @@ function get_team_content($length) {
 
     return $content;
 }
+
