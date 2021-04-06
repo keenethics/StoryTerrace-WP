@@ -193,16 +193,14 @@ function mobileCustomerSlider() {
 		autoplay: true,
 		autoplaySpeed: 5000,
 	});
-
 }
-jQuery(document).ready(function ($) {
-	var $ctaButtonElement = $('.videoicon');
 
-	function activateWorksVideoPopup(ctaButton, attribute) {
-		ctaButton = ctaButton || $ctaButtonElement;
+jQuery(document).ready(function ($) {
+	function activateVideoPopup(ctaButton, attribute) {
+		ctaButton = ctaButton || '.videoicon';
 		attribute = attribute || 'vidurl';
 
-		$ctaButtonElement.click(function () {
+		$(ctaButton).click(function () {
 			var videoLink = $(this).attr(attribute);
 	
 			if (videoLink) {
@@ -211,7 +209,7 @@ jQuery(document).ready(function ($) {
 		});
 	}
 
-	activateWorksVideoPopup();
+	activateVideoPopup();
 
 	setTimeout(function () {
 		$('.ratelink').click(function (event) {
@@ -220,14 +218,4 @@ jQuery(document).ready(function ($) {
 			$('.romw-link')[0].click();
 		});
 	}, 500);
-
-
-	// activate vido popup for certain query paramater from email
-	if (window.location.pathname.replace(/\//g, '') === 'how-it-works') {
-		var searchParams = new URLSearchParams(window.location.search);
-
-		if (searchParams.has('video') && searchParams.get('video') === 'active') {
-			$ctaButtonElement.click();
-		}
-	}
 });

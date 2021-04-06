@@ -64,6 +64,11 @@ function my_theme_scripts() {
     wp_enqueue_script( 'slick-js', get_stylesheet_directory_uri().'/assets/js/slick.min.js', array( 'jquery' ), '1.0.1', true );
     wp_enqueue_script( 'main-js', get_stylesheet_directory_uri().'/assets/js/main.js', array( 'jquery' ), '1.0.1', true );
 
+    // How It Works page specific scripts 
+    if ( is_page_template( 'howitwork.tpl.php') ) {
+        wp_enqueue_script( 'how-it-work-js', get_stylesheet_directory_uri().'/assets/js/how-it-work.js', array( 'jquery' ), '1.0.1', true );
+    }
+    
     /**
      * Check if WooCommerce is activated
      */
