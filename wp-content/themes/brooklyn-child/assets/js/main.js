@@ -127,7 +127,6 @@ jQuery(document).ready(function() {
 			    }
 			  ]
 	});
-
 });
 
 jQuery(window).resize(function() {
@@ -194,19 +193,29 @@ function mobileCustomerSlider() {
 		autoplay: true,
 		autoplaySpeed: 5000,
 	});
-
 }
-jQuery(document).ready(function($) {	
-	$('.videoicon').click(function(){
-        vidlink = $(this).attr('vidurl');
-        if(vidlink){
-        	$('.videopopup__wrap iframe').attr('src',vidlink);
-        }
-	});
-    setTimeout(function(){
-	    $('.ratelink').click(function(event){
-	        event.preventDefault();
-	        $('.romw-link')[0].click();
-	    });
-    }, 500);
+
+jQuery(document).ready(function ($) {
+	function activateVideoPopup(ctaButton, attribute) {
+		ctaButton = ctaButton || '.videoicon';
+		attribute = attribute || 'vidurl';
+
+		$(ctaButton).click(function () {
+			var videoLink = $(this).attr(attribute);
+	
+			if (videoLink) {
+				$('.videopopup__wrap iframe').attr('src', videoLink);
+			}
+		});
+	}
+
+	activateVideoPopup();
+
+	setTimeout(function () {
+		$('.ratelink').click(function (event) {
+			event.preventDefault();
+
+			$('.romw-link')[0].click();
+		});
+	}, 500);
 });
