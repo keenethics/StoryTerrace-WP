@@ -461,62 +461,62 @@ jQuery(".footer").css({"margin-bottom" : pb+'px' });
                    </form>
                 </div>
                 </div>
+                <!-- ToDo: refactor all zip code scripts -->
                 <script>
-              jQuery(document).ready(function($){
-                $( "#zipcode" ).submit(function( event ) {
-                  event.preventDefault();
-                  var zipval = $('.zipc').val();
-                  urlred = '<?php echo $search_result_link_price; ?>';
-                  window.location = urlred+'/?zip='+zipval;
-                });
-              });
+                  jQuery(document).ready(function($){
+                    $( "#zipcode" ).submit(function( event ) {
+                      event.preventDefault();
+                      var zipval = $('.zipc').val();
+                      urlred = '<?php echo $search_result_link_price; ?>';
+                      window.location = urlred + '/?zip=' + zipval + '&page=' + window.location.pathname;
+                    });
+                  });
+                </script>
+                <style type="text/css">
+                  .writer-search-form {
+                      margin: 0px !important;
+                  }
+                  .pricingbar__inner>div.pricingbar__right {
+                      width: calc(100% - 501px);
+                  }
+                  @media only screen and (max-width: 1024px) {
+                              .pricingbar__inner>div.pricingbar__left {
+                                width: 100%;
+                                text-align: center;
+                              }
+                              .pricingbar__inner>div.pricingbar__right {
+                                width: 100%;
+                                margin-top: 16px;
+                              }
+                              .pricingbar__right .writer-search-form {
+                                max-width: 700px;
+                                margin: 0 auto;
+                                width: 100%;
+                              }
+                              .writer-search-form input[type="text"],
+                              .writer-search-form input[type="submit"] {
+                                height: 50px;
+                              }
+                            }
+                            @media(max-width: 767px) {
+                      .writer-search-form input[type="submit"] {
+                          width:150px;
+                          height: 50px;
+                          font-size: 12px;
+                      }
 
-            </script>
-            <style type="text/css">
-              .writer-search-form {
-                  margin: 0px !important;
-              }
-              .pricingbar__inner>div.pricingbar__right {
-                  width: calc(100% - 501px);
-              }
-              @media only screen and (max-width: 1024px) {
-                          .pricingbar__inner>div.pricingbar__left {
-                            width: 100%;
-                            text-align: center;
-                          }
-                          .pricingbar__inner>div.pricingbar__right {
-                            width: 100%;
-                            margin-top: 16px;
-                          }
-                          .pricingbar__right .writer-search-form {
-                            max-width: 700px;
-                            margin: 0 auto;
-                            width: 100%;
-                          }
-                          .writer-search-form input[type="text"],
-                          .writer-search-form input[type="submit"] {
-                            height: 50px;
-                          }
-                        }
-                        @media(max-width: 767px) {
-                  .writer-search-form input[type="submit"] {
-                      width:150px;
-                      height: 50px;
-                      font-size: 12px;
+                      .writer-search-form input[type="text"] {
+                          height: 50px
+                      }
                   }
 
-                  .writer-search-form input[type="text"] {
-                      height: 50px
+                  @media(max-width: 360px) {
+                      .writer-search-form input[type="submit"] {
+                          width:130px;
+                          font-size: 11px
+                      }
                   }
-              }
-
-              @media(max-width: 360px) {
-                  .writer-search-form input[type="submit"] {
-                      width:130px;
-                      font-size: 11px
-                  }
-              }
-            </style>
+                </style>
              <?php } else { 
              if(!empty($fixfootbutton_text)){ ?>
             <div class="pricingbar__right">

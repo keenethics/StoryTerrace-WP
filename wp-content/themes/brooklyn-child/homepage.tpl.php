@@ -118,13 +118,14 @@ $book_art_content = get_field('book_art_content', get_the_ID());
                                 <p><?php echo $text_below_search_bar; ?> <a href="<?php echo $sign_up_link; ?>" target="_blank"><?php echo $sign_up_text; ?></a></p>
                             </div>
                         <?php } ?>
+                        <!-- ToDo: refactor all zip code scripts -->
                         <script>
                             jQuery(document).ready(function($) {
                                 $("#zipcode").submit(function(event) {
                                     event.preventDefault();
                                     var zipval = $('.zipc').val();
                                     urlred = '<?php echo $search_result_link; ?>';
-                                    window.location = urlred + '/?zip=' + zipval;
+                                    window.location = urlred + '/?zip=' + zipval + '&page=' + window.location.pathname;
                                 });
                             });
                         </script>
@@ -257,13 +258,14 @@ $book_art_content = get_field('book_art_content', get_the_ID());
                                 <p><?php echo $text_below_search_bar; ?> <a href="<?php echo $sign_up_link; ?>" target="_blank"><?php echo $sign_up_text; ?></a></p>
                             </div>
                         <?php } ?>
+                        <!-- ToDo: refactor all zip code scripts -->
                         <script>
                             jQuery(document).ready(function($) {
                                 $(".mobsearch #zipcode").submit(function(event) {
                                     event.preventDefault();
                                     var zipval = $('.mobsearch .zipc').val();
                                     urlred = '<?php echo $search_result_link; ?>';
-                                    window.location = urlred + '/?zip=' + zipval;
+                                    window.location = urlred + '/?zip=' + zipval + '&page=' + window.location.pathname;
                                 });
                             });
                         </script>
