@@ -40,16 +40,16 @@ if (!empty($bbs_background_image)){ ?>
                                 </div>
                                 </form>
                             </div>
+                            <!-- ToDo: refactor all zip code scripts -->
                             <script>
-                            jQuery(document).ready(function($){
-                                $( "#zipcodebot" ).submit(function( event ) {
-                                event.preventDefault();
-                                var zipf = $('.zipf').val();
-                                urlredf = '<?php echo $search_result_link_banner; ?>';
-                                window.location = urlredf+'/?zip='+zipf;
+                                jQuery(document).ready(function($){
+                                    $( "#zipcodebot" ).submit(function( event ) {
+                                        event.preventDefault();
+                                        var zipf = $('.zipf').val();
+                                        urlredf = '<?php echo $search_result_link_banner; ?>';
+                                        window.location = urlredf + '/?zip=' + zipf + '&page=' + window.location.pathname;
+                                    });
                                 });
-                            });
-
                             </script>
                         <?php } else { 
                             if(!empty($bbs_button_text)){ ?>
