@@ -1,16 +1,15 @@
-
 <?php
-$bbs_background_image = get_field( "bbs_background_image",'option');
-$bbs_title = get_field( "bbs_title",'option');
-$bbs_big_title = get_field( "bbs_big_title",'option');
-$bbs_description = get_field( "bbs_description",'option');
-$bbs_button_text = get_field( "bbs_button_text",'option');
-$bbs_button_link = get_field( "bbs_button_link",'option');
-$bbs_popup_code = get_field( "bbs_popup_code",'option');
-$show_search_banner = get_field('show_search_banner','option');
-$search_button_text_banner = get_field('search_button_text_banner','option');
-$search_placeholder_banner = get_field('search_placeholder_banner','option');
-$search_result_link_banner = get_field('search_result_link_banner','option');
+    $bbs_background_image = get_field( "bbs_background_image",'option');
+    $bbs_title = get_field( "bbs_title",'option');
+    $bbs_big_title = get_field( "bbs_big_title",'option');
+    $bbs_description = get_field( "bbs_description",'option');
+    $bbs_button_text = get_field( "bbs_button_text",'option');
+    $bbs_button_link = get_field( "bbs_button_link",'option');
+    $bbs_popup_code = get_field( "bbs_popup_code",'option');
+    $show_search_banner = get_field('show_search_banner','option');
+    $search_button_text_banner = get_field('search_button_text_banner','option');
+    $search_placeholder_banner = get_field('search_placeholder_banner','option');
+    $search_result_link_banner = get_field('search_result_link_banner','option');
 
 if(!empty($bbs_background_image)){ ?>
 <div class="request">
@@ -38,16 +37,16 @@ if(!empty($bbs_background_image)){ ?>
                             </div>
                         </form>
                     </div>
+                    <!-- ToDo: refactor all zip code scripts -->
                     <script>
                         jQuery(document).ready(function($){
-                        $( "#zipcodebot" ).submit(function( event ) {
-                            event.preventDefault();
-                            var zipf = $('.zipf').val();
-                            urlredf = '<?php echo $search_result_link_banner; ?>';
-                            window.location = urlredf+'/?zip='+zipf;
+                            $( "#zipcodebot" ).submit(function( event ) {
+                                event.preventDefault();
+                                var zipf = $('.zipf').val();
+                                urlredf = '<?php echo $search_result_link_banner; ?>';
+                                window.location = urlredf + '/?zip=' + zipf + '&page=' + window.location.pathname;
+                            });
                         });
-                        });
-
                     </script>
                 <?php } else { 
                         if(!empty($bbs_button_text)){  ?>

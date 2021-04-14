@@ -51,11 +51,9 @@ jQuery(document).ready(function() {
 		}
 	});
 
-
 	jQuery(".header__toggler").click(function() {		
 		jQuery(".header__menu").slideToggle();
 	});
-
 
 	jQuery(".videoicon").click(function() {
 		jQuery("html").addClass("html--oh");
@@ -79,7 +77,6 @@ jQuery(document).ready(function() {
 		jQuery(".getstartpop").fadeOut();
 	});
 
-
 	if( jQuery(".brands__slidermobile").length > 0 ) {
 		jQuery(".brands__slidermobile").slick({
 			arrows: false,
@@ -101,12 +98,9 @@ jQuery(document).ready(function() {
 	}
 
 	if( window.innerWidth < 768 ) {
-
 		if( jQuery(".customer-sliders").length > 0 ) {
 			mobileCustomerSlider();
 		}
-
-	} else {
 	}
 
 	jQuery(".testimonials__slider").slick({
@@ -134,8 +128,6 @@ jQuery(window).resize(function() {
 	if( window.innerWidth > 1080 ) {
 		jQuery(".header__menu").removeAttr("style");
 	}
-
-
 
 	if( window.innerWidth >= 768 ) {
         if(jQuery(".customer-sliders").hasClass("slick-initialized")){
