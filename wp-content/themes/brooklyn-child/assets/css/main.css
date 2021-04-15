@@ -7,10 +7,42 @@ body {
     overflow-x: hidden
 }
 
+/* Classes */
 html.html--oh {
     overflow: hidden !important
 }
 
+.home .hidden-on-homepage {
+    display: none;
+}
+
+#ut-mobile-nav,
+.ut-mm-trigger,
+.ut-offset-anchor {
+    display: none !important
+}
+
+.hs_error_rollup {
+    display: none !important
+}
+
+.container {
+    max-width: 1574px;
+    width: 100%
+}
+
+.slick-track {
+    display: -webkit-box !important;
+    display: -ms-flexbox !important;
+    display: flex !important
+}
+
+.slick-slide:focus,
+div[tabindex]:focus {
+    outline: 0 !important
+}
+
+/* Global elements styles */
 *,
 ::after,
 ::before {
@@ -78,32 +110,7 @@ input[type=submit] {
     appearance: none !important
 }
 
-#ut-mobile-nav,
-.ut-mm-trigger,
-.ut-offset-anchor {
-    display: none !important
-}
-
-.hs_error_rollup {
-    display: none !important
-}
-
-.container {
-    max-width: 1574px;
-    width: 100%
-}
-
-.slick-track {
-    display: -webkit-box !important;
-    display: -ms-flexbox !important;
-    display: flex !important
-}
-
-.slick-slide:focus,
-div[tabindex]:focus {
-    outline: 0 !important
-}
-
+/* Typography */
 .link-underline {
     font-size: 14px;
     text-transform: uppercase;
@@ -300,6 +307,7 @@ h6 {
 }
 
 /* ToDo: separate header styles */
+/* Header styles */
 .header__toggler {
     display: none;
     position: absolute;

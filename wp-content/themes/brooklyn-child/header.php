@@ -268,18 +268,11 @@ $scrollspeed     = ot_get_option('ut_scrollto_speed', '650');
                 <?php
                 $header_right_button_text = get_field('header_right_button_text', 'option');
                 $header_right_button_link = get_field('header_right_button_link', 'option');
-                $header_left_button_text = get_field('left_button_text', 'option');
-                $header_left_button_link = get_field('left_button_link', 'option');
                 ?>
                 <div class="top-btn">
                     <div class="header__button login-cta">
                         <?php if ($header_right_button_text) { ?>
-                            <a class="" href="<?php echo $header_right_button_link; ?>" target="_blank"><?php echo $header_right_button_text; ?></a>
-                        <?php } ?>
-                    </div>
-                    <div class="header__button signup-cta">
-                        <?php if ($header_left_button_text) { ?>
-                            <a class="" href="<?php echo $header_left_button_link; ?>" target="_blank"><?php echo $header_left_button_text; ?></a>
+                            <a class="js-free-consultation hidden-on-homepage" href="<?php echo $header_right_button_link; ?>"><?php echo $header_right_button_text; ?></a>
                         <?php } ?>
                     </div>
                 </div>
