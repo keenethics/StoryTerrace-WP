@@ -16,6 +16,10 @@ html.html--oh {
     display: none;
 }
 
+.home .visible-on-homepage {
+    display: block;
+}
+
 #ut-mobile-nav,
 .ut-mm-trigger,
 .ut-offset-anchor {
