@@ -200,5 +200,10 @@ jQuery(document).ready(function ($) {
 	}, 500);
 
 	// activate free consultation popup
-	activatePopupOnClick('.js-free-consultation', '.globalpopup.free-consultation', '.free-consultation__close')
+	activatePopupOnClick('.js-free-consultation', '.globalpopup.free-consultation', '.free-consultation__close');
+
+	// execute zip code script for each form
+	['#zipcode', '#zipcode-mobile'].forEach(function (element) {
+		$(element) ? zipTrackingEvent(element) : null;
+	});
 });

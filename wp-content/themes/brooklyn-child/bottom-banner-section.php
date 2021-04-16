@@ -8,9 +8,9 @@
     $bbs_button_link = get_field( "bbs_button_link");
     $bbs_popup_code = get_field( "bbs_popup_code");
     $show_search_banner = get_field('show_search_banner');
-    $search_button_text_banner = get_field('search_button_text_banner');
-    $search_placeholder_banner = get_field('search_placeholder_banner');
-    $search_result_link_banner = get_field('search_result_link_banner');
+    $search_button_text_banner = get_field('search_button_text_banner') ?? 'Search Writers';
+    $search_placeholder_banner = get_field('search_placeholder_banner') ?? 'Enter Postal Code';
+    $search_result_link_banner = get_field('search_result_link_banner') ?? 'https://info.storyterrace.com/us/writer-search/start-match';
 
 if (!empty($bbs_background_image)){ ?>
     <?php if($show_bottom_banner_section){ ?>
@@ -32,25 +32,19 @@ if (!empty($bbs_background_image)){ ?>
                         <?php } ?>
 
                         <?php if($show_search_banner == 'yes'){ ?>
-                            <div class="writer-search footer-banners-search">
-                                <form id="zipcodebot" class="writer-search-form">
-                                <div class="input-group">
-                                    <input class="zipf" type="text" placeholder="<?php if(!empty($search_placeholder_banner)){ echo $search_placeholder_banner; } else { ?>Enter Postal Code<?php } ?>">
-                                    <input type="submit" value="<?php if(!empty($search_button_text_banner)){ echo $search_button_text_banner; } else { ?>Search Writers<?php } ?>">
-                                </div>
-                                </form>
-                            </div>
-                            <!-- ToDo: refactor all zip code scripts -->
-                            <script>
-                                jQuery(document).ready(function($){
-                                    $( "#zipcodebot" ).submit(function( event ) {
-                                        event.preventDefault();
-                                        var zipf = $('.zipf').val();
-                                        urlredf = '<?php echo $search_result_link_banner; ?>';
-                                        window.location = urlredf + '/?zip=' + zipf + '&page=' + window.location.pathname;
-                                    });
-                                });
-                            </script>
+
+                        <?php
+                            get_template_part(
+                                'partials/zip-search',
+                                'form',
+                                array(
+                                    'container_class' => 'footer-banners-search',
+                                    'data_redirect' => $search_result_link_banner,
+                                    'search_placeholder' => $search_placeholder_banner,
+                                    'search_button_text' => $search_button_text_banner
+                                )
+                            );
+                        ?>     
                         <?php } else { 
                             if(!empty($bbs_button_text)){ ?>
                                 <div class="request__link">

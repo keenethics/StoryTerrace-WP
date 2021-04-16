@@ -1,7 +1,7 @@
 <?php
-/* 
+/** 
  * Banner column image part
-*/
+ */
 
 $image_field = $args['image_field'] ?? '';
 $image_size = $args['image_size'] ?? get_image_size();

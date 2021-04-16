@@ -33,4 +33,18 @@ jQuery(document).ready(function ($) {
 			$(popupSelector).fadeOut();
 		});
 	}
+
+	// ZIP tracking function event
+	window.zipTrackingEvent = function(formSelector, velueSelector) {
+		velueSelector = velueSelector || '.zipc';
+
+		$(formSelector).submit(function(event) {
+			event.preventDefault();
+			var zipValue = $(formSelector).find(velueSelector).val() || '';
+			var redirectPage = $(formSelector).data('redirect') || '';
+			var referrerLocation = document.location.pathname === '/' ? 'USHomepage' : window.location.pathname;
+
+			window.location = redirectPage + '/?zip=' + zipValue + '&page=' + referrerLocation;
+		});
+	}
 });

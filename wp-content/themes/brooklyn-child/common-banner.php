@@ -1,15 +1,16 @@
 <?php
-    $bbs_background_image = get_field( "bbs_background_image",'option');
-    $bbs_title = get_field( "bbs_title",'option');
-    $bbs_big_title = get_field( "bbs_big_title",'option');
-    $bbs_description = get_field( "bbs_description",'option');
-    $bbs_button_text = get_field( "bbs_button_text",'option');
-    $bbs_button_link = get_field( "bbs_button_link",'option');
-    $bbs_popup_code = get_field( "bbs_popup_code",'option');
+    $bbs_background_image = get_field( 'bbs_background_image','option');
+    $bbs_title = get_field( 'bbs_title','option');
+    $bbs_big_title = get_field( 'bbs_big_title','option');
+    $bbs_description = get_field( 'bbs_description','option');
+    $bbs_button_text = get_field( 'bbs_button_text','option');
+    $bbs_button_link = get_field( 'bbs_button_link','option');
+    $bbs_popup_code = get_field( 'bbs_popup_code','option');
     $show_search_banner = get_field('show_search_banner','option');
-    $search_button_text_banner = get_field('search_button_text_banner','option');
-    $search_placeholder_banner = get_field('search_placeholder_banner','option');
-    $search_result_link_banner = get_field('search_result_link_banner','option');
+    $search_button_text_banner = get_field('search_button_text_banner','option') ?? 'Search Writers';
+    $search_placeholder_banner = get_field('search_placeholder_banner','option') ?? 'Enter Postal Code';
+    $search_result_link_banner = get_field('search_result_link_banner','option') ?? 'https://info.storyterrace.com/us/writer-search/start-match';
+
 
 if(!empty($bbs_background_image)){ ?>
 <div class="request">
@@ -29,34 +30,28 @@ if(!empty($bbs_background_image)){ ?>
                         <p><?php echo $bbs_description; ?></p>
                 <?php } ?>
                 <?php if($show_search_banner == 'yes'){ ?>
-                    <div class="writer-search footer-banners-search">
-                        <form id="zipcodebot" class="writer-search-form">
-                            <div class="input-group">
-                            <input class="zipf" type="text" placeholder="<?php if(!empty($search_placeholder_banner)){ echo $search_placeholder_banner; } else { ?>Enter Postal Code<?php } ?>">
-                            <input type="submit" value="<?php if(!empty($search_button_text_banner)){ echo $search_button_text_banner; } else { ?>Search Writers<?php } ?>">
-                            </div>
-                        </form>
-                    </div>
-                    <!-- ToDo: refactor all zip code scripts -->
-                    <script>
-                        jQuery(document).ready(function($){
-                            $( "#zipcodebot" ).submit(function( event ) {
-                                event.preventDefault();
-                                var zipf = $('.zipf').val();
-                                urlredf = '<?php echo $search_result_link_banner; ?>';
-                                window.location = urlredf + '/?zip=' + zipf + '&page=' + window.location.pathname;
-                            });
-                        });
-                    </script>
+                
+                <?php
+                    get_template_part(
+                        'partials/zip-search',
+                        'form',
+                        array(
+                            'container_class' => 'footer-banners-search',
+                            'data_redirect' => $search_result_link_banner,
+                            'search_placeholder' => $search_placeholder_banner,
+                            'search_button_text' => $search_button_text_banner
+                        )
+                    );
+                ?>                    
                 <?php } else { 
-                        if(!empty($bbs_button_text)){  ?>
+                    if(!empty($bbs_button_text)){  ?>
                         <div class="request__link">
                             <?php if(!empty($bbs_button_text)){ ?>
                             <a class="bottombtn" href="<?php echo $bbs_button_link; ?>"><?php echo $bbs_button_text; ?></a>
                             <?php } ?>
                         </div>
-                <?php } 
-            }?>
+                    <?php } 
+                }?>
             </div>
         </div>
     </div>
