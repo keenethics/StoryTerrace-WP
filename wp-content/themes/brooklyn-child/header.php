@@ -273,7 +273,7 @@ $scrollspeed     = ot_get_option('ut_scrollto_speed', '650');
                     $header_homepage_login_link = get_field('header_homepage_login_link', 'option');
                 ?>
                 <div class="top-btn">
-                    <div class="header__button login-cta">
+                    <div class="header__button">
                         <?php if (is_home() || is_front_page()) : ?>                            
                             <?php if ($header_homepage_login_text) : ?>
                                 <a href="<?php echo $header_homepage_login_link; ?>" target="_blank">
@@ -295,7 +295,7 @@ $scrollspeed     = ot_get_option('ut_scrollto_speed', '650');
                         <span></span>
                     </div>
                 </div>
-                
+
             </div>
         </div>
     </div>
