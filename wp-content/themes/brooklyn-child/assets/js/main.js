@@ -203,7 +203,8 @@ jQuery(document).ready(function ($) {
 	activatePopupOnClick('.js-free-consultation', '.globalpopup.free-consultation', '.free-consultation__close');
 
 	// execute zip code script for each form
-	['#zipcode', '#zipcode-mobile'].forEach(function (element) {
+	['#zipcode', '#zipcode-bottom', '#zipcode-mobile'].forEach(function (element) {
 		$(element) ? zipTrackingEvent(element) : null;
+		console.log(element)
 	});
 });

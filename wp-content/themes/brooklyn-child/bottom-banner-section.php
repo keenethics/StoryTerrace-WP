@@ -38,6 +38,7 @@ if (!empty($bbs_background_image)){ ?>
                                 'partials/zip-search',
                                 'form',
                                 array(
+                                    'form_id' => 'zipcode-bottom',
                                     'container_class' => 'footer-banners-search',
                                     'data_redirect' => $search_result_link_banner,
                                     'search_placeholder' => $search_placeholder_banner,
