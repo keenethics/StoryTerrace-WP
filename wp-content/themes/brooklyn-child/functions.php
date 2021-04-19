@@ -62,7 +62,8 @@ function my_theme_scripts() {
     wp_enqueue_script( 'countryfinder-js', get_stylesheet_directory_uri().'/js/countryfinder.js', array( 'jquery' ), '1.0.1', false );
 
     wp_enqueue_script( 'slick-js', get_stylesheet_directory_uri().'/assets/js/slick.min.js', array( 'jquery' ), '1.0.1', true );
-    wp_enqueue_script( 'main-js', get_stylesheet_directory_uri().'/assets/js/main.js', array( 'jquery' ), '1.0.1', true );
+    wp_enqueue_script( 'helpers-js', get_stylesheet_directory_uri().'/assets/js/helpers.js', array( 'jquery' ), '1.0.1', true );
+    wp_enqueue_script( 'main-js', get_stylesheet_directory_uri().'/assets/js/main.js', array( 'jquery', 'helpers-js' ), '1.0.2', true );
 
     // How It Works page specific scripts 
     if ( is_page_template( 'howitwork.tpl.php') ) {

@@ -265,22 +265,28 @@ $scrollspeed     = ot_get_option('ut_scrollto_speed', '650');
 
                     <?php endif; ?>
                 </div>
+
                 <?php
-                $header_right_button_text = get_field('header_right_button_text', 'option');
-                $header_right_button_link = get_field('header_right_button_link', 'option');
-                $header_left_button_text = get_field('left_button_text', 'option');
-                $header_left_button_link = get_field('left_button_link', 'option');
+                    $header_right_button_text = get_field('header_right_button_text', 'option');
+                    $header_right_button_link = get_field('header_right_button_link', 'option');
+                    $header_homepage_login_text = get_field('header_homepage_login_text', 'option');
+                    $header_homepage_login_link = get_field('header_homepage_login_link', 'option');
                 ?>
                 <div class="top-btn">
-                    <div class="header__button login-cta">
-                        <?php if ($header_right_button_text) { ?>
-                            <a class="" href="<?php echo $header_right_button_link; ?>" target="_blank"><?php echo $header_right_button_text; ?></a>
-                        <?php } ?>
-                    </div>
-                    <div class="header__button signup-cta">
-                        <?php if ($header_left_button_text) { ?>
-                            <a class="" href="<?php echo $header_left_button_link; ?>" target="_blank"><?php echo $header_left_button_text; ?></a>
-                        <?php } ?>
+                    <div class="header__button">
+                        <?php if (is_home() || is_front_page()) : ?>                            
+                            <?php if ($header_homepage_login_text) : ?>
+                                <a href="<?php echo $header_homepage_login_link; ?>" target="_blank">
+                                    <?php echo $header_homepage_login_text; ?>
+                                </a>
+                            <?php endif; ?>
+                        <?php else: ?>
+                            <?php if ($header_right_button_text) : ?>
+                                <a class="js-free-consultation" href="<?php echo $header_right_button_link; ?>">
+                                    <?php echo $header_right_button_text; ?>
+                                </a>
+                            <?php endif; ?>
+                        <?php endif; ?>
                     </div>
                 </div>
                 <div class="header__toggler">
@@ -289,6 +295,7 @@ $scrollspeed     = ot_get_option('ut_scrollto_speed', '650');
                         <span></span>
                     </div>
                 </div>
+
             </div>
         </div>
     </div>
