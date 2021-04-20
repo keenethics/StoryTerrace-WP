@@ -36,30 +36,41 @@
         $ut_left_csection_content_area_width = !empty($ut_right_csection_content_area) ? 'grid-45 suffix-5 mobile-grid-100 tablet-grid-50' : 'grid-100 mobile-grid-100 tablet-grid-100';
         $ut_right_csection_content_area_width= !empty($ut_left_csection_content_area) ? 'grid-50 mobile-grid-100 tablet-grid-50' : 'grid-100  mobile-grid-100 tablet-grid-100';
         
-    } ?>
-    
         
+    } ?>
+            
     <?php ut_after_footer_hook(); // action hook, see inc/ut-theme-hooks.php ?>
+
     <?php 
-           $footer_1_title = get_field('footer_1_title','options');
-           $footer_2_title = get_field('footer_2_title','options');
-           $footer_3_title = get_field('footer_3_title','options');
-           $contact_number = get_field('contact_number','options');
-           $email_address = get_field('email_address','options');
-           $address = get_field('address','options');
-           $copyright_text = get_field('copyright_text','options');
-           $social_title = get_field('social_title','options');
-           $social_twitter_link = get_field('social_twitter_link','options');
-           $social_instagram_link = get_field('social_instagram_link','options');
-           $social_linkedin_link = get_field('social_linkedin_link','options');
-           $social_facebook_link = get_field('social_facebook_link','options');
-           $social_youtube_link = get_field('social_youtube_link','options');
-           $subscribe_form_title = get_field('subscribe_form_title','options');
-           $subscribe_hubspot_form = get_field('subscribe_hubspot_form','options');
+        /* footer title */
+        $footer_1_title = get_field('footer_1_title','options');
+        $footer_2_title = get_field('footer_2_title','options');
+        $footer_3_title = get_field('footer_3_title','options');
+
+        /* custom fields */
+        $contact_number = get_field('contact_number','options');
+        $email_address = get_field('email_address','options');
+        $address = get_field('address','options');
+        $copyright_text = get_field('copyright_text','options');
+
+        /* social fields */
+        $social_title = get_field('social_title','options');
+        $social_twitter_link = get_field('social_twitter_link','options');
+        $social_instagram_link = get_field('social_instagram_link','options');
+        $social_linkedin_link = get_field('social_linkedin_link','options');
+        $social_facebook_link = get_field('social_facebook_link','options');
+        $social_youtube_link = get_field('social_youtube_link','options');
+
+        $subscribe_form_title = get_field('subscribe_form_title','options');
+        $subscribe_hubspot_form = get_field('subscribe_hubspot_form','options');
+
+        $show_free_consultation_form = get_field('show_free_consultation_form','options');
+        $free_consultation_form = get_field('free_consultation_form','options');
     ?>
+
     <?php include_once( 'bottom-banner-section.php' ); ?> 
     
-        <div class="footer">
+    <div class="footer">
         <div class="container">
             <div class="footer__inner d-flex">
                 <div class="footer__col footer__col--logo">
@@ -223,7 +234,6 @@
             </div>
         </div>
     </div>
-
     
     <div class="videopopup">
         <div class="videopopup__outer">
@@ -236,8 +246,21 @@
         </div>        
     </div>
     
-
-
+    <!-- Free Consultation Popup -->
+    <?php if (!is_home() || !is_front_page() && !empty($free_consultation_form) && $show_free_consultation_form == 'yes') { ?>
+        <div class="globalpopup free-consultation">
+            <div class="globalpopup__outer">
+                <div class="globalpopup__inner">
+                    <i class="fa fa-times globalpopup__close free-consultation__close" aria-hidden="true"></i>
+                    <div class="globalpopup__wrap">
+                        <div class="globalpopup__bottom">
+                            <?php echo $free_consultation_form; ?>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <?php } ?>
 
     <?php wp_footer(); ?>
     <script type="text/javascript">

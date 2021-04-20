@@ -29,9 +29,9 @@ $fixfoot_description = get_field('fixfoot_description');
 $fixfootbutton_text = get_field('fixfootbutton_text');
 $fixfoot_hubform = get_field('fixfoot_hubform');
 $show_search = get_field('show_search_price');
-$search_button_text_price = get_field('search_button_text_price');
-$search_placeholder_price = get_field('search_placeholder_price');
-$search_result_link_price = get_field('search_result_link_price');
+$search_button_text_price = get_field('search_button_text_price') ?? 'Search Writers';
+$search_placeholder_price = get_field('search_placeholder_price') ?? 'Enter Postal Code';
+$search_result_link_price = get_field('search_result_link_price') ?? 'https://info.storyterrace.com/us/writer-search/start-match';
 $curlangss =  ICL_LANGUAGE_CODE;
 ?>
 <?php if(!empty($banner_image)){ ?>   
@@ -450,28 +450,24 @@ jQuery(".footer").css({"margin-bottom" : pb+'px' });
               <p><?php echo $fixfoot_description; ?></p>
             </div>
             <?php 
-             if($show_search == 'yes'){ ?>
+
+            if($show_search == 'yes'){ ?>
+
+
                 <div class="pricingbar__right">
-                  <div class="writer-search">
-                    <form id="zipcode" class="writer-search-form">
-                        <div class="input-group">
-                          <input class="zipc" type="text" placeholder="<?php if($search_placeholder_price){ echo $search_placeholder_price; } else { echo 'Enter Postal Code'; } ?>">
-                          <input type="submit" value="<?php if($search_button_text_price){ echo $search_button_text_price; } else { echo 'Search Writers'; } ?>">
-                        </div>
-                   </form>
+                  <?php
+                    get_template_part(
+                        'partials/zip-search',
+                        'form',
+                        array(
+                            'data_redirect' => $search_result_link_price,
+                            'search_placeholder' => $search_placeholder_price,
+                            'search_button_text' => $search_button_text_price
+                        )
+                    );
+                  ?>
                 </div>
-                </div>
-                <!-- ToDo: refactor all zip code scripts -->
-                <script>
-                  jQuery(document).ready(function($){
-                    $( "#zipcode" ).submit(function( event ) {
-                      event.preventDefault();
-                      var zipval = $('.zipc').val();
-                      urlred = '<?php echo $search_result_link_price; ?>';
-                      window.location = urlred + '/?zip=' + zipval + '&page=' + window.location.pathname;
-                    });
-                  });
-                </script>
+                <!-- ToDo: Move styles -->
                 <style type="text/css">
                   .writer-search-form {
                       margin: 0px !important;

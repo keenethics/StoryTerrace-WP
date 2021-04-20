@@ -24,9 +24,9 @@ $bottom_large_text = get_field('bottom_large_text');
 $bottom_right_image = get_field('bottom_right_image');
 $popup_hub_code = get_field('popup_hub_code');
 $show_search = get_field('show_search');
-$search_button_text = get_field('search_button_text');
-$search_placeholder = get_field('search_placeholder');
-$search_result_link = get_field('search_result_link');
+$search_button_text = get_field('search_button_text') ?? 'Search Writers';
+$search_placeholder = get_field('search_placeholder') ?? 'Enter Postal Code';
+$search_result_link = get_field('search_result_link') ?? 'https://info.storyterrace.com/us/writer-search/start-match';
 
 // Brand Section
 $brands_title = get_field('brands_title');
@@ -94,70 +94,63 @@ $book_art_content = get_field('book_art_content', get_the_ID());
                     } ?>
 
                     <?php if ($show_search == 'yes') { ?>
-                        <div class="writer-search desksearch">
-                            <form id="zipcode" class="writer-search-form">
-                                <div class="input-group">
-                                    <input class="zipc" type="text" placeholder="<?php if (!empty($search_placeholder)) {
-                                                                                        echo $search_placeholder;
-                                                                                    } else { ?>Enter Postal Code<?php } ?>">
-                                    <input type="submit" value="<?php if (!empty($search_button_text)) {
-                                                                    echo $search_button_text;
-                                                                } else { ?>Search Writers<?php } ?>">
-                                </div>
-                            </form>
-                        </div>
-
                         <?php
-                        $extra_content = get_field('extra_content');
-                        $text_below_search_bar = get_field('text_below_search_bar');
-                        $sign_up_text = get_field('sign_up_text');
-                        $sign_up_link = get_field('sign_up_link');
+                            get_template_part(
+                                'partials/zip-search',
+                                'form',
+                                array(
+                                    'container_class' => 'desksearch',
+                                    'form_id' => 'zipcode-mobile',
+                                    'data_redirect' => $search_result_link,
+                                    'search_placeholder' => $search_placeholder,
+                                    'search_button_text' => $search_button_text
+                                )
+                            );
+
+                            $extra_content = get_field('extra_content');
+                            $text_below_search_bar = get_field('text_below_search_bar');
+                            $sign_up_text = get_field('sign_up_text');
+                            $sign_up_link = get_field('sign_up_link');
                         ?>
+
                         <?php if ($extra_content) { ?>
                             <div class="search-extra-content desktop-search-extra-content">
-                                <p><?php echo $text_below_search_bar; ?> <a href="<?php echo $sign_up_link; ?>" target="_blank"><?php echo $sign_up_text; ?></a></p>
+                                <p>
+                                    <?php echo $text_below_search_bar; ?> 
+                                    <a href="<?php echo $sign_up_link; ?>" target="_blank">
+                                        <?php echo $sign_up_text; ?>                                        
+                                    </a>
+                                </p>
                             </div>
                         <?php } ?>
-                        <!-- ToDo: refactor all zip code scripts -->
-                        <script>
-                            jQuery(document).ready(function($) {
-                                $("#zipcode").submit(function(event) {
-                                    event.preventDefault();
-                                    var zipval = $('.zipc').val();
-                                    urlred = '<?php echo $search_result_link; ?>';
-                                    window.location = urlred + '/?zip=' + zipval + '&page=' + window.location.pathname;
-                                });
-                            });
-                        </script>
-                    <?php } else { ?>
-                        <?php if ($show_primary_cta == 'yes') { ?>
-                            <div class="center-title__link pop-getstart">
-                                <?php if (!empty($top_button_text)) { ?>
-                                    <?php if (!empty($top_button_link)) { ?>
-                                        <a href="<?php echo $top_button_link; ?>" class="link-filled">
-                                        <?php } else { ?>
-                                            <a href="JavaScript:Void(0);" class="link-filled banneropen">
+                        <?php } else { ?>
+                            <?php if ($show_primary_cta == 'yes') { ?>
+                                <div class="center-title__link pop-getstart">
+                                    <?php if (!empty($top_button_text)) { ?>
+                                        <?php if (!empty($top_button_link)) { ?>
+                                            <a href="<?php echo $top_button_link; ?>" class="link-filled">
+                                            <?php } else { ?>
+                                                <a href="JavaScript:Void(0);" class="link-filled banneropen">
+                                                <?php } ?>
+                                                <?php echo $top_button_text; ?>
+                                                </a>
                                             <?php } ?>
-                                            <?php echo $top_button_text; ?>
-                                            </a>
-                                        <?php } ?>
-                            </div>
-                        <?php } ?>
-                        <?php if ($show_secondary_cta == 'yes') { ?>
-                            <div class="center-title__linkunderline">
-                                <?php if (!empty($secondary_cta_text)) { ?>
-                                    <?php if (!empty($secondary_cta_link)) { ?>
-                                        <a href="<?php echo $secondary_cta_link; ?>" class="link-underline">
-                                        <?php } else { ?>
-                                            <a href="JavaScript:Void(0);" class="link-underline underclick">
+                                </div>
+                            <?php } ?>
+                            <?php if ($show_secondary_cta == 'yes') { ?>
+                                <div class="center-title__linkunderline">
+                                    <?php if (!empty($secondary_cta_text)) { ?>
+                                        <?php if (!empty($secondary_cta_link)) { ?>
+                                            <a href="<?php echo $secondary_cta_link; ?>" class="link-underline">
+                                            <?php } else { ?>
+                                                <a href="JavaScript:Void(0);" class="link-underline underclick">
+                                                <?php } ?>
+                                                <?php echo $secondary_cta_text; ?>
+                                                </a>
                                             <?php } ?>
-                                            <?php echo $secondary_cta_text; ?>
-                                            </a>
-                                        <?php } ?>
-                            </div>
-                    <?php }
-                    }
-                    ?>
+                                </div>
+                            <?php }
+                    } ?>
                 </div>
             </div>
         </div>
@@ -235,41 +228,32 @@ $book_art_content = get_field('book_art_content', get_the_ID());
                     <?php }
                     } ?>
                     <?php if ($show_search == 'yes') { ?>
-                        <div class="writer-search mobsearch">
-                            <form id="zipcode" class="writer-search-form">
-                                <div class="input-group">
-                                    <input class="zipc" type="text" placeholder="<?php if (!empty($search_placeholder)) {
-                                                                                        echo $search_placeholder;
-                                                                                    } else { ?>Enter Postal Code<?php } ?>">
-                                    <input type="submit" value="<?php if (!empty($search_button_text)) {
-                                                                    echo $search_button_text;
-                                                                } else { ?>Search Writers<?php } ?>">
-                                </div>
-                            </form>
-                        </div>
+
                         <?php
-                        $extra_content = get_field('extra_content');
-                        $text_below_search_bar = get_field('text_below_search_bar');
-                        $sign_up_text = get_field('sign_up_text');
-                        $sign_up_link = get_field('sign_up_link');
+                            get_template_part(
+                                'partials/zip-search',
+                                'form',
+                                array(
+                                    'container_class' => 'mobsearch',
+                                    'data_redirect' => $search_result_link,
+                                    'search_placeholder' => $search_placeholder,
+                                    'search_button_text' => $search_button_text,
+
+                                )
+                            );
+
+                            $extra_content = get_field('extra_content');
+                            $text_below_search_bar = get_field('text_below_search_bar');
+                            $sign_up_text = get_field('sign_up_text');
+                            $sign_up_link = get_field('sign_up_link');
                         ?>
                         <?php if ($extra_content) { ?>
                             <div class="search-extra-content mobile-search-extra-content">
                                 <p><?php echo $text_below_search_bar; ?> <a href="<?php echo $sign_up_link; ?>" target="_blank"><?php echo $sign_up_text; ?></a></p>
                             </div>
                         <?php } ?>
-                        <!-- ToDo: refactor all zip code scripts -->
-                        <script>
-                            jQuery(document).ready(function($) {
-                                $(".mobsearch #zipcode").submit(function(event) {
-                                    event.preventDefault();
-                                    var zipval = $('.mobsearch .zipc').val();
-                                    urlred = '<?php echo $search_result_link; ?>';
-                                    window.location = urlred + '/?zip=' + zipval + '&page=' + window.location.pathname;
-                                });
-                            });
-                        </script>
-                    <?php } else { ?>
+
+                        <?php } else { ?>
                         <?php if ($show_primary_cta == 'yes') { ?>
                             <div class="center-title__link pop-getstart">
                                 <?php if (!empty($top_button_text)) { ?>
@@ -295,7 +279,7 @@ $book_art_content = get_field('book_art_content', get_the_ID());
                                             </a>
                                         <?php } ?>
                             </div>
-                    <?php }
+                        <?php }
                     } ?>
 
                 </div>

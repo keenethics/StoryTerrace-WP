@@ -188,19 +188,7 @@ function mobileCustomerSlider() {
 }
 
 jQuery(document).ready(function ($) {
-	function activateVideoPopup(ctaButton, attribute) {
-		ctaButton = ctaButton || '.videoicon';
-		attribute = attribute || 'vidurl';
-
-		$(ctaButton).click(function () {
-			var videoLink = $(this).attr(attribute);
-	
-			if (videoLink) {
-				$('.videopopup__wrap iframe').attr('src', videoLink);
-			}
-		});
-	}
-
+	// activate video popup on all pages
 	activateVideoPopup();
 
 	setTimeout(function () {
@@ -210,4 +198,13 @@ jQuery(document).ready(function ($) {
 			$('.romw-link')[0].click();
 		});
 	}, 500);
+
+	// activate free consultation popup
+	activatePopupOnClick('.js-free-consultation', '.globalpopup.free-consultation', '.free-consultation__close');
+
+	// execute zip code script for each form
+	['#zipcode', '#zipcode-bottom', '#zipcode-mobile'].forEach(function (element) {
+		$(element) ? zipTrackingEvent(element) : null;
+		console.log(element)
+	});
 });
