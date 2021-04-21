@@ -4526,10 +4526,6 @@ div.addon-description p {
   padding-bottom: 60px;
 }
 
-.faq-accordion .accordion a.active {
-  font-weight: 600;
-}
-
 .inner-content-wrap {
   padding: 15px;
   display: block;
@@ -5286,6 +5282,9 @@ h3#ship-to-different-address input:checked+span:before {
   }
 }
 
+/****************************
+  FAQ page style
+*****************************/
 .faq-container {
   max-width: 800px;
   border-radius: 4px;
@@ -5353,7 +5352,7 @@ h3#ship-to-different-address input:checked+span:before {
   padding-bottom: 0;
 }
 
-.faq-accordion .accordion a {
+.faq-accordion .accordion li > a {
   width: 100%;
   display: block;
   cursor: pointer;
@@ -5378,8 +5377,8 @@ h3#ship-to-different-address input:checked+span:before {
   padding: 10px;
 }
 
-.faq-accordion .accordion a:before,
-.faq-accordion .accordion a:after {
+.faq-accordion .accordion li > a:before,
+.faq-accordion .accordion li > a:after {
   content: "";
   position: absolute;
   -webkit-transition: all 0.2s ease-in-out;
@@ -5388,18 +5387,22 @@ h3#ship-to-different-address input:checked+span:before {
   background-color: #f06d66;
 }
 
-.faq-accordion .accordion a:before {
+.faq-accordion .accordion li > a:before {
   width: 14px;
   height: 2px;
   left: 0px;
   top: 9.5px;
 }
 
-.faq-accordion .accordion a:after {
+.faq-accordion .accordion li > a:after {
   width: 2px;
   height: 14px;
   left: 6.5px;
   top: 4px;
+}
+
+.faq-accordion .accordion li > a.active {
+  font-weight: 600;
 }
 
 .faq-accordion a.active:after {
