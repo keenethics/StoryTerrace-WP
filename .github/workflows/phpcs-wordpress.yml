@@ -1,5 +1,8 @@
-name: phpcs-wordpress
-on: [push]
+name: PHPCS Wordpress
+on:
+  push:
+    branches:
+      - develop
 jobs:
   linter_name:
     name: runner / phpcs
