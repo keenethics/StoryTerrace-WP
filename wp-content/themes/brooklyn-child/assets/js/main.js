@@ -207,4 +207,24 @@ jQuery(document).ready(function ($) {
 		$(element) ? zipTrackingEvent(element) : null;
 		console.log(element)
 	});
+
+	// control FAQ page accordion
+	$('.accordion > li:eq(0) p').css('display','block');
+	$('.accordion > li:eq(0) > a').addClass('active').next().slideDown();
+
+	$('.accordion li > a').click(function(event) {		
+		var dropDown = $(this).closest('li').find('p');
+
+		event.preventDefault();
+		$(this).closest('.accordion').find('p').not(dropDown).slideUp();
+
+		if ($(this).hasClass('active')) {
+			$(this).removeClass('active');
+		} else {
+			$(this).closest('.accordion').find('a.active').removeClass('active');
+			$(this).addClass('active');
+		}
+
+		dropDown.stop(false, true).slideToggle();		
+	});
 });

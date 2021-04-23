@@ -40,27 +40,3 @@ get_header(); ?>
         <div class="ut-scroll-up-waypoint" data-section="section-<?php echo ut_clean_section_id($post->post_name); ?>"></div>
 
 <?php get_footer(); ?>
-
-<script type="text/javascript">
-	(function($) {
-		$('.accordion > li:eq(0) p').css('display','block');
-       $('.accordion > li:eq(0) a').addClass('active').next().slideDown();
-
-    $('.accordion a').click(function(j) {
-        var dropDown = $(this).closest('li').find('p');
-
-        $(this).closest('.accordion').find('p').not(dropDown).slideUp();
-
-        if ($(this).hasClass('active')) {
-            $(this).removeClass('active');
-        } else {
-            $(this).closest('.accordion').find('a.active').removeClass('active');
-            $(this).addClass('active');
-        }
-
-        dropDown.stop(false, true).slideToggle();
-
-        j.preventDefault();
-    });
-})(jQuery);
-</script>
